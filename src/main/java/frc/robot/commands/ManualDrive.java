@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 /**import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
 import frc.robot.Robot;
+import frc.robot.Constants;
 /**import frc.robot.subsystems.Drive2020;*/
 import frc.robot.OI;
 
@@ -27,12 +28,14 @@ public class ManualDrive extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    switch (Robot.currentRobot) {
+    switch (Constants.CURRENT_ROBOT) {
       case MONOLITH:
         driveMonolith();
         break;
       case ROBOT2020:
         drive2020();
+        break;
+      default:
         break;
     }
   }
