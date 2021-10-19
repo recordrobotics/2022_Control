@@ -50,6 +50,7 @@
 
 # Package Files #
 *.jar
+!/gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
@@ -137,10 +138,7 @@ $RECYCLE.BIN/
 
 ### Gradle ###
 .gradle
-*.gradle
 /build/
-gradlew
-gradlew.bat
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -150,9 +148,6 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
-
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-gradle/wrapper/gradle-wrapper.properties
 
 # # VS Code Specific Java Settings
 .classpath

@@ -24,7 +24,7 @@ public class Flywheel2020 extends Flywheel {
      * Creates an Object for the flywheel class.
      */
     public Flywheel2020() {
-        setDefaultCommand(new ControlFlywheel());
+        //setDefaultCommand(new ControlFlywheel());
         flywheelMotor.enableVoltageCompensation(true);
         flywheelMotor.setVoltage(targetVoltage);
     }
