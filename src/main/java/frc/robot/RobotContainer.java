@@ -5,7 +5,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -17,7 +20,7 @@ import frc.robot.subsystems.*;
  */
 public class RobotContainer {
 
-  private static RobotContainer m_RobotContainer;
+  private static RobotContainer m_robotContainer;
 
   // Robot Subsystems
   private DriveTrain m_driveTrain = null;
@@ -31,12 +34,20 @@ public class RobotContainer {
   private RangeFinder m_rangeFinder = null;
   private Dashboard m_dashboard = null;
   private CamStream m_camStream = new CamStream(2);
+  private Command m_autonomousCommand = null;
+  private SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    switch (Robot.currentRobot) {
+    m_oi = new OI();
+    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    /** chooser.addOption("My Auto", new MyAutoCommand());*/
+    SmartDashboard.putData("Auto mode", m_chooser);
+    
+    // Init based on the current robot
+    switch (Constants.CURRENT_ROBOT) {
       case ROBOT2020:
         this.init2020();
         break;
@@ -49,15 +60,14 @@ public class RobotContainer {
     }
 
     // Configure the button bindings
-    configureButtonBindings();
+    this.configureButtonBindings();
   }
 
   private void init2020() {
     m_driveTrain = new Drive2020();
     m_driveTrain.setDefaultCommand(new ManualDrive());
     m_gyro = new Gyro2020();
-    // TODO: move gyroInit();
-    // gyroInit();
+    this.gyroInit();
     m_acquisition = new Acquisition2020();
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     m_flywheel = new Flywheel2020();
@@ -70,14 +80,25 @@ public class RobotContainer {
     //dash = new Dashboard2020();
   }
 
-  // Legacy code for monolith
+  // Legacy code for Monolith
   private void initMonolith() {
     // TODO: implement
   }
 
-  // Legacy code for monty
+  // Legacy code for Monty
   private void initMonty() {
     // TODO: implement
+  }
+
+  /**
+   * Setup for Gyroscope. Zero the gyroscope, and calibrate it
+   */
+  private void gyroInit(){
+    m_gyro.gyroCalib();
+    System.out.println("Please wait... Calibrating Gyroscope");
+    Timer.delay(5);
+    System.out.println("Calibration Complete");
+    m_gyro.gyroReset();
   }
 
   /**
@@ -94,12 +115,12 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return Robot.m_autonomousCommand;
+    return m_autonomousCommand;
   }
 
+  // Return container instance. Create if doesn't exist
   public static RobotContainer getInstance() {
-    if (m_RobotContainer == null) m_RobotContainer = new RobotContainer();
-    return m_RobotContainer;
+    if (m_robotContainer == null) m_robotContainer = new RobotContainer();
+    return m_robotContainer;
   } 
 }

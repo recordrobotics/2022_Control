@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.OI;
 import frc.robot.Robot;
 /**import frc.robot.control.ButtonMap;*/
@@ -26,7 +27,7 @@ public class ControlFlywheel extends CommandBase {
   private String xboxButton = "X";
   private int panelButton = 6;
 
-  private double wheelSpeed = Robot.flywheelSpeed;
+  private double wheelSpeed = Constants.FLYWHEEL_SPEED;
   /**
    * Create a ControlFlywheel constructor.
    */

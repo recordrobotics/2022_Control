@@ -27,15 +27,6 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  /**
-   * The robot currently selected
-   */
-  public static final RobotModel currentRobot = RobotModel.ROBOT2020;
-
-  public static final double restingVoltage = 12.5;
-  public static double shootingDistance = 122;
-  public static double flywheelSpeed = 0.85;
-
 /**
 *  Instances for all subsystems.
 *  Refer to these objects when interacting with any subsystem object.
@@ -59,7 +50,13 @@ public class Robot extends TimedRobot {
   public static NetworkTableInstance inst;
   public static NetworkTable table;
   public static NetworkTableEntry testEntry;
+  // TODO: Remove code above
 
+  private RobotContainer m_container;
+
+  public Robot() {
+    m_container = RobotContainer.getInstance();
+  }
 
   /**
    * This function is run when the robot is first started up and should be
@@ -73,7 +70,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
 
     /**select which init method to use based on the currently selected robot*/
-    switch(currentRobot){
+    switch(Constants.CURRENT_ROBOT){
       case MONOLITH:
         monolithInit();
         break;
