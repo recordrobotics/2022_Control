@@ -27,17 +27,10 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  
-  /**
-   * Enum that determines which robots can be used used. Set to make sure the correct classes are instantiated
-   */
-  public enum CurrentRobot{
-    MONOLITH, MONTY, ROBOT2020;
-  }
   /**
    * The robot currently selected
    */
-  public static CurrentRobot currentRobot = CurrentRobot.ROBOT2020;
+  public static final RobotModel currentRobot = RobotModel.ROBOT2020;
 
   public static final double restingVoltage = 12.5;
   public static double shootingDistance = 122;
