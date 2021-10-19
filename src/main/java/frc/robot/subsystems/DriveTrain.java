@@ -16,7 +16,7 @@ import frc.robot.commands.ManualDrive;
  */
 public abstract class DriveTrain extends SubsystemBase {
   public DriveTrain() {
-    setDefaultCommand(new ManualDrive());
+    //setDefaultCommand(new ManualDrive());
   }
 
   private long disabled_time = 0;

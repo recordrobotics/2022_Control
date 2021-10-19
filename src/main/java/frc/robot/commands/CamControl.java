@@ -21,13 +21,13 @@ public class CamControl extends CommandBase {
     private String switchButton = "Y";
 
     public CamControl() {
-        addRequirements(Robot.camStream);
+        //addRequirements(Robot.camStream);
     }
 
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
-        Robot.camStream.setCamera(0);
+        //Robot.camStream.setCamera(0);
     }
 
     private boolean prevButton = false;
@@ -37,10 +37,10 @@ public class CamControl extends CommandBase {
     @Override
     public void execute() {
 
-        if (OI.getXboxButtonState(switchButton) && (OI.getXboxButtonState(switchButton) != prevButton)) {
+      /*  if (OI.getXboxButtonState(switchButton) && (OI.getXboxButtonState(switchButton) != prevButton)) {
             count++;
-            Robot.camStream.setCamera(count % 2);
-        }
+            Robot.camStream.setCamera(count % 2); 
+        } */
 
         prevButton = OI.getXboxButtonState(switchButton);
     }
