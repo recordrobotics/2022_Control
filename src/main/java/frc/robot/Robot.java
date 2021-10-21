@@ -31,25 +31,25 @@ public class Robot extends TimedRobot {
 *  Instances for all subsystems.
 *  Refer to these objects when interacting with any subsystem object.
 */
-  public static DriveTrain driveTrain;
-  public static RobotLift lift;
-  public static Gyroscope gyro;
-  public static Acquisition acq;
-  public static OI m_oi;
-  public static Flywheel flywheel;
-  public static BallLift belt;
-  public static LiftSpool spool;
-  public static RangeFinder rangeFinder;
- // public static CamStream camStream = new CamStream(2);
-  public static Dashboard dash;
-  /**Autonomous command setup*/
-  public static Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+//   public static DriveTrain driveTrain;
+//   public static RobotLift lift;
+//   public static Gyroscope gyro;
+//   public static Acquisition acq;
+//   public static OI m_oi;
+//   public static Flywheel flywheel;
+//   public static BallLift belt;
+//   public static LiftSpool spool;
+//   public static RangeFinder rangeFinder;
+//  // public static CamStream camStream = new CamStream(2);
+//   public static Dashboard dash;
+//   /**Autonomous command setup*/
+//   public static Command m_autonomousCommand;
+//   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  /**Network table setup*/
-  public static NetworkTableInstance inst;
-  public static NetworkTable table;
-  public static NetworkTableEntry testEntry;
+//   /**Network table setup*/
+//   public static NetworkTableInstance inst;
+//   public static NetworkTable table;
+//   public static NetworkTableEntry testEntry;
   // TODO: Remove code above
 
   private RobotContainer m_container;
@@ -89,77 +89,6 @@ public class Robot extends TimedRobot {
   boolean recalibrateGyro = true;
 
   /**
-   * Init function for Monty
-   * Makes instnaces of all Monty subsystems and assigns them to appropriate variables
-   */
-  private void montyInit(){
-    driveTrain = new DriveMonty();
-  }
-
-  /**
-   * Init function for Monolith
-   * Makes instnaces of all Monolith-specific subsystems and assigns them to appropriate variables
-   */
-  private void monolithInit(){
-    driveTrain = new DriveMonolith();
-    System.out.println("Monolith Initialized");
-    /**Lift constructor*/
-    lift = new LiftMonolith();
-    /**gyro*/
-    gyro = new GyroMonolith();  
-    gyroInit();
-    //dash = new DashboardMonolith();
-  }
-
-  /**
-   * Init function for robot 2020
-   * Makes instnaces of all 2020-specific subsystems and assigns them to appropriate variables
-   */
-  private void robot2020Init(){
-    driveTrain = new Drive2020();
-    driveTrain.setDefaultCommand(new ManualDrive());
-    gyro = new Gyro2020();
-    gyroInit();
-    acq = new Acquisition2020();
-    acq.setDefaultCommand(new ControlAcquisition());
-    flywheel = new Flywheel2020();
-    flywheel.setDefaultCommand(new ControlFlywheel());
-    belt = new BallLift2020();
-    belt.setDefaultCommand(new BeltControl());
-    //spool = new LiftSpool();
-    //lift = new RobotLift2020();
-    rangeFinder = new RangeFinder2020();
-    //dash = new Dashboard2020();
-
-  }
-
-  /**
-   * Make new instance of the DataTable used
-   * Get the main entry in the data
-   */
-  private void networkInit(){
-    inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("datatable");
-
-    testEntry = table.getEntry("Test");
-  }
-
-  /**
-   * Setup for Gyroscope. Zero the gyroscope, and calibrate it is necessary
-   */
-  private void gyroInit(){
-    if (recalibrateGyro) {
-      gyro.gyroCalib();
-      System.out.println("Please wait... Calibrating Gyroscope");
-      Timer.delay(5);
-      System.out.println("Calibration Complete");
-      gyro.gyroReset();
-    } else {
-      gyro.gyroReset();
-    }
-  }
-
-  /**
    * This function is called every robot packet, no matter the mode. Use
    * this for items like diagnostics that you want ran during disabled,
    * autonomous, teleoperated and test.
@@ -168,8 +97,8 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
 
-
   private boolean prevLampState = false;
+
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();

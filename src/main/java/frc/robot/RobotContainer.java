@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
@@ -23,19 +26,24 @@ public class RobotContainer {
   private static RobotContainer m_robotContainer;
 
   // Robot Subsystems
-  private DriveTrain m_driveTrain = null;
-  private RobotLift m_robotLift = null;
-  private Gyroscope m_gyro = null;
-  private Acquisition m_acquisition = null;
-  private OI m_oi = null;
-  private Flywheel m_flywheel = null;
-  private BallLift m_ballLift = null;
-  private LiftSpool m_liftSpool = null;
-  private RangeFinder m_rangeFinder = null;
-  private Dashboard m_dashboard = null;
+  private DriveTrain m_driveTrain;
+  private RobotLift m_robotLift;
+  private Gyroscope m_gyro;
+  private Acquisition m_acquisition;
+  private OI m_oi;
+  private Flywheel m_flywheel;
+  private BallLift m_ballLift;
+  private LiftSpool m_liftSpool;
+  private RangeFinder m_rangeFinder;
+  private Dashboard m_dashboard;
   private CamStream m_camStream = new CamStream(2);
-  private Command m_autonomousCommand = null;
+  private Command m_autonomousCommand;
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  // Network table setup
+  private NetworkTableInstance m_netTableInst;
+  private NetworkTable m_netTable;
+  private NetworkTableEntry m_netTableEntry;
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
@@ -63,6 +71,10 @@ public class RobotContainer {
     this.configureButtonBindings();
   }
 
+  /**
+   * Init function for robot 2020
+   * Makes instnaces of all 2020-specific subsystems and assigns them to appropriate variables
+   */
   private void init2020() {
     m_driveTrain = new Drive2020();
     m_driveTrain.setDefaultCommand(new ManualDrive());
@@ -81,13 +93,28 @@ public class RobotContainer {
   }
 
   // Legacy code for Monolith
+  /**
+   * Init function for Monolith
+   * Makes instnaces of all Monolith-specific subsystems and assigns them to appropriate variables
+   */
   private void initMonolith() {
-    // TODO: implement
+    m_driveTrain = new DriveMonolith();
+    System.out.println("Monolith Initialized");
+    /**Lift constructor*/
+    m_robotLift = new LiftMonolith();
+    /**gyro*/
+    m_gyro = new GyroMonolith();  
+    this.gyroInit();
+    //dash = new DashboardMonolith();
   }
 
   // Legacy code for Monty
+  /**
+   * Init function for Monty
+   * Makes instnaces of all Monty subsystems and assigns them to appropriate variables
+   */
   private void initMonty() {
-    // TODO: implement
+    m_driveTrain = new DriveMonty();
   }
 
   /**
@@ -102,12 +129,24 @@ public class RobotContainer {
   }
 
   /**
+   * Make new instance of the DataTable used
+   * Get the main entry in the data
+   */
+  private void networkInit(){
+    m_netTableInst = NetworkTableInstance.getDefault();
+    m_netTable = m_netTableInst.getTable("datatable");
+    m_netTableEntry = m_netTable.getEntry("Test");
+  }
+
+  /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
