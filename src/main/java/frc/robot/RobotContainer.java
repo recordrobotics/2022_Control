@@ -45,7 +45,18 @@ public class RobotContainer {
   private NetworkTable m_netTable;
   private NetworkTableEntry m_netTableEntry;
 
-  //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  public DriveTrain getDriveTrain() { return m_driveTrain; }
+  public RobotLift getRobotLift() { return m_robotLift; }
+  public Gyroscope getGyro() { return m_gyro; }
+  public Acquisition getAcquisition() { return m_acquisition; }
+  public OI getOi() { return m_oi; }
+  public Flywheel getFlywheel() { return m_flywheel; }
+  public BallLift getBallLift() { return m_ballLift; }
+  public LiftSpool getLiftSpool() { return m_liftSpool; }
+  public RangeFinder getRangeFinder() { return m_rangeFinder; }
+  public Dashboard getDashboard() { return m_dashboard; }
+  public CamStream getCamStream() { return m_camStream; }
+  public Command getAutonomousCommand() { return m_autonomousCommand; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -149,19 +160,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
   }
-
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  public Command getAutonomousCommand() {
-    return m_autonomousCommand;
-  }
-
-  public Gyroscope getGyro() { return m_gyro; }
-  public RangeFinder getRangeFinder() { return m_rangeFinder; }
-  public Flywheel getFlywheel() { return m_flywheel; }
+  
+  
   // TODO: getters
 
   // Return container instance. Create if doesn't exist
