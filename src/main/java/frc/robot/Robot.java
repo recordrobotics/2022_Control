@@ -27,35 +27,13 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-/**
-*  Instances for all subsystems.
-*  Refer to these objects when interacting with any subsystem object.
-*/
-//   public static DriveTrain driveTrain;
-//   public static RobotLift lift;
-//   public static Gyroscope gyro;
-//   public static Acquisition acq;
-//   public static OI m_oi;
-//   public static Flywheel flywheel;
-//   public static BallLift belt;
-//   public static LiftSpool spool;
-//   public static RangeFinder rangeFinder;
-//  // public static CamStream camStream = new CamStream(2);
-//   public static Dashboard dash;
-//   /**Autonomous command setup*/
-//   public static Command m_autonomousCommand;
-//   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-//   /**Network table setup*/
-//   public static NetworkTableInstance inst;
-//   public static NetworkTable table;
-//   public static NetworkTableEntry testEntry;
-  // TODO: Remove code above
 
   private RobotContainer m_container;
+  private Command m_autonomousCommand;
 
   public Robot() {
     m_container = RobotContainer.getInstance();
+    m_autonomousCommand = m_container.getAutonomousCommand();
   }
 
   /**
@@ -64,25 +42,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    /** chooser.addOption("My Auto", new MyAutoCommand());*/
-    SmartDashboard.putData("Auto mode", m_chooser);
-
-    /**select which init method to use based on the currently selected robot*/
-    switch(Constants.CURRENT_ROBOT){
-      case MONOLITH:
-        monolithInit();
-        break;
-      case MONTY:
-        montyInit();
-        break;
-      case ROBOT2020:
-        robot2020Init();
-        break;
-    }
-
-    networkInit();
+    m_container = RobotContainer.getInstance();
   }
 
   /**calibrate gyroscope*/
@@ -131,7 +91,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    // m_autonomousCommand = new MoveToFire(shootingDistance); 
+    m_autonomousCommand = new MoveToFire(Constants.SHOOTING_DISTANCE); 
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",

@@ -159,9 +159,20 @@ public class RobotContainer {
     return m_autonomousCommand;
   }
 
+  public Gyroscope getGyro() { return m_gyro; }
+  public RangeFinder getRangeFinder() { return m_rangeFinder; }
+  public Flywheel getFlywheel() { return m_flywheel; }
+  // TODO: getters
+
   // Return container instance. Create if doesn't exist
   public static RobotContainer getInstance() {
-    if (m_robotContainer == null) m_robotContainer = new RobotContainer();
+    if (m_robotContainer == null) create();
     return m_robotContainer;
-  } 
+  }
+
+  // Recreate the instance
+  public static RobotContainer create() {
+    m_robotContainer = new RobotContainer();
+    return m_robotContainer;
+  }
 }
