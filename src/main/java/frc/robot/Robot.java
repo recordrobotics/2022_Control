@@ -112,9 +112,11 @@ public class Robot extends TimedRobot {
    */
   private void monolithInit(){
     driveTrain = new DriveMonolith();
+    driveTrain.setDefaultCommand(new ManualDrive());
     System.out.println("Monolith Initialized");
     /**Lift constructor*/
     lift = new LiftMonolith();
+    lift.setDefaultCommand(new LiftControl());
     /**gyro*/
     gyro = new GyroMonolith();  
     gyroInit();
@@ -158,13 +160,13 @@ public class Robot extends TimedRobot {
    * Setup for Gyroscope. Zero the gyroscope, and calibrate it is necessary
    */
   private void gyroInit(){
-    if (recalibrateGyro) {
+     if (recalibrateGyro) {
       gyro.gyroCalib();
       System.out.println("Please wait... Calibrating Gyroscope");
       Timer.delay(5);
       System.out.println("Calibration Complete");
       gyro.gyroReset();
-    } else {
+     } else {
       gyro.gyroReset();
     }
   }
@@ -212,7 +214,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = new MoveToFire(shootingDistance); 
+    // m_autonomousCommand = new MoveToFire(shootingDistance); 
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -254,6 +256,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
+  // System.out.println("forward value" + OI.getForward());
+
   }
 
   /**

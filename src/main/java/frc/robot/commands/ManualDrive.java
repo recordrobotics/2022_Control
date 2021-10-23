@@ -20,7 +20,6 @@ public class ManualDrive extends CommandBase {
 
   public ManualDrive() {
     /** Use requires() here to declare subsystem dependencies */
-    
     addRequirements(Robot.driveTrain);
   }
 
@@ -40,7 +39,7 @@ public class ManualDrive extends CommandBase {
   private double driveMonolith() {
     double turnAmount = OI.getTurn() * turnMult;
     double forwardAmount = OI.getForward() * fwdMult;
-
+    
     double leftAmount = forwardAmount;
     double rightAmount = forwardAmount;
 
