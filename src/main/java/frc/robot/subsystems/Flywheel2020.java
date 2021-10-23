@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.RobotMap;
 import frc.robot.commands.ControlFlywheel;
@@ -17,8 +18,9 @@ public class Flywheel2020 extends Flywheel {
      * flywheelMotor Creates a motor object for the flywheel motor. targetVoltage
      * The target voltage of the flywheel.
      */
-    private WPI_VictorSPX flywheelMotor = new WPI_VictorSPX(RobotMap.flywheelMotorPort);
-    private double targetVoltage = 11.0;
+    private int falcon500port = 12;
+    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(falcon500port);
+    private double targetVoltage = 11.5;
 
     /**
      * Creates an Object for the flywheel class.
