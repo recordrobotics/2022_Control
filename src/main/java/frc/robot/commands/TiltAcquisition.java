@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Acquisition;
 import edu.wpi.first.wpilibj.Timer;
 
 public class TiltAcquisition extends CommandBase {
@@ -19,9 +21,11 @@ public class TiltAcquisition extends CommandBase {
    */
   private Timer acqTimer = new Timer();
   private double acqMoveTime = 2.5;
+  private Acquisition m_acquisition;
 
   public TiltAcquisition() {
     /** Use requires() here to declare subsystem dependencies */
+    m_acquisition = RobotContainer.getInstance().getAcquisition();
   }
 
   /** Called just before this Command runs the first time */
@@ -33,23 +37,23 @@ public class TiltAcquisition extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if (Robot.acq.getTiltPosition()) {
-      Robot.acq.moveTilt(-Robot.acq.getTiltSpeed());
+    if (m_acquisition.getTiltPosition()) {
+      m_acquisition.moveTilt(-m_acquisition.getTiltSpeed());
     } else {
-      Robot.acq.moveTilt(Robot.acq.getTiltSpeed());
+      m_acquisition.moveTilt(m_acquisition.getTiltSpeed());
     }
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    return acqTimer.get() > acqMoveTime && Robot.acq.getTiltLimit();
+    return acqTimer.get() > acqMoveTime && m_acquisition.getTiltLimit();
   }
 
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean intterupted) {
-    Robot.acq.setTiltPosition(!Robot.acq.getTiltPosition());
+    m_acquisition.setTiltPosition(!m_acquisition.getTiltPosition());
     acqTimer.stop();
     acqTimer.reset();
   }
