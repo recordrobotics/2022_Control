@@ -56,10 +56,10 @@ public class Robot extends TimedRobot {
   public static BallLift belt;
   public static LiftSpool spool;
   public static RangeFinder rangeFinder;
-  public static CamStream camStream = new CamStream(2);
+ // public static CamStream camStream = new CamStream(2);
   public static Dashboard dash;
   /**Autonomous command setup*/
-  Command m_autonomousCommand;
+  public static Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**Network table setup*/
@@ -112,9 +112,11 @@ public class Robot extends TimedRobot {
    */
   private void monolithInit(){
     driveTrain = new DriveMonolith();
+    driveTrain.setDefaultCommand(new ManualDrive());
     System.out.println("Monolith Initialized");
     /**Lift constructor*/
     lift = new LiftMonolith();
+    lift.setDefaultCommand(new LiftControl());
     /**gyro*/
     gyro = new GyroMonolith();  
     gyroInit();
@@ -127,13 +129,17 @@ public class Robot extends TimedRobot {
    */
   private void robot2020Init(){
     driveTrain = new Drive2020();
+    driveTrain.setDefaultCommand(new ManualDrive());
     gyro = new Gyro2020();
     gyroInit();
-    acq = new Acquisition2020();  
+    acq = new Acquisition2020();
+    acq.setDefaultCommand(new ControlAcquisition());
     flywheel = new Flywheel2020();
+    flywheel.setDefaultCommand(new ControlFlywheel());
     belt = new BallLift2020();
-    spool = new LiftSpool();
-    lift = new RobotLift2020();
+    belt.setDefaultCommand(new BeltControl());
+    //spool = new LiftSpool();
+    //lift = new RobotLift2020();
     rangeFinder = new RangeFinder2020();
     //dash = new Dashboard2020();
 
@@ -154,13 +160,13 @@ public class Robot extends TimedRobot {
    * Setup for Gyroscope. Zero the gyroscope, and calibrate it is necessary
    */
   private void gyroInit(){
-    if (recalibrateGyro) {
+     if (recalibrateGyro) {
       gyro.gyroCalib();
       System.out.println("Please wait... Calibrating Gyroscope");
       Timer.delay(5);
       System.out.println("Calibration Complete");
       gyro.gyroReset();
-    } else {
+     } else {
       gyro.gyroReset();
     }
   }
@@ -178,7 +184,7 @@ public class Robot extends TimedRobot {
   private boolean prevLampState = false;
   @Override
   public void robotPeriodic() {
-
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -192,7 +198,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-    CommandScheduler.getInstance().run();
+    
   }
 
   /**
@@ -208,7 +214,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = new MoveToFire(shootingDistance); 
+    // m_autonomousCommand = new MoveToFire(shootingDistance); 
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -250,6 +256,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
+  // System.out.println("forward value" + OI.getForward());
+
   }
 
   /**

@@ -49,7 +49,7 @@ public class ControlFlywheel extends CommandBase {
     /**hold y to slow down flywheel*/
     if (flywheelIsOn){
       if (OI.getXboxButtonState("Y")){
-        Robot.flywheel.moveWheel(wheelSpeed - 0.15);
+        Robot.flywheel.moveWheel(wheelSpeed - 0.4);
       } else {
         Robot.flywheel.moveWheel(wheelSpeed);
       }

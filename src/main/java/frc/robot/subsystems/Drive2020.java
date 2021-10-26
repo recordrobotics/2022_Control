@@ -45,7 +45,8 @@ public class Drive2020 extends DriveTrain {
      * Library Differential Drive object
      */
     private DifferentialDrive drive = new DifferentialDrive(frontLeft, frontRight);
-
+ 
+ 
 /**
 *    setting to false may help with crash, but ya know... saftey!? I don't exactly know what this turns on/off...
 *    alternative solution: see if chaning the timeout value using motor.setExpiration​(seconds) will fix it
@@ -59,8 +60,8 @@ public class Drive2020 extends DriveTrain {
 
     public Drive2020(){
         /**set the back motors to use the same speeds as the front ones*/
-        backRight.follow(frontRight);
-        backLeft.follow(frontLeft);
+        //backRight.follow(frontRight);
+        //backLeft.follow(frontLeft);
 
         /**Set the encoders to automatically convert ticks to distance*/
         rightEnc.setDistancePerPulse(wheelCirc / ticksPerRotation);
@@ -84,10 +85,12 @@ public class Drive2020 extends DriveTrain {
         frontRight.enableVoltageCompensation(true);
         backRight.enableVoltageCompensation(true);
 
-        frontLeft.setVoltage(frontLeftVoltage);
+        /*frontLeft.setVoltage(frontLeftVoltage);
         backLeft.setVoltage(backLeftVoltage);
         frontRight.setVoltage(frontRightVoltage);
-        backRight.setVoltage(backRightVoltage);
+        backRight.setVoltage(backRightVoltage);*/
+        moveLeftWheels(0);
+        moveRightWheels(0);
     }
 
     /**

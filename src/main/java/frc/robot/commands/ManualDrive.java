@@ -39,7 +39,7 @@ public class ManualDrive extends CommandBase {
   private double driveMonolith() {
     double turnAmount = OI.getTurn() * turnMult;
     double forwardAmount = OI.getForward() * fwdMult;
-
+    
     double leftAmount = forwardAmount;
     double rightAmount = forwardAmount;
 

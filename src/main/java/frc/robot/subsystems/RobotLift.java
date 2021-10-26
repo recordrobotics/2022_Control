@@ -11,7 +11,7 @@ import frc.robot.commands.*;
 
 public abstract class RobotLift extends SubsystemBase {
     public RobotLift() {
-        this.setDefaultCommand(new LiftControl());
+       // this.setDefaultCommand(new LiftControl());
     }
 
     public abstract void moveLift(double v);

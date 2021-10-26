@@ -6,7 +6,7 @@ import frc.robot.commands.*;
 public abstract class BallLift extends SubsystemBase {
     
     public BallLift() {
-        setDefaultCommand(new BeltControl());
+        //setDefaultCommand(new BeltControl());
     }
 
     public abstract void moveBelt(double v);
