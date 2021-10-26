@@ -9,17 +9,20 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.BallLift;
 
 
 public class BeltControl extends CommandBase {
+  private BallLift ballLift; 
   private double beltSpeed;
   private boolean moveUp;
   private boolean moveDown;
 
   public BeltControl() {
+    ballLift = RobotContainer.getInstance().getBallLift();
     /** Use requires() here to declare subsystem dependencies*/
-    addRequirements(Robot.belt);
+    addRequirements(ballLift);
     this.beltSpeed = 0.6;
     this.moveUp = false;
     this.moveDown = false;
@@ -28,8 +31,8 @@ public class BeltControl extends CommandBase {
   
   /**new ball in the lift from acq*/
   private boolean checkNewBall(){
-   return Robot.belt.getSlot(0) || (!Robot.belt.getSlot(1) && 
-   moveUp && !checkInput()) && !Robot.belt.getSlot(3);
+   return ballLift.getSlot(0) || (!ballLift.getSlot(1) && 
+   moveUp && !checkInput()) && !ballLift.getSlot(3);
     /** 
     Move up if there is a ball in the lowest slot OR if the ball is already moving and there is no ball in slot 1
     NEVER move the ball if there is a ball in the top slot, unless due to user input
@@ -66,12 +69,12 @@ return OI.getXboxButtonState("B");
     moveDown = checkReverseInput();
 
     if (moveUp) { 
-      Robot.belt.moveBelt(beltSpeed);
+      ballLift.moveBelt(beltSpeed);
     } else if (moveDown){
-      Robot.belt.moveBelt(-beltSpeed);
+      ballLift.moveBelt(-beltSpeed);
     }
     else {
-      Robot.belt.moveBelt(0);
+      ballLift.moveBelt(0);
     }
     
   }
