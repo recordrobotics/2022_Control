@@ -10,6 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 /**import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
 import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Acquisition;
 import frc.robot.OI;
 
 
@@ -20,12 +22,14 @@ public class ControlAcquisition extends CommandBase {
      */
     private double acqSpeed = -0.5;
     private double upperAngle = 5, lowerAngle = 0;
+    private Acquisition m_acquisition;
     /**
      * Creates a ControlAcquisition object.
      */
     public ControlAcquisition() {
+        m_acquisition = RobotContainer.getInstance().getAcquisition();
         /** Use requires() here to declare subsystem dependencies*/
-        addRequirements(Robot.acq);
+        addRequirements(m_acquisition);
     }
     /**
      * Method to spin and tilt acquisition.
@@ -38,11 +42,11 @@ public class ControlAcquisition extends CommandBase {
          * ELSE: the aquisition shouldn't spin if either button is not pressed.
          */
         if (OI.getXboxButtonState(acqButton)){
-            Robot.acq.moveAcq(acqSpeed);
+            m_acquisition.moveAcq(acqSpeed);
         } else if (OI.getXboxButtonState(reverseButton)){
-            Robot.acq.moveAcq(-acqSpeed);
+            m_acquisition.moveAcq(-acqSpeed);
         } else {
-            Robot.acq.moveAcq(0);
+            m_acquisition.moveAcq(0);
         }
         /**
          * IF: if the right bumper is pressed, tilt the aquisition up by acq.getTiltSpeed().
@@ -50,11 +54,11 @@ public class ControlAcquisition extends CommandBase {
          * ELSE: the aquisition shouldn't tilt if either bumper is not pressed.
          */
         if (OI.getXboxButtonState("RSYUP")){
-            Robot.acq.moveTilt(Robot.acq.getTiltSpeed());
+            m_acquisition.moveTilt(m_acquisition.getTiltSpeed());
         } else if (OI.getXboxButtonState("RSYDOWN")){
-            Robot.acq.moveTilt(-Robot.acq.getTiltSpeed());
+            m_acquisition.moveTilt(-m_acquisition.getTiltSpeed());
         } else {
-            Robot.acq.moveTilt(0);
+            m_acquisition.moveTilt(0);
         }
     }
 
