@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.control.PID;
 
 public class MoveToRange extends CommandBase {
@@ -29,6 +29,7 @@ public class MoveToRange extends CommandBase {
     private double range;
 
     private PID pid;
+    private RobotContainer m_container;
     private double kp = 0.1, ki = 0, kd = 0;
 
     /**
@@ -37,6 +38,7 @@ public class MoveToRange extends CommandBase {
      * @param dist Total distance to travel.
      */
     public MoveToRange(double dist) {
+        m_container = RobotContainer.getInstance();
         distance = dist;
         pid = new PID(kp, ki, kd, dist);
     }
@@ -49,7 +51,7 @@ public class MoveToRange extends CommandBase {
     /** Called repeatedly when this Command is scheduled to run */
     @Override
     public void execute() {
-        range = Robot.rangeFinder.getDistance();
+        range = m_container.getRangeFinder().getDistance();
 
         int direction = 1;
         if (range < distance) {
@@ -69,8 +71,8 @@ public class MoveToRange extends CommandBase {
         if (speed < -0.35)
             speed = -0.35;
 
-        Robot.driveTrain.moveLeftWheels(speed * -direction);
-        Robot.driveTrain.moveRightWheels(speed * -direction);
+        m_container.getDriveTrain().moveLeftWheels(speed * -direction);
+        m_container.getDriveTrain().moveRightWheels(speed * -direction);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */
@@ -85,8 +87,8 @@ public class MoveToRange extends CommandBase {
     /** Called once after isFinished returns true */
     @Override
     public void end(boolean intterupted) {
-        Robot.driveTrain.moveLeftWheels(0);
-        Robot.driveTrain.moveRightWheels(0);
-        System.out.println("Moved TO Range, Target: " + distance + ", Actual: " + Robot.rangeFinder.getDistance());
+        m_container.getDriveTrain().moveLeftWheels(0);
+        m_container.getDriveTrain().moveRightWheels(0);
+        System.out.println("Moved TO Range, Target: " + distance + ", Actual: " + m_container.getRangeFinder().getDistance());
     }
 }
