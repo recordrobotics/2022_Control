@@ -8,12 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
-
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Acquisition;
+import frc.robot.subsystems.BallLift;
 import edu.wpi.first.wpilibj.Timer;
 
 public class BallUpOne extends CommandBase {
+  private BallLift ballLift;
+  private Acquisition acq;  
   public BallUpOne() {
+    ballLift = RobotContainer.getInstance().getBallLift();
+    acq = RobotContainer.getInstance().getAcquisition();
     /** Use requires() here to declare subsystem dependencies*/
   }
   /**
@@ -38,7 +43,7 @@ public class BallUpOne extends CommandBase {
   public void initialize() {
     ballTimer.start();
 
-    highestSlot = Robot.belt.highestFullSlot();
+    highestSlot = ballLift.highestFullSlot();
 
     if(highestSlot == 3){
       targetSlot = 3;
@@ -51,10 +56,10 @@ public class BallUpOne extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run*/
   @Override 
   public void execute() {
-    Robot.belt.moveBelt(beltSpeed);
-    Robot.acq.moveAcq(0.9);
-    ballCount = Robot.belt.countBall();
-    hitSlot = Robot.belt.getSlot(targetSlot-1);
+    ballLift.moveBelt(beltSpeed);
+    acq.moveAcq(0.9);
+    ballCount = ballLift.countBall();
+    hitSlot = ballLift.getSlot(targetSlot-1);
     
   }
 
