@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.commands.ManualDrive;
+import frc.robot.commands.ManualDrive; // in commented-out code
 
 /**
  * This is the class that all Record Robotics drive trains should extend

@@ -7,14 +7,10 @@
 
 package frc.robot.subsystems;
 
-/**
-*import edu.wpi.first.wpilibj.AnalogInput;
-*import edu.wpi.first.wpilibj.PWM;
-*import edu.wpi.first.wpilibj.SerialPort;
-*/
+
+
 import edu.wpi.first.wpilibj.Ultrasonic;
 
-/**import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
 
 /**
  * Subsystem class for the RangeFinder

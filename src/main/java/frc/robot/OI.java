@@ -9,20 +9,11 @@ package frc.robot;
 
 import frc.robot.control.ButtonPanelController;
 import frc.robot.control.HotasController;
-import frc.robot.commands.AutoTurn;
-import frc.robot.commands.BallUpOne;
 import frc.robot.commands.BeltAutoRun;
-import frc.robot.commands.MoveForward;
 import frc.robot.commands.MoveToAim;
-import frc.robot.commands.MoveToFire;
-import frc.robot.commands.MoveToRange;
-import frc.robot.commands.TurnToGoal;
 import frc.robot.control.XboxJoystick;
-/**import frc.robot.control.XboxMap;*/
 import frc.robot.control.Controller;
 import frc.robot.control.ButtonMap;
-import frc.robot.commands.TiltAcquisition;
-import frc.robot.commands.TurnToAngle;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,7 +26,6 @@ public class OI {
   private static Controller joystick = xbox;
 
   boolean enablePID = false;  /**do not set to true unless you know what you are doing. It causes issues. */
-/**import frc.robot.control.XboxMap;*/
   
   private MoveToAim aiming = new MoveToAim(Robot.shootingDistance);
 

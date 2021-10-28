@@ -4,7 +4,6 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
-import frc.robot.commands.*;
 /**
  * Creates an instance of the belt motor
  */

@@ -9,9 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import frc.robot.RobotMap;
-import frc.robot.commands.ControlFlywheel;
+import frc.robot.commands.ControlFlywheel; // in commented-out code
 
 public class Flywheel2020 extends Flywheel {
     /**
