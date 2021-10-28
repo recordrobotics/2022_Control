@@ -20,12 +20,7 @@ public class TiltAcquisition extends CommandBase {
    */
   private Timer acqTimer = new Timer();
   private double acqMoveTime = 2.5;
-  private Acquisition m_acquisition;
-
-  public TiltAcquisition() {
-    /** Use requires() here to declare subsystem dependencies */
-    m_acquisition = RobotContainer.getInstance().getAcquisition();
-  }
+  private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
 
   /** Called just before this Command runs the first time */
   @Override

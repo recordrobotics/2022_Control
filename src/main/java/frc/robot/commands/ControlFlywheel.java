@@ -27,14 +27,13 @@ public class ControlFlywheel extends CommandBase {
   private boolean useXboxController = true;
   private String xboxButton = "X";
   private int panelButton = 6;
-  private Flywheel m_flywheel;
+  private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
 
   private double wheelSpeed = Constants.FLYWHEEL_SPEED;
   /**
    * Create a ControlFlywheel constructor.
    */
   public ControlFlywheel() {
-    m_flywheel = RobotContainer.getInstance().getFlywheel();
     /** Use requires() here to declare subsystem dependencies*/
     addRequirements(m_flywheel);
   }

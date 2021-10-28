@@ -20,13 +20,12 @@ public class MoveToFire extends SequentialCommandGroup {
     double cameraOffCenter = 5.25;
     double targetAngle;
     double gyroAngle;
-    private Gyroscope m_gyro;
+    private Gyroscope m_gyro = RobotContainer.getInstance().getGyro();
     /**
      * MoveToFire() Moves the robot into position to fire.
      * @param firingDistance How far the robot needs to be from the goal in order to score.
      */
     public MoveToFire(double firingDistance){
-        m_gyro = RobotContainer.getInstance().getGyro();
         gyroAngle = m_gyro.getDeg();
         if (cameraOffCenter != 0){
             targetAngle = (90 - Math.toDegrees(Math.atan(firingDistance / cameraOffCenter)));

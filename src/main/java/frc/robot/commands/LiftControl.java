@@ -15,12 +15,11 @@ import frc.robot.control.*;
 import frc.robot.subsystems.RobotLift;
 
 public class LiftControl extends CommandBase {
-  private RobotLift m_lift;
+  private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   /**
    * Creates a LiftControl constructor.
    */
   public LiftControl() {
-    m_lift = RobotContainer.getInstance().getRobotLift();
     /** Use requires() here to declare subsystem dependencies */
     addRequirements(m_lift);
   }
