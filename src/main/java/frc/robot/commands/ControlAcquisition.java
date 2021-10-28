@@ -20,12 +20,11 @@ public class ControlAcquisition extends CommandBase {
      */
     private double acqSpeed = -0.5;
     private double upperAngle = 5, lowerAngle = 0;
-    private Acquisition m_acquisition;
+    private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
     /**
      * Creates a ControlAcquisition object.
      */
     public ControlAcquisition() {
-        m_acquisition = RobotContainer.getInstance().getAcquisition();
         /** Use requires() here to declare subsystem dependencies*/
         addRequirements(m_acquisition);
     }

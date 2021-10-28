@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.RangeFinder;
 
 public class MoveForward extends CommandBase {
 
@@ -19,7 +21,8 @@ public class MoveForward extends CommandBase {
      * is scheduled to run
      */
     private double speed;
-    private RobotContainer m_container;
+    private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
+    private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
 
     public MoveForward(double dist, double sp) {
         distance = dist;
@@ -27,8 +30,7 @@ public class MoveForward extends CommandBase {
     }
 
     public MoveForward() {
-        m_container = RobotContainer.getInstance();
-        distance = m_container.getRangeFinder().getDistance();
+        distance = m_rangeFinder.getDistance();
         speed = 0.7;
     }
 
@@ -36,27 +38,27 @@ public class MoveForward extends CommandBase {
     @Override
     public void initialize() {
         /** reset the encoders */
-        m_container.getDriveTrain().resetEncoders();
+        m_driveTrain.resetEncoders();
         System.out.println("command move init");
     }
 
     /** Called repeatedly when this Command is scheduled to run */
     @Override
     public void execute() {
-        m_container.getDriveTrain().moveLeftWheels(speed);
-        m_container.getDriveTrain().moveRightWheels(speed);
+        m_driveTrain.moveLeftWheels(speed);
+        m_driveTrain.moveRightWheels(speed);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        return m_container.getDriveTrain().getRightEncoder() >= distance || m_container.getDriveTrain().getLeftEncoder() >= distance;
+        return m_driveTrain.getRightEncoder() >= distance || m_driveTrain.getLeftEncoder() >= distance;
     }
 
     /** Called once after isFinished returns true */
     @Override
     public void end(boolean intterupted) {
-        m_container.getDriveTrain().moveLeftWheels(0);
-        m_container.getDriveTrain().moveRightWheels(0);
+        m_driveTrain.moveLeftWheels(0);
+        m_driveTrain.moveRightWheels(0);
     }
 }

@@ -18,13 +18,12 @@ public class ControlSpool extends CommandBase {
    * spoolSpeed how fast the spool spins.
    */
   private double spoolSpeed = 0.5;
-  private LiftSpool m_liftSpool;
+  private LiftSpool m_liftSpool = RobotContainer.getInstance().getLiftSpool();
 
   /**
    * Creates a ControlSpool constuctor.
    */
   public ControlSpool() {
-    m_liftSpool = RobotContainer.getInstance().getLiftSpool();
     /** Use requires() here to declare subsystem dependencies */
     addRequirements(m_liftSpool);
   }

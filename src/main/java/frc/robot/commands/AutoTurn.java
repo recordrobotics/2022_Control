@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.control.*;
@@ -15,8 +14,8 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Gyroscope;
 
 public class AutoTurn extends CommandBase {
-    private DriveTrain driveTrain;
-    private Gyroscope gyro; 
+    private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
+    private Gyroscope m_gyro = RobotContainer.getInstance().getGyro();
 
     double inputAngle;  /**number of degrees to turn*/
     /**declare variables*/
@@ -31,11 +30,9 @@ public class AutoTurn extends CommandBase {
 
     /**constructor*/
   public AutoTurn(double angle) {
-    driveTrain = RobotContainer.getInstance().getDriveTrain();
-    gyro = RobotContainer.getInstance().getGyro();
     /** Use requires() here to declare subsystem dependencies*/
-    if (driveTrain != null){
-      addRequirements(driveTrain);
+    if (m_driveTrain != null){
+      addRequirements(m_driveTrain);
     }
     inputAngle = angle;  /**input should be an angle from -180 to positive 180*/
     /**assigns argument to variable*/
@@ -44,7 +41,7 @@ public class AutoTurn extends CommandBase {
   /** Called just before this Command runs the first time*/
   @Override
   public void initialize() {
-    initAngle = gyro.getDeg();  /**is a value representing the angle the robot is at*/
+    initAngle = m_gyro.getDeg();  /**is a value representing the angle the robot is at*/
   /** Called just before this Command runs the first time*/
     targetAngle = (initAngle + inputAngle);  /**sets the target angle, there is a risk of the angle being less than 360 or greater than 0*/
   /** Called just before this Command runs the first time*/
@@ -62,7 +59,7 @@ public class AutoTurn extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run*/
   @Override
   public void execute() {
-    System.out.println(gyro.getDeg());
+    System.out.println(m_gyro.getDeg());
     double increment;  /**the amount that the robot will turn every period*/
   /** Called repeatedly when this Command is scheduled to run*/
     double leftAmount;
@@ -77,7 +74,7 @@ public class AutoTurn extends CommandBase {
       turnRight = true;
     }
 
-    increment = Math.abs(pid.control(gyro.getRad()));
+    increment = Math.abs(pid.control(m_gyro.getRad()));
     /**increment = 0.5;*/
 
     if (turnRight){
@@ -89,15 +86,15 @@ public class AutoTurn extends CommandBase {
     }
 
     /**move the robot around it's own axis*/
-    driveTrain.moveLeftWheels(leftAmount);
-    driveTrain.moveRightWheels(rightAmount);
+    m_driveTrain.moveLeftWheels(leftAmount);
+    m_driveTrain.moveRightWheels(rightAmount);
   }
 
   /** Make this return true when this Command no longer needs to run execute()*/
   @Override
   public boolean isFinished() {
-    if (gyro.getDeg() > targetAngle - precision && gyro.getDeg() < targetAngle + precision){
-        System.out.println("Done turing at angle: " + gyro.getDeg());
+    if (m_gyro.getDeg() > targetAngle - precision && m_gyro.getDeg() < targetAngle + precision){
+        System.out.println("Done turing at angle: " + m_gyro.getDeg());
         return true;
     } else{
         return false;

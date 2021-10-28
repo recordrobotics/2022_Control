@@ -18,12 +18,10 @@ public class ManualDrive extends CommandBase {
 
   /** input multiplier, reduces or increases the input value */
   private double turnMult = 0.67, fwdMult = 0.6;
-  private DriveTrain m_driveTrain;
+  private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
 
   public ManualDrive() {
-    m_driveTrain = RobotContainer.getInstance().getDriveTrain();
     /** Use requires() here to declare subsystem dependencies */
-    
     addRequirements(m_driveTrain);
   }
 

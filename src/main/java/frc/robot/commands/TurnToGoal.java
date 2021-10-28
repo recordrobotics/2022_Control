@@ -34,7 +34,7 @@ public class TurnToGoal extends CommandBase {
 
   private ArrayList<Double> angleData = new ArrayList<Double>();
   private PID pid;
-  private DriveTrain m_driveTrain;
+  private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
   private double kp = 0.2, ki = 0, kd = 0;
 
   /**
@@ -43,7 +43,6 @@ public class TurnToGoal extends CommandBase {
    * @param a The current target angle.
    */
   public TurnToGoal(double a) {
-    m_driveTrain = RobotContainer.getInstance().getDriveTrain();
     targetAngle = a;
   }
 
