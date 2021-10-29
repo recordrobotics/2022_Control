@@ -32,8 +32,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   public Robot() {
-    m_container = RobotContainer.getInstance();
-    m_autonomousCommand = m_container.getAutonomousCommand();
+    
+   
   }
 
   /**
@@ -42,7 +42,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_container = RobotContainer.getInstance();
+    m_container = RobotContainer.create();
+    m_container.init() ;
+    m_autonomousCommand = m_container.getAutonomousCommand();
   }
 
   /**calibrate gyroscope*/
