@@ -36,7 +36,7 @@ public class CamStream extends SubsystemBase {
         }
 
         cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection");
-        setDefaultCommand(new CamControl());
+       // setDefaultCommand(new CamControl());
     }
 
     /** default constructor */

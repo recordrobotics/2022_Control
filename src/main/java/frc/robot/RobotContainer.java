@@ -36,7 +36,7 @@ public class RobotContainer {
   private LiftSpool m_liftSpool;
   private RangeFinder m_rangeFinder;
   private Dashboard m_dashboard;
-  private CamStream m_camStream = new CamStream(2);
+  // private CamStream m_camStream = new CamStream(2);
   private Command m_autonomousCommand;
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -55,11 +55,11 @@ public class RobotContainer {
   public LiftSpool getLiftSpool() { return m_liftSpool; }
   public RangeFinder getRangeFinder() { return m_rangeFinder; }
   public Dashboard getDashboard() { return m_dashboard; }
-  public CamStream getCamStream() { return m_camStream; }
+  // public CamStream getCamStream() { return m_camStream; }
   public Command getAutonomousCommand() { return m_autonomousCommand; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+  public void init() {
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     /** chooser.addOption("My Auto", new MyAutoCommand());*/
