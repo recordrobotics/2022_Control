@@ -8,9 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 /**import frc.robot.control.ButtonMap;*/
+import frc.robot.subsystems.Flywheel;
 
 public class ControlFlywheel extends CommandBase {
   /**
@@ -25,14 +27,15 @@ public class ControlFlywheel extends CommandBase {
   private boolean useXboxController = true;
   private String xboxButton = "X";
   private int panelButton = 6;
+  private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
 
-  private double wheelSpeed = Robot.flywheelSpeed;
+  private double wheelSpeed = Constants.FLYWHEEL_SPEED;
   /**
    * Create a ControlFlywheel constructor.
    */
   public ControlFlywheel() {
     /** Use requires() here to declare subsystem dependencies*/
-    addRequirements(Robot.flywheel);
+    addRequirements(m_flywheel);
   }
 
   /** Called just before this Command runs the first time*/
@@ -49,12 +52,12 @@ public class ControlFlywheel extends CommandBase {
     /**hold y to slow down flywheel*/
     if (flywheelIsOn){
       if (OI.getXboxButtonState("Y")){
-        Robot.flywheel.moveWheel(wheelSpeed - 0.4);
+        m_flywheel.moveWheel(wheelSpeed - 0.4);
       } else {
-        Robot.flywheel.moveWheel(wheelSpeed);
+        m_flywheel.moveWheel(wheelSpeed);
       }
     } else {
-      Robot.flywheel.moveWheel(0);
+      m_flywheel.moveWheel(0);
     }
 
     prevToggle = getButton();

@@ -9,7 +9,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.control.PID;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Gyroscope;
 
 import java.util.ArrayList;
 
@@ -32,6 +35,8 @@ public class TurnToAngle extends CommandBase {
 
   private ArrayList<Double> angleData = new ArrayList<Double>();
   private PID pid;
+  private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
+  private Gyroscope m_gyro = RobotContainer.getInstance().getGyro();
   private double kp = 0.2, ki = 0, kd = 0;
 
   /**
@@ -60,7 +65,7 @@ public class TurnToAngle extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    angle = Robot.gyro.getDeg();
+    angle = m_gyro.getDeg();
     /** angle = smoothData(); */
 
     /** speed = pid.control(angle); */
@@ -76,8 +81,8 @@ public class TurnToAngle extends CommandBase {
     if (speed < -0.3)
       speed = -0.3;
 
-    Robot.driveTrain.moveRightWheels(speed);
-    Robot.driveTrain.moveLeftWheels(-speed);
+    m_driveTrain.moveRightWheels(speed);
+    m_driveTrain.moveLeftWheels(-speed);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
@@ -92,7 +97,7 @@ public class TurnToAngle extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean intterupted) {
-    Robot.driveTrain.moveRightWheels(0);
-    Robot.driveTrain.moveLeftWheels(0);
+    m_driveTrain.moveRightWheels(0);
+    m_driveTrain.moveLeftWheels(0);
   }
 }

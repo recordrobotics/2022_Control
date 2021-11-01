@@ -7,7 +7,8 @@
 
 package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Gyroscope;
 
 
 public class MoveToFire extends SequentialCommandGroup {
@@ -18,12 +19,14 @@ public class MoveToFire extends SequentialCommandGroup {
      */
     double cameraOffCenter = 5.25;
     double targetAngle;
-    double gyroAngle = Robot.gyro.getDeg();
+    double gyroAngle;
+    private Gyroscope m_gyro = RobotContainer.getInstance().getGyro();
     /**
      * MoveToFire() Moves the robot into position to fire.
      * @param firingDistance How far the robot needs to be from the goal in order to score.
      */
     public MoveToFire(double firingDistance){
+        gyroAngle = m_gyro.getDeg();
         if (cameraOffCenter != 0){
             targetAngle = (90 - Math.toDegrees(Math.atan(firingDistance / cameraOffCenter)));
             targetAngle = (int)(targetAngle + 0.5);

@@ -8,8 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-/**import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.Constants;
 /**import frc.robot.subsystems.Drive2020;*/
 import frc.robot.OI;
 
@@ -17,21 +18,24 @@ public class ManualDrive extends CommandBase {
 
   /** input multiplier, reduces or increases the input value */
   private double turnMult = 0.67, fwdMult = 0.6;
+  private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
 
   public ManualDrive() {
     /** Use requires() here to declare subsystem dependencies */
-    addRequirements(Robot.driveTrain);
+    addRequirements(m_driveTrain);
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    switch (Robot.currentRobot) {
+    switch (Constants.CURRENT_ROBOT) {
       case MONOLITH:
         driveMonolith();
         break;
       case ROBOT2020:
         drive2020();
+        break;
+      default:
         break;
     }
   }
@@ -49,8 +53,8 @@ public class ManualDrive extends CommandBase {
     leftAmount = OI.accCurve(leftAmount);
     rightAmount = OI.accCurve(rightAmount);
 
-    Robot.driveTrain.moveLeftWheels(leftAmount);
-    Robot.driveTrain.moveRightWheels(rightAmount);
+    m_driveTrain.moveLeftWheels(leftAmount);
+    m_driveTrain.moveRightWheels(rightAmount);
 
     return ((leftAmount + rightAmount) / 2);
   }
@@ -70,7 +74,7 @@ public class ManualDrive extends CommandBase {
         turnMult2020 = 1;
       }
     }
-    Robot.driveTrain.getDrive().arcadeDrive(OI.getForward() * fwdMult2020, OI.getTurn() * turnMult);
+    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * fwdMult2020, OI.getTurn() * turnMult);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */

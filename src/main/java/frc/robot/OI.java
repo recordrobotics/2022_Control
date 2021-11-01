@@ -27,7 +27,7 @@ public class OI {
 
   boolean enablePID = false;  /**do not set to true unless you know what you are doing. It causes issues. */
   
-  private MoveToAim aiming = new MoveToAim(Robot.shootingDistance);
+  private MoveToAim aiming = new MoveToAim(Constants.SHOOTING_DISTANCE);
 
   public OI(){
     /** buttonPanel*/
