@@ -10,16 +10,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.control.*;
+import frc.robot.subsystems.RobotLift;
 
 public class LiftControl extends CommandBase {
+  private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   /**
    * Creates a LiftControl constructor.
    */
   public LiftControl() {
     /** Use requires() here to declare subsystem dependencies */
-    addRequirements(Robot.lift);
+    addRequirements(m_lift);
   }
 
   /**
@@ -52,15 +54,15 @@ public class LiftControl extends CommandBase {
      * pressed, move down
      */
     if ((OI.getPanelButtonState(ButtonMap.liftRaise)) || OI.getPanelButtonState(ButtonMap.LiftOverrideUp)) {
-      Robot.lift.moveLift(speed);
+      m_lift.moveLift(speed);
       position++;
 
     } else if ((OI.getPanelButtonState(ButtonMap.liftLower) && position >= 0)
         || OI.getPanelButtonState(ButtonMap.LiftOverrideDown)) {
-      Robot.lift.moveLift(-speed);
+      m_lift.moveLift(-speed);
       position--;
     } else {
-      Robot.lift.moveLift(0);
+      m_lift.moveLift(0);
     }
 
     SmartDashboard.putNumber("Lift position", position);

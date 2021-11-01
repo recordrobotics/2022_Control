@@ -27,46 +27,14 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  
-  /**
-   * Enum that determines which robots can be used used. Set to make sure the correct classes are instantiated
-   */
-  public enum CurrentRobot{
-    MONOLITH, MONTY, ROBOT2020;
+
+  private RobotContainer m_container;
+  private Command m_autonomousCommand;
+
+  public Robot() {
+    
+   
   }
-  /**
-   * The robot currently selected
-   */
-  public static CurrentRobot currentRobot = CurrentRobot.ROBOT2020;
-
-  public static final double restingVoltage = 12.5;
-  public static double shootingDistance = 122;
-  public static double flywheelSpeed = 0.85;
-
-/**
-*  Instances for all subsystems.
-*  Refer to these objects when interacting with any subsystem object.
-*/
-  public static DriveTrain driveTrain;
-  public static RobotLift lift;
-  public static Gyroscope gyro;
-  public static Acquisition acq;
-  public static OI m_oi;
-  public static Flywheel flywheel;
-  public static BallLift belt;
-  public static LiftSpool spool;
-  public static RangeFinder rangeFinder;
- // public static CamStream camStream = new CamStream(2);
-  public static Dashboard dash;
-  /**Autonomous command setup*/
-  public static Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-  /**Network table setup*/
-  public static NetworkTableInstance inst;
-  public static NetworkTable table;
-  public static NetworkTableEntry testEntry;
-
 
   /**
    * This function is run when the robot is first started up and should be
@@ -74,102 +42,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    /** chooser.addOption("My Auto", new MyAutoCommand());*/
-    SmartDashboard.putData("Auto mode", m_chooser);
-
-    /**select which init method to use based on the currently selected robot*/
-    switch(currentRobot){
-      case MONOLITH:
-        monolithInit();
-        break;
-      case MONTY:
-        montyInit();
-        break;
-      case ROBOT2020:
-        robot2020Init();
-        break;
-    }
-
-    networkInit();
+    m_container = RobotContainer.create();
+    m_container.init() ;
+    m_autonomousCommand = m_container.getAutonomousCommand();
   }
 
   /**calibrate gyroscope*/
   boolean recalibrateGyro = true;
-
-  /**
-   * Init function for Monty
-   * Makes instnaces of all Monty subsystems and assigns them to appropriate variables
-   */
-  private void montyInit(){
-    driveTrain = new DriveMonty();
-  }
-
-  /**
-   * Init function for Monolith
-   * Makes instnaces of all Monolith-specific subsystems and assigns them to appropriate variables
-   */
-  private void monolithInit(){
-    driveTrain = new DriveMonolith();
-    driveTrain.setDefaultCommand(new ManualDrive());
-    System.out.println("Monolith Initialized");
-    /**Lift constructor*/
-    lift = new LiftMonolith();
-    lift.setDefaultCommand(new LiftControl());
-    /**gyro*/
-    gyro = new GyroMonolith();  
-    gyroInit();
-    //dash = new DashboardMonolith();
-  }
-
-  /**
-   * Init function for robot 2020
-   * Makes instnaces of all 2020-specific subsystems and assigns them to appropriate variables
-   */
-  private void robot2020Init(){
-    driveTrain = new Drive2020();
-    driveTrain.setDefaultCommand(new ManualDrive());
-    gyro = new Gyro2020();
-    gyroInit();
-    acq = new Acquisition2020();
-    acq.setDefaultCommand(new ControlAcquisition());
-    flywheel = new Flywheel2020();
-    flywheel.setDefaultCommand(new ControlFlywheel());
-    belt = new BallLift2020();
-    belt.setDefaultCommand(new BeltControl());
-    //spool = new LiftSpool();
-    //lift = new RobotLift2020();
-    rangeFinder = new RangeFinder2020();
-    //dash = new Dashboard2020();
-
-  }
-
-  /**
-   * Make new instance of the DataTable used
-   * Get the main entry in the data
-   */
-  private void networkInit(){
-    inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("datatable");
-
-    testEntry = table.getEntry("Test");
-  }
-
-  /**
-   * Setup for Gyroscope. Zero the gyroscope, and calibrate it is necessary
-   */
-  private void gyroInit(){
-     if (recalibrateGyro) {
-      gyro.gyroCalib();
-      System.out.println("Please wait... Calibrating Gyroscope");
-      Timer.delay(5);
-      System.out.println("Calibration Complete");
-      gyro.gyroReset();
-     } else {
-      gyro.gyroReset();
-    }
-  }
 
   /**
    * This function is called every robot packet, no matter the mode. Use
@@ -180,8 +59,8 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
 
-
   private boolean prevLampState = false;
+
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
@@ -214,7 +93,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    // m_autonomousCommand = new MoveToFire(shootingDistance); 
+    m_autonomousCommand = new MoveToFire(Constants.SHOOTING_DISTANCE); 
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",

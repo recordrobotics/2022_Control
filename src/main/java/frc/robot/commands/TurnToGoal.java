@@ -9,8 +9,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.control.PID;
+import frc.robot.subsystems.DriveTrain;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,7 @@ public class TurnToGoal extends CommandBase {
 
   private ArrayList<Double> angleData = new ArrayList<Double>();
   private PID pid;
+  private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
   private double kp = 0.2, ki = 0, kd = 0;
 
   /**
@@ -111,8 +113,8 @@ public class TurnToGoal extends CommandBase {
      * Math.abs(targetAngle)){ speed *= Math.abs(targetAngle)/Math.abs(angle); }
      */
 
-    Robot.driveTrain.moveRightWheels(speed);
-    Robot.driveTrain.moveLeftWheels(-speed);
+    m_driveTrain.moveRightWheels(speed);
+    m_driveTrain.moveLeftWheels(-speed);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
@@ -127,8 +129,8 @@ public class TurnToGoal extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
-    Robot.driveTrain.moveRightWheels(0);
-    Robot.driveTrain.moveLeftWheels(0);
+    m_driveTrain.moveRightWheels(0);
+    m_driveTrain.moveLeftWheels(0);
     System.out.println("Turn To Goal Completed");
   }
 }

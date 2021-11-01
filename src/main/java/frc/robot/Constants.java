@@ -12,4 +12,13 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {}
+public final class Constants {
+    /**
+    * The robot currently selected
+    */
+    public final static RobotModel CURRENT_ROBOT = RobotModel.ROBOT2020;
+
+    public static final double RESTING_VOLTAGE = 12.5d;
+    public static final double SHOOTING_DISTANCE = 122d;
+    public static final double FLYWHEEL_SPEED = 0.85d;
+}

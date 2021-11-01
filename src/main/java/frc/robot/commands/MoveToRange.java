@@ -9,8 +9,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.control.PID;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.RangeFinder;
 
 public class MoveToRange extends CommandBase {
     /**
@@ -30,6 +32,8 @@ public class MoveToRange extends CommandBase {
 
     private PID pid;
     private double kp = 0.1, ki = 0, kd = 0;
+    private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
+    private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
 
     /**
      * MoveToRange() Moves the robot to the set location.
@@ -49,7 +53,7 @@ public class MoveToRange extends CommandBase {
     /** Called repeatedly when this Command is scheduled to run */
     @Override
     public void execute() {
-        range = Robot.rangeFinder.getDistance();
+        range = m_rangeFinder.getDistance();
 
         int direction = 1;
         if (range < distance) {
@@ -69,8 +73,8 @@ public class MoveToRange extends CommandBase {
         if (speed < -0.35)
             speed = -0.35;
 
-        Robot.driveTrain.moveLeftWheels(speed * -direction);
-        Robot.driveTrain.moveRightWheels(speed * -direction);
+        m_driveTrain.moveLeftWheels(speed * -direction);
+        m_driveTrain.moveRightWheels(speed * -direction);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */
@@ -85,8 +89,8 @@ public class MoveToRange extends CommandBase {
     /** Called once after isFinished returns true */
     @Override
     public void end(boolean intterupted) {
-        Robot.driveTrain.moveLeftWheels(0);
-        Robot.driveTrain.moveRightWheels(0);
-        System.out.println("Moved TO Range, Target: " + distance + ", Actual: " + Robot.rangeFinder.getDistance());
+        m_driveTrain.moveLeftWheels(0);
+        m_driveTrain.moveRightWheels(0);
+        System.out.println("Moved TO Range, Target: " + distance + ", Actual: " + m_rangeFinder.getDistance());
     }
 }
