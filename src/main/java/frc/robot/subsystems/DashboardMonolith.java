@@ -1,10 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI;
 import frc.robot.commands.*;
-import frc.robot.Robot;
-import frc.robot.control.ButtonMap;
 
 public class DashboardMonolith extends Dashboard {
     /**

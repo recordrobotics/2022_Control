@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Robot; // in commented-out code
 /**import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
 
 public class CenterRobot extends SequentialCommandGroup {
