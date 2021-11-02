@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
-import frc.robot.Robot; // in commented-out code
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.CamStream; // in commented-out code
 
 /**
@@ -17,17 +17,17 @@ import frc.robot.subsystems.CamStream; // in commented-out code
  * just before competition, function questionably understood USE AT OWN RISK
  */
 public class CamControl extends CommandBase {
-
+    private CamStream m_camStream = RobotContainer.getInstance().getCamStream();
     private String switchButton = "Y";
 
     public CamControl() {
-        //addRequirements(Robot.camStream);
+
     }
 
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
-        //Robot.camStream.setCamera(0);
+        m_camStream.setCamera(0);
     }
 
     private boolean prevButton = false;
