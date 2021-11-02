@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
+import frc.robot.Constants;
 import frc.robot.Robot; // in commented-out code
 import frc.robot.subsystems.CamStream; // in commented-out code
 
@@ -18,7 +19,6 @@ import frc.robot.subsystems.CamStream; // in commented-out code
  */
 public class CamControl extends CommandBase {
 
-    private String switchButton = "Y";
 
     public CamControl() {
         //addRequirements(Robot.camStream);
@@ -37,12 +37,12 @@ public class CamControl extends CommandBase {
     @Override
     public void execute() {
 
-      /*  if (OI.getXboxButtonState(switchButton) && (OI.getXboxButtonState(switchButton) != prevButton)) {
+      /*  if (OI.getXboxButtonState(Constants.SWITCH_BUTTON) && (OI.getXboxButtonState(Constants.SWITCH_BUTTON) != prevButton)) {
             count++;
             Robot.camStream.setCamera(count % 2); 
         } */
 
-        prevButton = OI.getXboxButtonState(switchButton);
+        prevButton = OI.getXboxButtonState(Constants.SWITCH_BUTTON);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */

@@ -17,7 +17,6 @@ import frc.robot.OI;
 public class ManualDrive extends CommandBase {
 
   /** input multiplier, reduces or increases the input value */
-  private double turnMult = 0.67, fwdMult = 0.6;
   private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
 
   public ManualDrive() {
@@ -41,8 +40,8 @@ public class ManualDrive extends CommandBase {
   }
 
   private double driveMonolith() {
-    double turnAmount = OI.getTurn() * turnMult;
-    double forwardAmount = OI.getForward() * fwdMult;
+    double turnAmount = OI.getTurn() * Constants.TURN_MULTIPLIER;
+    double forwardAmount = OI.getForward() * Constants.FORWARD_MULTIPLIER;
     
     double leftAmount = forwardAmount;
     double rightAmount = forwardAmount;
@@ -60,12 +59,12 @@ public class ManualDrive extends CommandBase {
   }
 
   private void drive2020() {
-    double fwdMult2020 = fwdMult;
-    double turnMult2020 = turnMult;
+    double fwdMult2020 = Constants.FORWARD_MULTIPLIER;
+    double turnMult2020 = Constants.TURN_MULTIPLIER;
     if (OI.getXboxButtonState("LS")) {
 
-      fwdMult2020 = fwdMult * 1.5;
-      turnMult2020 = turnMult * 1.5;
+      fwdMult2020 = Constants.FORWARD_MULTIPLIER * 1.5;
+      turnMult2020 = Constants.TURN_MULTIPLIER * 1.5;
 
       if (fwdMult2020 > 1) {
         fwdMult2020 = 1;
@@ -74,7 +73,7 @@ public class ManualDrive extends CommandBase {
         turnMult2020 = 1;
       }
     }
-    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * fwdMult2020, OI.getTurn() * turnMult);
+    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * fwdMult2020, OI.getTurn() * Constants.TURN_MULTIPLIER);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */

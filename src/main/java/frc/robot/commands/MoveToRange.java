@@ -12,17 +12,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.control.PID;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.Constants;
 import frc.robot.subsystems.RangeFinder;
 
 public class MoveToRange extends CommandBase {
     /**
      * distance The current distance from the target. speed How fast the robot will
-     * move. tolerance Total tolerance when moving to the location. range The range
-     * the robot has to move to. pid Creates a PID Controller. kp, ki, kd Components
+     * move. Constants.TOLERANCE Total tolerance when moving to the location. range The range
+     * the robot has to move to. pid Creates a PID Controller. Constants.KP, Constants.KI, Constants.KD Components
      * of PID Controller.
      */
     private double distance, speed = 0.25;
-    private double tolerance = 3;
     /** inches */
     /**
      * addSequential(new TurnToAngle(-180+gyroAngle)); addSequential(new
@@ -31,9 +31,9 @@ public class MoveToRange extends CommandBase {
     private double range;
 
     private PID pid;
-    private double kp = 0.1, ki = 0, kd = 0;
     private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
     private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
+    private final double KP = 0.1;
 
     /**
      * MoveToRange() Moves the robot to the set location.
@@ -42,7 +42,7 @@ public class MoveToRange extends CommandBase {
      */
     public MoveToRange(double dist) {
         distance = dist;
-        pid = new PID(kp, ki, kd, dist);
+        pid = new PID(KP, Constants.KI, Constants.KD, dist);
     }
 
     /** Called just before this Command runs the first time */
@@ -80,7 +80,7 @@ public class MoveToRange extends CommandBase {
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        if (range < distance + tolerance && range > distance - tolerance) {
+        if (range < distance + Constants.TOLERANCE && range > distance - Constants.TOLERANCE) {
             return true;
         }
         return false;

@@ -9,16 +9,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.subsystems.Acquisition;
 import frc.robot.OI;
 
 
 public class ControlAcquisition extends CommandBase {
     /**
-     * acqSpeed This is how fast the aquisition spins.
+     * Constants.ACQ_SPEED This is how fast the aquisition spins.
      * uperAngle lowerAngle UNUSED.
      */
-    private double acqSpeed = -0.5;
     private double upperAngle = 5, lowerAngle = 0;
     private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
     /**
@@ -34,14 +34,14 @@ public class ControlAcquisition extends CommandBase {
     private void controlAcq() {
         //control the acqusition wheels
         /**
-         * IF: if the aquisition button is pressed, move the aquisition by acqSpeed.
-         * ELSE IF: if the reverse button is pressed, move the aquisition by acqSpeed in the other direction.
+         * IF: if the aquisition button is pressed, move the aquisition by Constants.ACQ_SPEED.
+         * ELSE IF: if the reverse button is pressed, move the aquisition by Constants.ACQ_SPEED in the other direction.
          * ELSE: the aquisition shouldn't spin if either button is not pressed.
          */
         if (OI.getXboxButtonState(acqButton)){
-            m_acquisition.moveAcq(acqSpeed);
+            m_acquisition.moveAcq(Constants.ACQ_SPEED);
         } else if (OI.getXboxButtonState(reverseButton)){
-            m_acquisition.moveAcq(-acqSpeed);
+            m_acquisition.moveAcq(-Constants.ACQ_SPEED);
         } else {
             m_acquisition.moveAcq(0);
         }

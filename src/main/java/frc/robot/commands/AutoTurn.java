@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.control.*;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Gyroscope;
@@ -22,8 +23,6 @@ public class AutoTurn extends CommandBase {
     double initAngle;    /**angle when command is started*/
     /**declare variables*/
     double targetAngle;  /**angle robot is trying to be at*/
-    /**declare variables*/
-    double precision = 0.5;  /**how close are we trying to get to target*/
     /**declare variables*/
     PID pid;  /**PID controller object*/
     /**declare variables*/
@@ -93,7 +92,7 @@ public class AutoTurn extends CommandBase {
   /** Make this return true when this Command no longer needs to run execute()*/
   @Override
   public boolean isFinished() {
-    if (m_gyro.getDeg() > targetAngle - precision && m_gyro.getDeg() < targetAngle + precision){
+    if (m_gyro.getDeg() > targetAngle - Constants.PRECISION && m_gyro.getDeg() < targetAngle + Constants.PRECISION){
         System.out.println("Done turing at angle: " + m_gyro.getDeg());
         return true;
     } else{
