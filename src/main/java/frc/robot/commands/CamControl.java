@@ -37,10 +37,10 @@ public class CamControl extends CommandBase {
     @Override
     public void execute() {
 
-      /*  if (OI.getXboxButtonState(switchButton) && (OI.getXboxButtonState(switchButton) != prevButton)) {
+        if (OI.getXboxButtonState(switchButton) && (OI.getXboxButtonState(switchButton) != prevButton)) {
             count++;
-            Robot.camStream.setCamera(count % 2); 
-        } */
+            m_camStream.setCamera(count % 2); 
+        } 
 
         prevButton = OI.getXboxButtonState(switchButton);
     }

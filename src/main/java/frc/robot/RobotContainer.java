@@ -103,7 +103,7 @@ public class RobotContainer {
     m_robotLift.setDefaultCommand(new LiftControl());
     m_rangeFinder = new RangeFinder2020();
     m_camStream = new CamStream();
-    //dash = new Dashboard2020();
+    m_dashboard = new Dashboard2020();
   }
 
   // Legacy code for Monolith
@@ -121,7 +121,7 @@ public class RobotContainer {
     /**gyro*/
     m_gyro = new GyroMonolith();  
     this.gyroInit();
-    //dash = new DashboardMonolith();
+    m_dashboard = new DashboardMonolith();
   }
 
   // Legacy code for Monty
