@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 */
 public class DriveMonty extends DriveTrain {
 
-  //If this is throwing an error - you need to install ctre Pheonix stuff, it's a pain, sorry :(
   /**If this is throwing an error - you need to install ctre Pheonix stuff, it's a pain, sorry :(*/
   WPI_VictorSPX frontRight = new WPI_VictorSPX(RobotMap.driveFrontRightPortMonty);
   WPI_VictorSPX backRight = new WPI_VictorSPX(RobotMap.driveBackRightPortMonty);

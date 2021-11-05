@@ -12,7 +12,7 @@ public abstract class Acquisition extends SubsystemBase {
 	public abstract boolean isAcqOn();
 
 	public Acquisition() {
-		//setDefaultCommand(new ControlAcquisition());
+
 	}
 	
 }
