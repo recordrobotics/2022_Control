@@ -49,4 +49,24 @@ public final class Constants {
     public static final double KI = 0.0d, KD = 0.0d;
     //for TiltAcquisition.java
     public static final double ACQ_MOVE_TIME = 2.5d;
+    //for RobotLift2020.java
+    public static final double robotLiftTargetVoltage = 11.5;
+    //for DriveMonty.java
+    public static final double driveMontyFrontLeftVoltage = 11.5;
+    public static final double driveMontyFrontRightVoltage = 11.5;
+    public static final double driveMontyBackLeftVoltage = 11.5;
+    public static final double driveMontyBackRightVoltage = 11.5;
+    //for DriveMonolith.java
+    public static final double driveMonoFrontLeftVoltage = 11.5;
+    public static final double driveMonoFrontRightVoltage = 11.5;
+    public static final double driveMonoBackLeftVoltage = 11.5;
+    public static final double driveMonoBackRightVoltage = 11.5;
+    //for Drive2020.java
+    public static final double drive2020FrontLeftVoltage = 11.5;
+    public static final double drive2020FrontRightVoltage = 11.5;
+    public static final double drive2020BackLeftVoltage = 11.5;
+    public static final double drive2020BackRightVoltage = 11.5;
+    //for Acquisition2020.java
+    public static final double Acq2020AcquireMotorVoltage = 11.5;
+    public static final double Acq2020TiltMotorVoltage = 11.5;
 }

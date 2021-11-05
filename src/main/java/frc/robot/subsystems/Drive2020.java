@@ -16,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 public class Drive2020 extends DriveTrain {
 
@@ -36,10 +37,10 @@ public class Drive2020 extends DriveTrain {
     double ticksPerRotation = 20 * 10.71;
     double wheelCirc = 6 * Math.PI;
 
-    private double frontLeftVoltage = 11.5;
-    private double frontRightVoltage = 11.5;
-    private double backLeftVoltage = 11.5;
-    private double backRightVoltage = 11.5;
+    private double frontLeftVoltage = Constants.drive2020FrontLeftVoltage;
+    private double frontRightVoltage = Constants.drive2020FrontRightVoltage;
+    private double backLeftVoltage = Constants.drive2020BackLeftVoltage;
+    private double backRightVoltage = Constants.drive2020BackRightVoltage;
 
     /**
      * Library Differential Drive object
