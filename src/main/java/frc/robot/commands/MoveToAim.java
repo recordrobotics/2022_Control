@@ -23,7 +23,6 @@ public class MoveToAim extends SequentialCommandGroup {
      */
     public MoveToAim(double firingDistance){
 
-        /**setTimeout(5);*/
 
         if (cameraOffCenter != 0){
             targetAngle = (90 - Math.toDegrees(Math.atan(firingDistance / cameraOffCenter)));

@@ -25,7 +25,6 @@ public class RobotLift2020 extends RobotLift{
      * robotLiftMotorLeft creates variable for the left lift motor.
      * stop() stops the motor.
      */
-    private WPI_VictorSPX robotLiftMotorLeft = new WPI_VictorSPX(RobotMap.robotLiftLeftMotorPort);
   
     AnalogInput encoderInput = new AnalogInput(0);
     AnalogEncoder liftEncoder = new AnalogEncoder(encoderInput);

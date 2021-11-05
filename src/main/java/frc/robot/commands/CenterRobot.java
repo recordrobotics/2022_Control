@@ -27,8 +27,6 @@ public class CenterRobot extends SequentialCommandGroup {
     distanceToMove = Math.pow(Math.pow(distanceOffCenter,2)+Math.pow(distanceFromTarget,2),0.5);
     distanceFromTarget -= distLineToGoal;
 
-    /**Robot.acq.setTiltPosition(false);*/
-
     double theta = Math.toDegrees(Math.atan(distanceFromTarget/distanceOffCenter));
 
     if (distanceFromTarget < 0){

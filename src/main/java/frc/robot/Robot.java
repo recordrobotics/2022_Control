@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
-import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -130,7 +129,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
-  // System.out.println("forward value" + OI.getForward());
 
   }
 

@@ -16,10 +16,8 @@ import frc.robot.OI;
 public class ControlAcquisition extends CommandBase {
     /**
      * acqSpeed This is how fast the aquisition spins.
-     * uperAngle lowerAngle UNUSED.
      */
     private double acqSpeed = -0.5;
-    private double upperAngle = 5, lowerAngle = 0;
     private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
     /**
      * Creates a ControlAcquisition object.
@@ -83,9 +81,6 @@ public class ControlAcquisition extends CommandBase {
         }
         */
         controlAcq();
-        /**controlTilt();*/
-
-        /**SmartDashboard.putNumber("tilt angle", Robot.acq.getAngle());*/
 
         prevButton = OI.getXboxButtonState(toggleButton);
     }
