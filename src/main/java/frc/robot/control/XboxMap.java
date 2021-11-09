@@ -1,9 +1,10 @@
 package frc.robot.control;
 
-public final class XboxMap{
+public final class XboxMap {
 
-    //Port values for each button on the Xbox controller, so that it's easier to assign and keep track of which button does what
-    
+    // Port values for each button on the Xbox controller, so that it's easier to
+    // assign and keep track of which button does what
+
     private static int aButton = 1;
     private static int bButton = 2;
     private static int xButton = 3;
@@ -17,19 +18,21 @@ public final class XboxMap{
     /**
      * Port value for auto turn left button
      */
-    public static int aTurnLNum = lBumper;
+    //public static int aTurnLNum = lBumper;
     /**
      * Port value for auto turn right button
      */
-    public static int aTurnRNum = rBumper;
+    //public static int aTurnRNum = rBumper;
 
     /**
      * Abbreviated name for auto turn left button
      */
-    public static String aTurnLStr = "LB";
+    //public static String aTurnLStr = "LB";
     /**
      * Abbreviated name for auto turn right button
      */
-    public static String aTurnRStr = "RB";
+    //public static String aTurnRStr = "RB";
+
+    
 
 }
