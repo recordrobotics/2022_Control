@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.subsystems.Acquisition;
 import frc.robot.subsystems.BallLift;
 import edu.wpi.first.wpilibj.Timer;
@@ -21,14 +22,13 @@ public class BallUpOne extends CommandBase {
    * highestSlot The highest slot with a ball.
    * targetSlot Where the highest ball needs to go.
    * ballCount How many balls in the lift.
-   * beltSpeed How fast the belt is moving.
-   * moveTime How long the belt should take to move.
+   * BELT_SPEED How fast the belt is moving.
+   * Constants.MOVE_TIME How long the belt should take to move.
    * hitSlot If the targetSlot has been reached.
    * ballTimer Timer to time how long it takes for the ball to move to the targetSlot.
    */
   private int highestSlot, targetSlot, ballCount;
-  private double beltSpeed = 0.4;
-  private double moveTime = 0.1;
+  private final double BELT_SPEED = 0.4;
   private Boolean hitSlot;
 
 
@@ -52,7 +52,7 @@ public class BallUpOne extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run*/
   @Override 
   public void execute() {
-    m_ballLift.moveBelt(beltSpeed);
+    m_ballLift.moveBelt(BELT_SPEED);
     m_acq.moveAcq(0.9);
     ballCount = m_ballLift.countBall();
     hitSlot = m_ballLift.getSlot(targetSlot-1);
@@ -63,7 +63,7 @@ public class BallUpOne extends CommandBase {
   @Override
   public boolean isFinished() {
     /** Last or is emergency shutoff so the command will stop running in case of a ball getting stuck*/
-    return (ballTimer.get() > moveTime && hitSlot)
+    return (ballTimer.get() > Constants.MOVE_TIME && hitSlot)
      || (ballTimer.get() > 1);
   }
 }

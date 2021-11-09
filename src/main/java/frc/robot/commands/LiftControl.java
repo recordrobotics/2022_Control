@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.control.*;
 import frc.robot.subsystems.RobotLift;
 
@@ -25,9 +26,8 @@ public class LiftControl extends CommandBase {
   }
 
   /**
-   * speed the speed the lift moves. position safety or no safety.
+   * Constants.SPEED the speed the lift moves. position safety or no safety.
    */
-  private double speed = 0.8;
   private int position = 0;
 
   /** nonzero value kills the saftey mechanism */
@@ -54,12 +54,12 @@ public class LiftControl extends CommandBase {
      * pressed, move down
      */
     if ((OI.getPanelButtonState(ButtonMap.liftRaise)) || OI.getPanelButtonState(ButtonMap.LiftOverrideUp)) {
-      m_lift.moveLift(speed);
+      m_lift.moveLift(Constants.SPEED);
       position++;
 
     } else if ((OI.getPanelButtonState(ButtonMap.liftLower) && position >= 0)
         || OI.getPanelButtonState(ButtonMap.LiftOverrideDown)) {
-      m_lift.moveLift(-speed);
+      m_lift.moveLift(-Constants.SPEED);
       position--;
     } else {
       m_lift.moveLift(0);

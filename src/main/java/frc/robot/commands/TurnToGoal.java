@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 import frc.robot.control.PID;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 import java.util.ArrayList;
@@ -18,12 +19,11 @@ import java.util.ArrayList;
 public class TurnToGoal extends CommandBase {
   /**
    * targetAngle The target angle the robot has to turn to to face the goal.
-   * tolerance The amount of error tolerated when turning. angle The current angle
+   * Constants.TOLERANCE The amount of error tolerated when turning. angle The current angle
    * the robot is at. speed How fast the robot will turn. angleData The data on
    * the current angle. pid A PID controller. kp, ki, kd Part of PID controller.
    */
   private double targetAngle = 0;
-  private double tolerance = 3;
   /** degrees */
   /**
    * Called when another command which requires one or more of the same subsystems
@@ -120,7 +120,7 @@ public class TurnToGoal extends CommandBase {
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    if ((angle > targetAngle - tolerance && angle < targetAngle + tolerance) && angle != -1.0) {
+    if ((angle > targetAngle - Constants.TOLERANCE && angle < targetAngle + Constants.TOLERANCE) && angle != -1.0) {
       return true;
     }
     return false;

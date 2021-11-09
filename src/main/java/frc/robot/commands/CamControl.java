@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
+import frc.robot.Constants;
+import frc.robot.Robot; // in commented-out code
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.CamStream; // in commented-out code
 
@@ -42,7 +44,7 @@ public class CamControl extends CommandBase {
             m_camStream.setCamera(count % 2); 
         } 
 
-        prevButton = OI.getXboxButtonState(switchButton);
+        prevButton = OI.getXboxButtonState(Constants.SWITCH_BUTTON);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */

@@ -12,10 +12,11 @@ import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 public class RobotLift2020 extends RobotLift{
     private WPI_VictorSPX robotLiftMotor = new WPI_VictorSPX(RobotMap.robotLiftLeftMotorPort);
-    private double targetVoltage = 11.5;
+    private double targetVoltage = Constants.robotLiftTargetVoltage;
 
     public RobotLift2020(){
         robotLiftMotor.enableVoltageCompensation(true);

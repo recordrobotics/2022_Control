@@ -10,16 +10,16 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Acquisition;
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.Timer;
 
 public class TiltAcquisition extends CommandBase {
   /**
    * acqTimer Timer to time the amount of time that has passed since the
-   * acquisition started tilting. acqMoveTime How long it should take to tilt.
+   * acquisition started tilting. Constants.ACQ_MOVE_TIME How long it should take to tilt.
    * TiltAcquisition Creates new TiltAcquisition object.
    */
   private Timer acqTimer = new Timer();
-  private double acqMoveTime = 2.5;
   private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
 
   /** Called just before this Command runs the first time */
@@ -41,7 +41,7 @@ public class TiltAcquisition extends CommandBase {
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    return acqTimer.get() > acqMoveTime && m_acquisition.getTiltLimit();
+    return acqTimer.get() > Constants.ACQ_MOVE_TIME && m_acquisition.getTiltLimit();
   }
 
   /** Called once after isFinished returns true */

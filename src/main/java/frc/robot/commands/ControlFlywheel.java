@@ -17,18 +17,15 @@ public class ControlFlywheel extends CommandBase {
   /**
    * prevToggle if it was last on or off.
    * flywheelIsOn if the flywheel is currently on or off.
-   * useXboxController use xbox controller to toggle flywheel.
-   * xboxButton which button on the xbox controller toggles the flywheel.
-   * panelButton which button on the panel toggles the flywheel.
-   * wheelSpeed how fast the flywheel spins.
+   * Constants.USE_XBOX_CONTROLLER use xbox controller to toggle flywheel.
+   * Constants.XBOX_BUTTON which button on the xbox controller toggles the flywheel.
+   * Constants.PANEL_BUTTON which button on the panel toggles the flywheel.
+   * WHEEL_SPEED how fast the flywheel spins.
    */
   private boolean prevToggle = false, flywheelIsOn = false;
-  private boolean useXboxController = true;
-  private String xboxButton = "X";
-  private int panelButton = 6;
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
 
-  private double wheelSpeed = Constants.FLYWHEEL_SPEED;
+  private final double WHEEL_SPEED = 0.85;
   /**
    * Create a ControlFlywheel constructor.
    */
@@ -51,9 +48,9 @@ public class ControlFlywheel extends CommandBase {
     /**hold y to slow down flywheel*/
     if (flywheelIsOn){
       if (OI.getXboxButtonState("Y")){
-        m_flywheel.moveWheel(wheelSpeed - 0.4);
+        m_flywheel.moveWheel(WHEEL_SPEED - 0.4);
       } else {
-        m_flywheel.moveWheel(wheelSpeed);
+        m_flywheel.moveWheel(WHEEL_SPEED);
       }
     } else {
       m_flywheel.moveWheel(0);
@@ -66,10 +63,10 @@ public class ControlFlywheel extends CommandBase {
    * @return the button used to toggle the flywheel.
    */
   private boolean getButton(){
-    if (useXboxController){
-      return OI.getXboxButtonState(xboxButton);
+    if (Constants.USE_XBOX_CONTROLLER){
+      return OI.getXboxButtonState(Constants.XBOX_BUTTON);
     } else {
-      return OI.getPanelButtonState(panelButton);
+      return OI.getPanelButtonState(Constants.PANEL_BUTTON);
     }
   }
 

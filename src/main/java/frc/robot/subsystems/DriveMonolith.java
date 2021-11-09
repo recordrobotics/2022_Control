@@ -11,6 +11,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 /**
  * Drivetrain subclass for Monolith
@@ -28,10 +29,10 @@ public class DriveMonolith extends DriveTrain {
   Spark backLeft = new Spark(RobotMap.driveBackLeftPortMonolith);
 
   //voltage values for each motor. Should probably all be the same!
-  private double frontLeftVoltage = 11.5;
-  private double frontRightVoltage = 11.5;
-  private double backLeftVoltage = 11.5;
-  private double backRightVoltage = 11.5;
+  private double frontLeftVoltage = Constants.driveMonoFrontLeftVoltage;
+  private double frontRightVoltage = Constants.driveMonoFrontRightVoltage;
+  private double backLeftVoltage = Constants.driveMonoBackLeftVoltage;
+  private double backRightVoltage = Constants.driveMonoBackRightVoltage;
 
   public DriveMonolith(){
     //set and enable the voltages of the motors
@@ -77,7 +78,7 @@ public class DriveMonolith extends DriveTrain {
 
   /**
    * @return value of the encoder
-   * PLACEHOLDER, no enoders on Monolith atm
+   * PLACEHOLDER, no encoders on Monolith atm
    */
   public double getRightEncoder(){
     return 0.0;
