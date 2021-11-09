@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
 import frc.robot.Constants;
 import frc.robot.Robot; // in commented-out code
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.CamStream; // in commented-out code
 
 /**
@@ -18,16 +19,17 @@ import frc.robot.subsystems.CamStream; // in commented-out code
  * just before competition, function questionably understood USE AT OWN RISK
  */
 public class CamControl extends CommandBase {
-
+    private CamStream m_camStream = RobotContainer.getInstance().getCamStream();
+    private String switchButton = "Y";
 
     public CamControl() {
-        //addRequirements(Robot.camStream);
+
     }
 
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
-        //Robot.camStream.setCamera(0);
+        m_camStream.setCamera(0);
     }
 
     private boolean prevButton = false;
@@ -37,10 +39,10 @@ public class CamControl extends CommandBase {
     @Override
     public void execute() {
 
-      /*  if (OI.getXboxButtonState(Constants.SWITCH_BUTTON) && (OI.getXboxButtonState(Constants.SWITCH_BUTTON) != prevButton)) {
+        if (OI.getXboxButtonState(switchButton) && (OI.getXboxButtonState(switchButton) != prevButton)) {
             count++;
-            Robot.camStream.setCamera(count % 2); 
-        } */
+            m_camStream.setCamera(count % 2); 
+        } 
 
         prevButton = OI.getXboxButtonState(Constants.SWITCH_BUTTON);
     }

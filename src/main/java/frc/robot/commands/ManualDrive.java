@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.Constants;
-/**import frc.robot.subsystems.Drive2020;*/
 import frc.robot.OI;
 
 public class ManualDrive extends CommandBase {

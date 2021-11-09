@@ -14,14 +14,13 @@ import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import frc.robot.RobotMap;
-import frc.robot.commands.ControlSpool;
 
 /**
  * Creates new instances of the lift spool motors
  */
 public class LiftSpool extends SubsystemBase {
   public LiftSpool() {
-    this.setDefaultCommand(new ControlSpool());
+
   }
 
   private WPI_VictorSPX robotSpoolMotorLeft = new WPI_VictorSPX(RobotMap.spoolLiftLeftMotor);

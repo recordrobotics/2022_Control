@@ -1,12 +1,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI; // in commented-out code
 import frc.robot.commands.*;
-import frc.robot.Robot;
-import frc.robot.control.ButtonMap; // in commented-out code
 import frc.robot.RobotContainer;
-import frc.robot.control.ButtonMap;
 
 public class Dashboard2020 extends Dashboard {
     
@@ -36,7 +32,6 @@ public class Dashboard2020 extends Dashboard {
         
         SmartDashboard.putNumber("Range Found", m_container.getRangeFinder().getDistance());
         /**
-        *    SmartDashboard.putBoolean("Green Button", OI.getPanelButtonState(ButtonMap.liftRaise));
         *    SmartDashboard.putBoolean("Bottom Ball Lift", Robot.belt.getSlot(0));
         *   SmartDashboard.putBoolean("Middle Ball Lift", Robot.belt.getSlot(1));
         *    SmartDashboard.putBoolean("Top Ball Lift", Robot.belt.getSlot(2));

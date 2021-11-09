@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-/**import frc.robot.RobotMap;*/
+
 
 /**If this is throwing an error - you need to install ctre Pheonix stuff, it's a pain, sorry :(*/
 import com.ctre.phoenix.motorcontrol.*;
@@ -60,9 +60,7 @@ public class Drive2020 extends DriveTrain {
 */
 
     public Drive2020(){
-        /**set the back motors to use the same speeds as the front ones*/
-        //backRight.follow(frontRight);
-        //backLeft.follow(frontLeft);
+
 
         /**Set the encoders to automatically convert ticks to distance*/
         rightEnc.setDistancePerPulse(wheelCirc / ticksPerRotation);
