@@ -61,13 +61,9 @@ public class ControlAcquisition extends CommandBase {
     
 
     /**
-     * @param prevButton Get whether toggleButton has just been pressed to avoid the aquisition being raised multiple times.
-     * @param toggleButton Which button raises the tilt of the aquisition.
      * @param reverseButton Which button lowers the tilt of the aquisition.
      * @param acqButton Which button spins the aquisition.
      */
-    boolean prevButton = false;
-    String toggleButton = "LB";
     String reverseButton = "LB";
     String acqButton = "LT";
 
@@ -75,14 +71,7 @@ public class ControlAcquisition extends CommandBase {
     @Override
     public void execute() {
         /**control the toggle, this will invert inputPosition when "A" is pressed*/
-        /*
-        if (prevButton != OI.getXboxButtonState(toggleButton) && OI.getXboxButtonState(toggleButton)) {
-            Robot.acq.setTiltPosition(!Robot.acq.getTiltPosition());
-        }
-        */
         controlAcq();
-
-        prevButton = OI.getXboxButtonState(toggleButton);
     }
 
     /** Make this return true when this Command no longer needs to run execute()*/
