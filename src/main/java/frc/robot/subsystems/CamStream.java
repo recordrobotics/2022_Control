@@ -12,7 +12,6 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.CamControl;
 
 /**
  * Allows for use of the Camera in the RoboRio code A lot of camera stuff is
@@ -36,7 +35,6 @@ public class CamStream extends SubsystemBase {
         }
 
         cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection");
-        setDefaultCommand(new CamControl());
     }
 
     /** default constructor */

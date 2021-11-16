@@ -8,24 +8,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-/**import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.Constants;
+import frc.robot.subsystems.Acquisition;
 import frc.robot.OI;
 
 
 public class ControlAcquisition extends CommandBase {
     /**
-     * acqSpeed This is how fast the aquisition spins.
-     * uperAngle lowerAngle UNUSED.
+     * Constants.ACQ_SPEED This is how fast the aquisition spins.
      */
-    private double acqSpeed = -0.5;
-    private double upperAngle = 5, lowerAngle = 0;
+    private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
     /**
      * Creates a ControlAcquisition object.
      */
     public ControlAcquisition() {
         /** Use requires() here to declare subsystem dependencies*/
-        addRequirements(Robot.acq);
+        addRequirements(m_acquisition);
     }
     /**
      * Method to spin and tilt acquisition.
@@ -33,16 +32,16 @@ public class ControlAcquisition extends CommandBase {
     private void controlAcq() {
         //control the acqusition wheels
         /**
-         * IF: if the aquisition button is pressed, move the aquisition by acqSpeed.
-         * ELSE IF: if the reverse button is pressed, move the aquisition by acqSpeed in the other direction.
+         * IF: if the aquisition button is pressed, move the aquisition by Constants.ACQ_SPEED.
+         * ELSE IF: if the reverse button is pressed, move the aquisition by Constants.ACQ_SPEED in the other direction.
          * ELSE: the aquisition shouldn't spin if either button is not pressed.
          */
         if (OI.getXboxButtonState(acqButton)){
-            Robot.acq.moveAcq(acqSpeed);
+            m_acquisition.moveAcq(Constants.ACQ_SPEED);
         } else if (OI.getXboxButtonState(reverseButton)){
-            Robot.acq.moveAcq(-acqSpeed);
+            m_acquisition.moveAcq(-Constants.ACQ_SPEED);
         } else {
-            Robot.acq.moveAcq(0);
+            m_acquisition.moveAcq(0);
         }
         /**
          * IF: if the right bumper is pressed, tilt the aquisition up by acq.getTiltSpeed().
@@ -50,11 +49,11 @@ public class ControlAcquisition extends CommandBase {
          * ELSE: the aquisition shouldn't tilt if either bumper is not pressed.
          */
         if (OI.getXboxButtonState("RSYUP")){
-            Robot.acq.moveTilt(Robot.acq.getTiltSpeed());
+            m_acquisition.moveTilt(m_acquisition.getTiltSpeed());
         } else if (OI.getXboxButtonState("RSYDOWN")){
-            Robot.acq.moveTilt(-Robot.acq.getTiltSpeed());
+            m_acquisition.moveTilt(-m_acquisition.getTiltSpeed());
         } else {
-            Robot.acq.moveTilt(0);
+            m_acquisition.moveTilt(0);
         }
     }
 
@@ -62,13 +61,9 @@ public class ControlAcquisition extends CommandBase {
     
 
     /**
-     * @param prevButton Get whether toggleButton has just been pressed to avoid the aquisition being raised multiple times.
-     * @param toggleButton Which button raises the tilt of the aquisition.
      * @param reverseButton Which button lowers the tilt of the aquisition.
      * @param acqButton Which button spins the aquisition.
      */
-    boolean prevButton = false;
-    String toggleButton = "LB";
     String reverseButton = "LB";
     String acqButton = "LT";
 
@@ -76,17 +71,7 @@ public class ControlAcquisition extends CommandBase {
     @Override
     public void execute() {
         /**control the toggle, this will invert inputPosition when "A" is pressed*/
-        /*
-        if (prevButton != OI.getXboxButtonState(toggleButton) && OI.getXboxButtonState(toggleButton)) {
-            Robot.acq.setTiltPosition(!Robot.acq.getTiltPosition());
-        }
-        */
         controlAcq();
-        /**controlTilt();*/
-
-        /**SmartDashboard.putNumber("tilt angle", Robot.acq.getAngle());*/
-
-        prevButton = OI.getXboxButtonState(toggleButton);
     }
 
     /** Make this return true when this Command no longer needs to run execute()*/

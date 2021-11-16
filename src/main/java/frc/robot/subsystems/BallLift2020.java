@@ -4,7 +4,6 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
-import frc.robot.commands.*;
 /**
  * Creates an instance of the belt motor
  */
@@ -16,11 +15,10 @@ public class BallLift2020 extends BallLift {
   private DigitalInput[] ballLimits = new DigitalInput[3];
   
   public BallLift2020() {
-    //setDefaultCommand(new BeltControl());
+
     
     /**instance of limit switches*/
     int offset = 4;
-    /**ballLimits = new DigitalInput [5];*/
     for (int i = 0; i < ballLimits.length; i++){
       ballLimits[i] = new DigitalInput(i + offset);
       

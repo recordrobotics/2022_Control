@@ -8,21 +8,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.control.PID;
+import frc.robot.Constants; 
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Gyroscope;
 
 import java.util.ArrayList;
 
 public class TurnToAngle extends CommandBase {
   /**
-   * targetAngle Angle the robot has to face. tolerance The error allowed in
+   * targetAngle Angle the robot has to face. Constants.TOLERANCE The error allowed in
    * turning. angle Current angle. speed How fast the robot should turn. angleData
    * ArrayList to store data on the current angle. pid Creates a PID controller.
    * kp, ki, kd Part of PID controller.
    */
   private double targetAngle = 0;
-  private double tolerance = 3;
   /** degrees */
   /**
    * Called when another command which requires one or more of the same subsystems
@@ -33,7 +34,9 @@ public class TurnToAngle extends CommandBase {
 
   private ArrayList<Double> angleData = new ArrayList<Double>();
   private PID pid;
-  private double kp = 0.2, ki = 0, kd = 0;
+  private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
+  private Gyroscope m_gyro = RobotContainer.getInstance().getGyro();
+  private final double KP = 0.2;
 
   /**
    * Creates a TurnToAngle object.
@@ -55,13 +58,13 @@ public class TurnToAngle extends CommandBase {
   @Override
   public void initialize() {
     System.out.println("init");
-    pid = new PID(kp, ki, kd, 0);
+    pid = new PID(KP, Constants.KI, Constants.KD, 0);
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    angle = Robot.gyro.getDeg();
+    angle = m_gyro.getDeg();
     /** angle = smoothData(); */
 
     /** speed = pid.control(angle); */
@@ -77,14 +80,14 @@ public class TurnToAngle extends CommandBase {
     if (speed < -0.3)
       speed = -0.3;
 
-    Robot.driveTrain.moveRightWheels(speed);
-    Robot.driveTrain.moveLeftWheels(-speed);
+    m_driveTrain.moveRightWheels(speed);
+    m_driveTrain.moveLeftWheels(-speed);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    if ((angle > targetAngle - tolerance && angle < targetAngle + tolerance) && angle != -1.0) {
+    if ((angle > targetAngle - Constants.TOLERANCE && angle < targetAngle + Constants.TOLERANCE) && angle != -1.0) {
       return true;
     }
     return false;
@@ -93,7 +96,7 @@ public class TurnToAngle extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean intterupted) {
-    Robot.driveTrain.moveRightWheels(0);
-    Robot.driveTrain.moveLeftWheels(0);
+    m_driveTrain.moveRightWheels(0);
+    m_driveTrain.moveLeftWheels(0);
   }
 }

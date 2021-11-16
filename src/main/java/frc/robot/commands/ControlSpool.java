@@ -9,32 +9,34 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.control.ButtonMap;
+import frc.robot.subsystems.LiftSpool;
 
 public class ControlSpool extends CommandBase {
   /**
-   * spoolSpeed how fast the spool spins.
+   * Constants.SPOOL_SPEED how fast the spool spins.
    */
-  private double spoolSpeed = 0.5;
+  private LiftSpool m_liftSpool = RobotContainer.getInstance().getLiftSpool();
 
   /**
    * Creates a ControlSpool constuctor.
    */
   public ControlSpool() {
     /** Use requires() here to declare subsystem dependencies */
-    addRequirements(Robot.spool);
+    addRequirements(m_liftSpool);
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
     if (OI.getPanelButtonState(ButtonMap.winchUp)) {
-      Robot.spool.MoveSpool(spoolSpeed);
+      m_liftSpool.MoveSpool(Constants.SPOOL_SPEED);
     } else if (OI.getPanelButtonState(ButtonMap.winchDown)) {
-      Robot.spool.MoveSpool(-spoolSpeed);
+      m_liftSpool.MoveSpool(-Constants.SPOOL_SPEED);
     } else {
-      Robot.spool.MoveSpool(0);
+      m_liftSpool.MoveSpool(0);
     }
   }
 

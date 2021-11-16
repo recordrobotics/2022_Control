@@ -8,10 +8,10 @@ import frc.robot.RobotMap;
 
 
 /**
- * A class that turns the inputs from an XBox controller into usable inputs for our code
+ * A class that turns the inputs from an Xbox controller into usable inputs for our code
  */
 public class XboxJoystick extends Controller{
-    //How many usuable button inputs there are on the controller
+    //How many usable button inputs there are on the controller
     private static final int NUM_BUTTONS = 10;
 
     XboxController xbox;

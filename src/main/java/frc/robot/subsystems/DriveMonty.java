@@ -17,22 +17,22 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import frc.robot.Constants;
 /*
 * Drive Train for Monty
 */
 public class DriveMonty extends DriveTrain {
 
-  //If this is throwing an error - you need to install ctre Pheonix stuff, it's a pain, sorry :(
   /**If this is throwing an error - you need to install ctre Pheonix stuff, it's a pain, sorry :(*/
   WPI_VictorSPX frontRight = new WPI_VictorSPX(RobotMap.driveFrontRightPortMonty);
   WPI_VictorSPX backRight = new WPI_VictorSPX(RobotMap.driveBackRightPortMonty);
   WPI_VictorSPX frontLeft = new WPI_VictorSPX(RobotMap.driveFrontLeftPortMonty);
   WPI_VictorSPX backLeft = new WPI_VictorSPX(RobotMap.driveBackLeftPortMonty);
 
-  private double frontLeftVoltage = 11.5;
-  private double frontRightVoltage = 11.5;
-  private double backLeftVoltage = 11.5;
-  private double backRightVoltage = 11.5;
+  private double frontLeftVoltage = Constants.driveMontyFrontLeftVoltage;
+  private double frontRightVoltage = Constants.driveMontyFrontRightVoltage;
+  private double backLeftVoltage = Constants.driveMontyBackLeftVoltage;
+  private double backRightVoltage = Constants.driveMontyBackRightVoltage;
 
   /**
    * Constructor

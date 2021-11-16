@@ -9,9 +9,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import frc.robot.RobotMap;
-import frc.robot.commands.ControlFlywheel;
 
 public class Flywheel2020 extends Flywheel {
     /**
@@ -26,7 +23,6 @@ public class Flywheel2020 extends Flywheel {
      * Creates an Object for the flywheel class.
      */
     public Flywheel2020() {
-        //setDefaultCommand(new ControlFlywheel());
         flywheelMotor.enableVoltageCompensation(true);
         flywheelMotor.setVoltage(targetVoltage);
     }

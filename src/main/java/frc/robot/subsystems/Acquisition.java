@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.*;
 
 public abstract class Acquisition extends SubsystemBase {
 	public abstract double getTiltSpeed();
@@ -13,7 +12,7 @@ public abstract class Acquisition extends SubsystemBase {
 	public abstract boolean isAcqOn();
 
 	public Acquisition() {
-		//setDefaultCommand(new ControlAcquisition());
+
 	}
 	
 }

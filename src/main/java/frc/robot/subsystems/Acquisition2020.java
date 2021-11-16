@@ -8,9 +8,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-import frc.robot.commands.ControlAcquisition;
+import frc.robot.commands.ControlAcquisition; // in commented-out code
+import frc.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
@@ -25,32 +25,18 @@ public class Acquisition2020 extends Acquisition {
 
     private WPI_VictorSPX acquireMotor = new WPI_VictorSPX(RobotMap.acquireMotorPort);
     private WPI_VictorSPX tiltMotor = new WPI_VictorSPX(RobotMap.tiltMotorPort);
-    private double aquireMotorVoltage = 11.5;
-    private double tiltMotorVoltage = 11.5;
+    private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
+    private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
     DigitalInput tiltLimit;
 
-/** 
-*   AnalogInput encoderInput = new AnalogInput(0);
-*    AnalogEncoder acqEncoder = new AnalogEncoder(encoderInput);
-*/
 
     private double tiltSpeed = 0.5;
     boolean tiltPosition = true;  /**true is up, false is down*/
-/**
-*    AnalogInput encoderInput = new AnalogInput(0);
-*    AnalogEncoder acqEncoder = new AnalogEncoder(encoderInput);
-*/
     /**
      * Creates an acquisition object with a specific tilt limit.
      */
     public Acquisition2020(){
-/**
-*        limitTop = new DigitalInput(3);
-*        limitBottom = new DigitalInput(3);
-*/
         tiltLimit = new DigitalInput(7);
-        /**acqEncoder.reset();*/
-        //setDefaultCommand(new ControlAcquisition());
     }
     /**
      * Gets how fast the acquisition is tilting.

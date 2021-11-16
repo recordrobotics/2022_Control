@@ -1,12 +1,13 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI;
 import frc.robot.commands.*;
-import frc.robot.Robot;
-import frc.robot.control.ButtonMap;
+import frc.robot.RobotContainer;
 
 public class Dashboard2020 extends Dashboard {
+    
+    private RobotContainer m_container;
+    
     /**
     * Creates buttons to execute each of the specified commands at the specified values
     */
@@ -17,25 +18,26 @@ public class Dashboard2020 extends Dashboard {
         SmartDashboard.putData("Tilt Acquisition", new TiltAcquisition());
         SmartDashboard.putData("Move to 3ft", new MoveToRange(36));
         SmartDashboard.putData("Turn to Goal", new TurnToGoal());
+        m_container = RobotContainer.getInstance();
     }
+
     @Override
     public void periodic() {
         /**
         *   SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.getRightEncoder());
         *   SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.getLeftEncoder());
         */
-        SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getDeg());
+        SmartDashboard.putNumber("Gyro Angle", m_container.getGyro().getDeg());
         /**SmartDashboard.putNumber("Flywheel Speed", Robot.flywheel.getSpeed());*/
         
-        SmartDashboard.putNumber("Range Found", Robot.rangeFinder.getDistance());
+        SmartDashboard.putNumber("Range Found", m_container.getRangeFinder().getDistance());
         /**
-        *    SmartDashboard.putBoolean("Green Button", OI.getPanelButtonState(ButtonMap.liftRaise));
         *    SmartDashboard.putBoolean("Bottom Ball Lift", Robot.belt.getSlot(0));
         *   SmartDashboard.putBoolean("Middle Ball Lift", Robot.belt.getSlot(1));
         *    SmartDashboard.putBoolean("Top Ball Lift", Robot.belt.getSlot(2));
         */
     
-        SmartDashboard.putNumber("Flywheel Voltage", Robot.flywheel.getVoltage());
+        SmartDashboard.putNumber("Flywheel Voltage", m_container.getFlywheel().getVoltage());
        /** SmartDashboard.putNumber("Balls In Lift", Robot.belt.countBall());*/
     }
 }

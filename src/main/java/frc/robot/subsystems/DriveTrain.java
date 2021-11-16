@@ -9,14 +9,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.commands.ManualDrive;
 
 /**
  * This is the class that all Record Robotics drive trains should extend
  */
 public abstract class DriveTrain extends SubsystemBase {
   public DriveTrain() {
-    //setDefaultCommand(new ManualDrive());
+
   }
 
   private long disabled_time = 0;
