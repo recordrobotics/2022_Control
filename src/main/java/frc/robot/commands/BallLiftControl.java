@@ -13,13 +13,13 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.BallLift;
 
 
-public class BeltControl extends CommandBase {
+public class BallLiftControl extends CommandBase {
   private BallLift m_ballLift = RobotContainer.getInstance().getBallLift();
-  private double beltSpeed = 0.6;
+  private double ballLiftSpeed = 0.6;
   private boolean moveUp = false;
   private boolean moveDown = false;
 
-  public BeltControl() {
+  public BallLiftControl() {
     /** Use requires() here to declare subsystem dependencies*/
     addRequirements(m_ballLift);
   }
@@ -60,17 +60,17 @@ return OI.getXboxButtonState("RB");
   /** Called repeatedly when this Command is scheduled to run*/
     
     /**
-     * Checks whether to run forwards or in reverse, then runs belt either forwards or in reverse
+     * Checks whether to run forwards or in reverse, then runs ball lift either forwards or in reverse
      */
     moveDown = checkReverseInput();
 
     if (moveUp) { 
-      m_ballLift.moveBelt(beltSpeed);
+      m_ballLift.moveBallLift(ballLiftSpeed);
     } else if (moveDown){
-      m_ballLift.moveBelt(-beltSpeed);
+      m_ballLift.moveBallLift(-ballLiftSpeed);
     }
     else {
-      m_ballLift.moveBelt(0);
+      m_ballLift.moveBallLift(0);
     }
     
   }

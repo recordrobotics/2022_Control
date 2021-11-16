@@ -96,7 +96,7 @@ public class RobotContainer {
     m_flywheel = new Flywheel2020();
     m_flywheel.setDefaultCommand(new ControlFlywheel());
     m_ballLift = new BallLift2020();
-    m_ballLift.setDefaultCommand(new BeltControl());
+    m_ballLift.setDefaultCommand(new BallLiftControl());
     m_liftSpool = new LiftSpool();
     m_liftSpool.setDefaultCommand(new ControlSpool());
     m_robotLift = new RobotLift2020();

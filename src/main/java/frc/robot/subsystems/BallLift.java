@@ -8,7 +8,7 @@ public abstract class BallLift extends SubsystemBase {
         
     }
 
-    public abstract void moveBelt(double v);
+    public abstract void moveBallLift(double v);
     public abstract int lowestFullSlot();
     public abstract int highestFullSlot();
     public abstract int countBall();

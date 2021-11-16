@@ -52,7 +52,7 @@ public class BallUpOne extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run*/
   @Override 
   public void execute() {
-    m_ballLift.moveBelt(BELT_SPEED);
+    m_ballLift.moveBallLift(BELT_SPEED);
     m_acq.moveAcq(0.9);
     ballCount = m_ballLift.countBall();
     hitSlot = m_ballLift.getSlot(targetSlot-1);
