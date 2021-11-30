@@ -16,7 +16,7 @@ public final class Constants {
     /**
     * The robot currently selected
     */
-    public final static RobotModel CURRENT_ROBOT = RobotModel.ROBOT2020;
+    public static final RobotModel CURRENT_ROBOT = RobotModel.ROBOT2020;
 
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
@@ -25,7 +25,7 @@ public final class Constants {
     public static final double PRECISION = 0.5d;
     //for BallUpOne.java
     public static final double MOVE_TIME = 0.1d;
-    //for BeltAutoRun.java
+    //for BallLiftAutoRun.java
     public static final double BALL_TIMEOUT = 5.0d;
     //for CamControl.java
     public static final String SWITCH_BUTTON = "Y";

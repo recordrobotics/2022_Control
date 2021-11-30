@@ -16,16 +16,16 @@ import frc.robot.subsystems.Flywheel;
 
 /**
  * ballTimer is a built in Timer function
- * BELT_SPEED the motor speed for the belt
+ * BALL_LIFT_SPEED the motor speed for the ball lift
  * FLYWHEEL_SPEED the motor speed for the flywheel
- * ballTimeout the amount of time that the belt and flywheel run for 
+ * ballTimeout the amount of time that the ball lift and flywheel run for 
  */
-public class BeltAutoRun extends CommandBase {
+public class BallLiftAutoRun extends CommandBase {
   
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel(); 
   private BallLift m_ballLift = RobotContainer.getInstance().getBallLift();
   private Timer ballTimer = new Timer();
-  private double BELT_SPEED = 0.5, FLYWHEEL_SPEED = 0.80;
+  private double BALL_LIFT_SPEED = 0.5, FLYWHEEL_SPEED = 0.80;
 
  /** Called just before this Command runs the first time*/
  
@@ -43,12 +43,12 @@ public class BeltAutoRun extends CommandBase {
   public void execute() {
     /**
      * Once again runs the flywheel motor at the set speed
-     * If the timer has been running for at least 1 second runs the belt at the set speed
+     * If the timer has been running for at least 1 second runs the ball lift at the set speed
      */
     m_flywheel.moveWheel(FLYWHEEL_SPEED);
 
     if (ballTimer.get() > 1)
-    m_ballLift.moveBelt(BELT_SPEED);
+    m_ballLift.moveBallLift(BALL_LIFT_SPEED);
   }
  /**
   * Ends the command when the timer value is greater than the timeout variable
@@ -59,13 +59,13 @@ public class BeltAutoRun extends CommandBase {
     return ballTimer.get() >= Constants.BALL_TIMEOUT;
   }
 /**
- * Stops the flywheel and belt when the command ends
+ * Stops the flywheel and ball lift when the command ends
  */
   /** Called once after isFinished returns true*/
   @Override
   public void end(boolean interrupted) {
     m_flywheel.moveWheel(0);
-    m_ballLift.moveBelt(0);
+    m_ballLift.moveBallLift(0);
   }
 
 }

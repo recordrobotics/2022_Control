@@ -9,7 +9,7 @@ package frc.robot;
 
 import frc.robot.control.ButtonPanelController;
 import frc.robot.control.HotasController;
-import frc.robot.commands.BeltAutoRun;
+import frc.robot.commands.BallLiftAutoRun;
 import frc.robot.commands.MoveToAim;
 import frc.robot.control.XboxJoystick;
 import frc.robot.control.Controller;
@@ -32,7 +32,7 @@ public class OI {
   public OI(){
     /** buttonPanel*/
     buttonPanel.getButton(ButtonMap.mainButton).whenPressed(aiming);
-    buttonPanel.getButton(ButtonMap.blueTempNameLeft).whenPressed(new BeltAutoRun());
+    buttonPanel.getButton(ButtonMap.blueTempNameLeft).whenPressed(new BallLiftAutoRun());
     buttonPanel.getButton(ButtonMap.blueTempNameRight).cancelWhenPressed(aiming);
   }
 
