@@ -57,7 +57,7 @@ public class RobotMap {
 	 */
 	public static int acquireMotorPort = 8;
 	public static int tiltMotorPort = 7;
-	public static int beltMotorPort = 6;
+	public static int ballLiftMotorPort = 6;
 	public static int flywheelMotorPort = 5;
 	public static int spoolLiftLeftMotor = 10;
 	public static int spoolLiftRightMotor = 11;

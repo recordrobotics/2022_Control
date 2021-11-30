@@ -48,7 +48,7 @@ public class MoveToFire extends SequentialCommandGroup {
         new TurnToGoal(targetAngle),
         new MoveToRange(firingDistance),
         new TurnToGoal(targetAngle),
-        new BeltAutoRun(),
+        new BallLiftAutoRun(),
         new MoveForward(36, 0.5));
 
         /**addSequential(new TiltAcquisition(), timeOut);*/

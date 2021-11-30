@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 /**
- * Creates an instance of the belt motor
+ * Creates an instance of the ball lift motor
  */
 public class BallLift2020 extends BallLift {
-  private WPI_VictorSPX beltMotor = new WPI_VictorSPX(RobotMap.beltMotorPort);
+  private WPI_VictorSPX ballLiftMotor = new WPI_VictorSPX(RobotMap.ballLiftMotorPort);
 
 
   /**array of limit switches that are triggered when a ball occupies it's slot*/
@@ -27,11 +27,11 @@ public class BallLift2020 extends BallLift {
   
   
   /**
-   * Runs the belt at speed v
-   * @param v the speed at which the belt runs
+   * Runs the ball lift at speed v
+   * @param v the speed at which the ball lift runs
    */
-  public void moveBelt(double v){
-    beltMotor.set(ControlMode.PercentOutput, v);
+  public void moveBallLift(double v){
+    ballLiftMotor.set(ControlMode.PercentOutput, v);
   }
 
   /**
