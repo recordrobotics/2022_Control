@@ -95,7 +95,11 @@ public class RobotMap {
 	 */
 	public static SPI.Port gyroPortSPI = SPI.Port.kOnboardCS0;
 
-	
+	/**
+	 * Monolith ports
+	 */
+	public static int liftMotor1 = 0; //SET
+	public static int liftMotor2 = 0; //SET
 
 }
 

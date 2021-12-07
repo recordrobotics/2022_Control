@@ -29,6 +29,7 @@ public class LiftControl extends CommandBase {
    * Constants.SPEED the speed the lift moves. position safety or no safety.
    */
   private int position = 0;
+  private double time = 0;
 
   /** nonzero value kills the saftey mechanism */
   /** Use requires() here to declare subsystem dependencies */
@@ -42,13 +43,22 @@ public class LiftControl extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    liftControl();
+    switch (Constants.CURRENT_ROBOT) {
+      case MONOLITH:
+        liftControlMonolith();
+        break;
+      case ROBOT2020:
+        liftControl2020();
+        break;
+      default:
+        break;
+    }
   }
 
   /**
    * Moves lift based on GREEN PANEL BUTTONS OR YELLOW PANEL BUTTONS.
    */
-  public void liftControl() {
+  public void liftControl2020() {
     /**
      * if the left green button is pressed, move up if the right green button is
      * pressed, move down
@@ -74,4 +84,20 @@ public class LiftControl extends CommandBase {
     return false;
   }
 
+  public void liftControlMonolith() {
+    /**
+     * if the left green button is pressed, move up if the right green button is
+     * pressed, move down
+     */
+    if (OI.getXboxButtonState("RSYUP")) {
+      m_lift.moveLift(Constants.SPEED);
+      time += 0.02;
+    } else if (OI.getXboxButtonState("RSYDOWN")) {
+      m_lift.moveLift(-Constants.SPEED);
+      time -= 0.02;
+    } else {
+      m_lift.moveLift(0);
+    }
+    SmartDashboard.putNumber("Lift distance", Constants.SPEED * time);
+  }
 }
