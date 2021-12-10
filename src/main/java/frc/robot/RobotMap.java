@@ -30,11 +30,11 @@ public class RobotMap {
 
 	/**
 	 * Spark Motors for Monolith
-	 */
-	public static int driveFrontRightPortMonolith = 2;
-	public static int driveFrontLeftPortMonolith = 0;
-	public static int driveBackRightPortMonolith = 3;
-	public static int driveBackLeftPortMonolith = 1;
+	 */ 
+	public static int driveFrontRightPortMonolith = 15;
+	public static int driveFrontLeftPortMonolith = 1;
+	public static int driveBackRightPortMonolith = 14;
+	public static int driveBackLeftPortMonolith = 0;
 
 	/**
 	 * CAN Bus Drive on Monty
@@ -95,7 +95,14 @@ public class RobotMap {
 	 */
 	public static SPI.Port gyroPortSPI = SPI.Port.kOnboardCS0;
 
-	
-
+	/**
+	* Monolith Solenoid Ports
+	 */
+	public static int grabSolenoidModulePort;
+	public static int grabSolenoidForwardPort;
+	public static int grabSolenoidBackwardPort;
+	public static int extendSolenoidModulePort;
+	public static int extendSolenoidForwardPort;
+	public static int extendSolenoidBackwardPort;
 }
 
