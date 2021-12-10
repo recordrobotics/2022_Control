@@ -16,7 +16,7 @@ public final class Constants {
     /**
     * The robot currently selected
     */
-    public static final RobotModel CURRENT_ROBOT = RobotModel.MONOLITH;
+    public static final RobotModel CURRENT_ROBOT = RobotModel.ROBOT2020;
 
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
