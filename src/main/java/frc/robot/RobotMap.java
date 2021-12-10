@@ -35,6 +35,8 @@ public class RobotMap {
 	public static int driveFrontLeftPortMonolith = 1;
 	public static int driveBackRightPortMonolith = 14;
 	public static int driveBackLeftPortMonolith = 0;
+	public static int grabberLeftMotorMonolith = 11;
+	public static int grabberRightMotoMonolith = 10;
 
 	/**
 	 * CAN Bus Drive on Monty
