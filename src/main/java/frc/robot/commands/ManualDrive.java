@@ -33,9 +33,30 @@ public class ManualDrive extends CommandBase {
       case ROBOT2020:
         drive2020();
         break;
+      case MONTY:
+        driveMonty();
+        break;
       default:
         break;
     }
+  }
+
+  private void driveMonty() {
+    double fwdMultMonty = Constants.FORWARD_MULTIPLIER;
+    double turnMultMonty = Constants.TURN_MULTIPLIER;
+    if (OI.getXboxButtonState("LS")) {
+
+      fwdMultMonty = Constants.FORWARD_MULTIPLIER * 1.5;
+      turnMultMonty = Constants.TURN_MULTIPLIER * 1.5;
+
+      if (fwdMultMonty > 1) {
+        fwdMultMonty = 1;
+      }
+      if (turnMultMonty > 1) {
+        turnMultMonty = 1;
+      }
+    }
+    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * fwdMultMonty, OI.getTurn() * Constants.TURN_MULTIPLIER);
   }
 
   private double driveMonolith() {

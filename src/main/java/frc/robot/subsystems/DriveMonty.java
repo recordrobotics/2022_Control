@@ -39,9 +39,6 @@ public class DriveMonty extends DriveTrain {
    * Sets the back right/left motors to always have the same speed as the front right/left motors
    */
   public DriveMonty(){
-    backRight.follow(frontRight);
-    backLeft.follow(frontLeft);
-
     //set and enable the voltages of the motors
     frontLeft.enableVoltageCompensation(true);
     backLeft.enableVoltageCompensation(true);
