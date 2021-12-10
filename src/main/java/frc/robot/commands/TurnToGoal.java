@@ -113,8 +113,8 @@ public class TurnToGoal extends CommandBase {
      * Math.abs(targetAngle)){ speed *= Math.abs(targetAngle)/Math.abs(angle); }
      */
 
-    m_driveTrain.moveRightWheels(speed);
-    m_driveTrain.moveLeftWheels(-speed);
+   // m_driveTrain.moveRightWheels(speed);
+   // m_driveTrain.moveLeftWheels(-speed);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
