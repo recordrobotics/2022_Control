@@ -10,8 +10,8 @@ public class AcquisitionMonolith extends Acquisition {
     private Spark leftMotor = new Spark(RobotMap.grabberLeftMotorMonolith);
 
     // TODO This parameters are null!!! Someone add values!!!!
-    private DoubleSolenoid grabSolenoid = new DoubleSolenoid(RobotMap.grabSolenoidModulePort, RobotMap.grabSolenoidForwardPort, RobotMap.grabSolenoidBackwardPort);
-    private DoubleSolenoid extendSolenoid = new DoubleSolenoid(RobotMap.extendSolenoidModulePort, RobotMap.extendSolenoidForwardPort, RobotMap.extendSolenoidBackwardPort);
+    private DoubleSolenoid grabSolenoid = new DoubleSolenoid(RobotMap.grabSolenoidModuleNumber, RobotMap.grabSolenoidForwardPort, RobotMap.grabSolenoidBackwardPort);
+    private DoubleSolenoid extendSolenoid = new DoubleSolenoid(RobotMap.extendSolenoidModuleNumber, RobotMap.extendSolenoidForwardPort, RobotMap.extendSolenoidBackwardPort);
 
     public AcquisitionMonolith(){
         setGrabSolenoidOff();
