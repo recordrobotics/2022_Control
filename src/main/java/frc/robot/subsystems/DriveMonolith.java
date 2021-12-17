@@ -42,12 +42,17 @@ public class DriveMonolith extends DriveTrain {
     backLeft.enableVoltageCompensation(true);
     frontRight.enableVoltageCompensation(true);
     backRight.enableVoltageCompensation(true);
+    
+    
+    */
+    updateVoltage();
+  }
 
+  public void updateVoltage(){
     frontLeft.setVoltage(frontLeftVoltage);
     backLeft.setVoltage(backLeftVoltage);
     frontRight.setVoltage(frontRightVoltage);
     backRight.setVoltage(backRightVoltage);
-    */
   }
 
   /**
