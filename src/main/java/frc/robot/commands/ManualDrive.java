@@ -86,8 +86,22 @@ public class ManualDrive extends CommandBase {
     leftAmount += turnAmount;
     rightAmount -= turnAmount;
 
+    if (leftAmount > 0.5) {
+      leftAmount =0.5;
+    }
+    if (rightAmount > 0.5) {
+      rightAmount =0.5;
+    }
+
     leftAmount = OI.accCurve(leftAmount);
     rightAmount = OI.accCurve(rightAmount);
+
+    if (leftAmount > 0.5) {
+      leftAmount =0.5;
+    }
+    if (rightAmount > 0.5) {
+      rightAmount =0.5;
+    }
 
     m_driveTrain.moveLeftWheels(leftAmount);
     m_driveTrain.moveRightWheels(rightAmount);

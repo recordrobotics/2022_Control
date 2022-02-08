@@ -39,6 +39,7 @@ public class DriveMonty extends DriveTrain {
    * Sets the back right/left motors to always have the same speed as the front right/left motors
    */
   public DriveMonty(){
+    System.out.println("DRIVEMONTY INITIATED \n");
     backRight.follow(frontRight);
     backLeft.follow(frontLeft);
 
@@ -59,7 +60,8 @@ public class DriveMonty extends DriveTrain {
    * Set the speed of the left motors
    */
   public void moveLeftWheels(double amount){
-    frontLeft.set(ControlMode.PercentOutput, amount);
+    frontLeft.set(ControlMode.PercentOutput, -amount);
+    backLeft.set(ControlMode.PercentOutput, -amount);
   }
 
   /**
@@ -68,6 +70,7 @@ public class DriveMonty extends DriveTrain {
    */
   public void moveRightWheels(double amount){
     frontRight.set(ControlMode.PercentOutput, amount);
+    backRight.set(ControlMode.PercentOutput, amount);
   }
 
   /**

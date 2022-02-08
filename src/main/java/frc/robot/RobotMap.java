@@ -39,10 +39,10 @@ public class RobotMap {
 	/**
 	 * CAN Bus Drive on Monty
 	 */
-	public static int driveFrontRightPortMonty = 7;
-	public static int driveFrontLeftPortMonty = 5;
-	public static int driveBackRightPortMonty = 2;
-	public static int driveBackLeftPortMonty = 1;
+	public static int driveFrontRightPortMonty = 2;
+	public static int driveFrontLeftPortMonty = 9;
+	public static int driveBackRightPortMonty = 7;
+	public static int driveBackLeftPortMonty = 0;
 
 	/**
 	 * CAN bus on the 2020 Robot
