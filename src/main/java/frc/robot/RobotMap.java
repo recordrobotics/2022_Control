@@ -30,19 +30,19 @@ public class RobotMap {
 
 	/**
 	 * Spark Motors for Monolith
-	 */
-	public static int driveFrontRightPortMonolith = 2;
-	public static int driveFrontLeftPortMonolith = 0;
-	public static int driveBackRightPortMonolith = 3;
-	public static int driveBackLeftPortMonolith = 1;
+	 */ 
+	public static int driveFrontRightPortMonolith = 15;
+	public static int driveFrontLeftPortMonolith = 1;
+	public static int driveBackRightPortMonolith = 14;
+	public static int driveBackLeftPortMonolith = 0;
 
 	/**
 	 * CAN Bus Drive on Monty
 	 */
-	public static int driveFrontRightPortMonty = 7;
-	public static int driveFrontLeftPortMonty = 5;
-	public static int driveBackRightPortMonty = 2;
-	public static int driveBackLeftPortMonty = 1;
+	public static int driveFrontRightPortMonty = 2;
+	public static int driveFrontLeftPortMonty = 9;
+	public static int driveBackRightPortMonty = 7;
+	public static int driveBackLeftPortMonty = 0;
 
 	/**
 	 * CAN bus on the 2020 Robot
@@ -57,7 +57,7 @@ public class RobotMap {
 	 */
 	public static int acquireMotorPort = 8;
 	public static int tiltMotorPort = 7;
-	public static int beltMotorPort = 6;
+	public static int ballLiftMotorPort = 6;
 	public static int flywheelMotorPort = 5;
 	public static int spoolLiftLeftMotor = 10;
 	public static int spoolLiftRightMotor = 11;
@@ -95,7 +95,14 @@ public class RobotMap {
 	 */
 	public static SPI.Port gyroPortSPI = SPI.Port.kOnboardCS0;
 
-	
-
+	/**
+	* Monolith Solenoid Ports
+	 */
+	public static int grabSolenoidModulePort;
+	public static int grabSolenoidForwardPort;
+	public static int grabSolenoidBackwardPort;
+	public static int extendSolenoidModulePort;
+	public static int extendSolenoidForwardPort;
+	public static int extendSolenoidBackwardPort;
 }
 

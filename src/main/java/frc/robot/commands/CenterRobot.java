@@ -39,7 +39,7 @@ public class CenterRobot extends SequentialCommandGroup {
       new AutoTurn(theta),
       new MoveForward(distanceToMove, 0.5),
       new AutoTurn(180 - theta),
-      new BeltAutoRun()
+      new BallLiftAutoRun()
     );
   
   }

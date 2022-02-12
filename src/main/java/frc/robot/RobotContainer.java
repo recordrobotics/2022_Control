@@ -8,6 +8,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -67,6 +68,8 @@ public class RobotContainer {
     
     // Init based on the current robot
     switch (Constants.CURRENT_ROBOT) {
+      case MORON: 
+        this.initMoron();
       case ROBOT2020:
         this.init2020();
         break;
@@ -80,6 +83,10 @@ public class RobotContainer {
 
     // Configure the button bindings
     this.configureButtonBindings();
+  }
+
+  private void initMoron() {
+    
   }
 
   /**
@@ -96,7 +103,7 @@ public class RobotContainer {
     m_flywheel = new Flywheel2020();
     m_flywheel.setDefaultCommand(new ControlFlywheel());
     m_ballLift = new BallLift2020();
-    m_ballLift.setDefaultCommand(new BeltControl());
+    m_ballLift.setDefaultCommand(new BallLiftControl());
     m_liftSpool = new LiftSpool();
     m_liftSpool.setDefaultCommand(new ControlSpool());
     m_robotLift = new RobotLift2020();
@@ -131,6 +138,9 @@ public class RobotContainer {
    */
   private void initMonty() {
     m_driveTrain = new DriveMonty();
+    m_driveTrain.setDefaultCommand(new ManualDrive());
+    //PowerDistributionPanel pdp = new PowerDistributionPanel(0);
+    //pdp.clearStickyFaults();
   }
 
   /**
