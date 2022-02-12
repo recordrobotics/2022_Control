@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Drive2020;
+import frc.robot.subsystems.DriveMonolith;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.Constants;
 import frc.robot.OI;
@@ -41,6 +43,9 @@ public class ManualDrive extends CommandBase {
   }
 
   private double driveMonolith() {
+    DriveMonolith m_driveMonolith = (DriveMonolith) m_driveTrain; // To be able to reference DriveMonolith specifically
+    m_driveMonolith.updateVoltage();
+
     double turnAmount = OI.getTurn() * Constants.TURN_MULTIPLIER;
     double forwardAmount = OI.getForward() * Constants.FORWARD_MULTIPLIER;
     
@@ -69,6 +74,8 @@ public class ManualDrive extends CommandBase {
   }
 
   private void drive2020() {
+    // Drive2020 m_drive2020 = (Drive2020) m_driveTrain; In case we need to reference Drive2020 specifically
+
     double fwdMult2020 = Constants.FORWARD_MULTIPLIER;
     double turnMult2020 = Constants.TURN_MULTIPLIER;
     if (OI.getXboxButtonState("LS")) {
