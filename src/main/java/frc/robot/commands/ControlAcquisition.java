@@ -26,10 +26,14 @@ public class ControlAcquisition extends CommandBase {
         /** Use requires() here to declare subsystem dependencies*/
         addRequirements(m_acquisition);
     }
+    //TODO: FILL IN WITH CORRECT STUFF
+    private void controlAcqMoron() {
+
+    }
     /**
      * Method to spin and tilt acquisition.
      */
-    private void controlAcq() {
+    private void controlAcq2020() {
         //control the acqusition wheels
         /**
          * IF: if the aquisition button is pressed, move the aquisition by Constants.ACQ_SPEED.
@@ -71,7 +75,14 @@ public class ControlAcquisition extends CommandBase {
     @Override
     public void execute() {
         /**control the toggle, this will invert inputPosition when "A" is pressed*/
-        controlAcq();
+       switch (Constants.CURRENT_ROBOT) {
+      case ROBOT2020:
+      controlAcq2020();
+        break;
+        case MORON:
+        controlAcqMoron();
+      default:
+        break; }
     }
 
     /** Make this return true when this Command no longer needs to run execute()*/

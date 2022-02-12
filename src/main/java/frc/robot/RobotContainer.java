@@ -86,7 +86,8 @@ public class RobotContainer {
   }
 
   private void initMoron() {
-    
+    m_acquisition = new AcquisitionMoron();
+    m_acquisition.setDefaultCommand(new ControlAcquisition());
   }
 
   /**
