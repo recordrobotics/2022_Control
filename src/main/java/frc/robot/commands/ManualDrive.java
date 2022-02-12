@@ -47,14 +47,23 @@ public class ManualDrive extends CommandBase {
     double leftAmount = forwardAmount;
     double rightAmount = forwardAmount;
 
-    leftAmount += turnAmount;
-    rightAmount -= turnAmount;
+    // leftAmount += turnAmount;
+    // rightAmount -= turnAmount;
 
-    leftAmount = OI.accCurve(leftAmount);
-    rightAmount = OI.accCurve(rightAmount);
+    // leftAmount = OI.accCurve(leftAmount);
+    // rightAmount = OI.accCurve(rightAmount);
 
-    m_driveTrain.moveLeftWheels(leftAmount);
-    m_driveTrain.moveRightWheels(rightAmount);
+    //  m_driveTrain.moveLeftWheels(leftAmount);
+    //  m_driveTrain.moveRightWheels(rightAmount);
+
+    if (Math.abs(forwardAmount) >  1) {
+      forwardAmount = forwardAmount / Math.abs(forwardAmount);
+    }
+    if (Math.abs(turnAmount) >  1) {
+      turnAmount = turnAmount / Math.abs(turnAmount);
+    }
+
+    m_driveTrain.getDrive().arcadeDrive(forwardAmount, turnAmount);
 
     return ((leftAmount + rightAmount) / 2);
   }
