@@ -35,19 +35,15 @@ public class DriveMonolith extends DriveTrain {
   private double backRightVoltage = Constants.driveMonoBackRightVoltage;
 
   public DriveMonolith(){
-    //set and enable the voltages of the motors
-    //TODO Make voltage regulator work for SPARK motors
-    /*
-    frontLeft.enableVoltageCompensation(true);
-    backLeft.enableVoltageCompensation(true);
-    frontRight.enableVoltageCompensation(true);
-    backRight.enableVoltageCompensation(true);
+    // Set and enable the voltages of the motors
+    updateVoltage();
+  }
 
+  public void updateVoltage(){
     frontLeft.setVoltage(frontLeftVoltage);
     backLeft.setVoltage(backLeftVoltage);
     frontRight.setVoltage(frontRightVoltage);
     backRight.setVoltage(backRightVoltage);
-    */
   }
 
   /**
@@ -55,8 +51,8 @@ public class DriveMonolith extends DriveTrain {
    * Set the speed of the left motors
    */
   public void moveLeftWheels(double amount){
-    frontLeft.set(-amount);
-    backLeft.set(-amount);
+    frontLeft.set(amount);
+    backLeft.set(amount);
   }
 
   /**
@@ -64,8 +60,8 @@ public class DriveMonolith extends DriveTrain {
    * Set the speed of the right motors
    */
   public void moveRightWheels(double amount){
-    frontRight.set(amount);
-    backRight.set(amount);
+    frontRight.set(-amount);
+    backRight.set(-amount);
   }
 
   /**

@@ -60,8 +60,6 @@ public class Drive2020 extends DriveTrain {
 */
 
     public Drive2020(){
-
-
         /**Set the encoders to automatically convert ticks to distance*/
         rightEnc.setDistancePerPulse(wheelCirc / ticksPerRotation);
         leftEnc.setDistancePerPulse(wheelCirc / ticksPerRotation);
