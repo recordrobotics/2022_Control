@@ -33,6 +33,8 @@ public class ManualDrive extends CommandBase {
       case ROBOT2020:
         drive2020();
         break;
+      case MONTY:
+        driveMonty();
       default:
         break;
     }
@@ -73,6 +75,36 @@ public class ManualDrive extends CommandBase {
       }
     }
     m_driveTrain.getDrive().arcadeDrive(OI.getForward() * fwdMult2020, OI.getTurn() * Constants.TURN_MULTIPLIER);
+  }
+  private void driveMonty() {
+    double turnAmount = OI.getTurn() * Constants.TURN_MULTIPLIER;
+    double forwardAmount = OI.getForward() * Constants.FORWARD_MULTIPLIER;
+    
+    double leftAmount = forwardAmount;
+    double rightAmount = forwardAmount;
+
+    leftAmount += turnAmount;
+    rightAmount -= turnAmount;
+
+    if (leftAmount > 0.5) {
+      leftAmount =0.5;
+    }
+    if (rightAmount > 0.5) {
+      rightAmount =0.5;
+    }
+
+    leftAmount = OI.accCurve(leftAmount);
+    rightAmount = OI.accCurve(rightAmount);
+
+    if (leftAmount > 0.5) {
+      leftAmount =0.5;
+    }
+    if (rightAmount > 0.5) {
+      rightAmount =0.5;
+    }
+
+    m_driveTrain.moveLeftWheels(leftAmount);
+    m_driveTrain.moveRightWheels(rightAmount);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */

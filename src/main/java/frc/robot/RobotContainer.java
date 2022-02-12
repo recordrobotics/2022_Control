@@ -8,6 +8,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -131,6 +132,9 @@ public class RobotContainer {
    */
   private void initMonty() {
     m_driveTrain = new DriveMonty();
+    m_driveTrain.setDefaultCommand(new ManualDrive());
+    //PowerDistributionPanel pdp = new PowerDistributionPanel(0);
+    //pdp.clearStickyFaults();
   }
 
   /**
