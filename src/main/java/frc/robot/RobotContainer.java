@@ -68,6 +68,8 @@ public class RobotContainer {
     
     // Init based on the current robot
     switch (Constants.CURRENT_ROBOT) {
+      case MORON: 
+        this.initMoron();
       case ROBOT2020:
         this.init2020();
         break;
@@ -81,6 +83,10 @@ public class RobotContainer {
 
     // Configure the button bindings
     this.configureButtonBindings();
+  }
+
+  private void initMoron() {
+    
   }
 
   /**
