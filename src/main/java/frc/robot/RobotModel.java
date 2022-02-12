@@ -4,5 +4,5 @@ public enum RobotModel {
     MONOLITH,
     MONTY,
     ROBOT2020,
-    MORON
+    MUNCHKIN
 }
