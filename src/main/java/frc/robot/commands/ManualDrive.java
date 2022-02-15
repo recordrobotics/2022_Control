@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveMunchkin;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.Constants;
 import frc.robot.OI;
@@ -27,6 +28,8 @@ public class ManualDrive extends CommandBase {
   @Override
   public void execute() {
     switch (Constants.CURRENT_ROBOT) {
+      case MUNCHKIN: 
+        drive2020();
       case MONOLITH:
         driveMonolith();
         break;
@@ -38,6 +41,10 @@ public class ManualDrive extends CommandBase {
       default:
         break;
     }
+  }
+
+  private void driveMunchKin() {
+
   }
 
   private double driveMonolith() {
