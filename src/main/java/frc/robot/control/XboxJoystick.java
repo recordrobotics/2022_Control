@@ -77,7 +77,7 @@ public class XboxJoystick extends Controller{
      * @return The X axis value of the left stick
      */
     public double getXAxis (){
-        return xbox.getX(Hand.kLeft);
+        return xbox.getLeftX();
     }
 
     /**
@@ -91,7 +91,7 @@ public class XboxJoystick extends Controller{
      * @return The Y axis value of the left stick
      */
     public double getYAxis (){
-        return xbox.getY(Hand.kLeft);
+        return xbox.getLeftY();
     }
     /**
      * Gets whether or not a button is pressed as a boolean
@@ -111,13 +111,13 @@ public class XboxJoystick extends Controller{
             case "B":
                 return xbox.getBButton();
             case "LB":
-                return xbox.getBumper(Hand.kLeft);
+                return xbox.getLeftBumper();
             case "RB":
-                return xbox.getBumper(Hand.kRight);
+                return xbox.getRightBumper();
             case "LS":
-                return xbox.getStickButton(Hand.kLeft);
+                return xbox.getLeftStickButton();
             case "RS":
-                return xbox.getStickButton(Hand.kRight);
+                return xbox.getRightStickButton();
             case "LT":
                 return getTrigger("LT");
             case "RT":
@@ -144,7 +144,7 @@ public class XboxJoystick extends Controller{
      * @return The X axis value of the right stick
      */
     public double getCStickXAxis(){
-        return xbox.getX(Hand.kRight);
+        return xbox.getRightX();
     }
 
     /**
@@ -152,7 +152,7 @@ public class XboxJoystick extends Controller{
      * @return The Y axis value of the right stick
      */
     public double getCStickYAxis(){
-        return xbox.getY(Hand.kRight);
+        return xbox.getRightY();
     }
 
     /**
@@ -211,7 +211,7 @@ public class XboxJoystick extends Controller{
      * @return The axis value of the right trigger, i.e. how far it is pushed in
      */
     public double getRTAxis(){
-        return xbox.getTriggerAxis(Hand.kRight);
+        return xbox.getRightTriggerAxis();
     }
 
     /**
@@ -219,7 +219,7 @@ public class XboxJoystick extends Controller{
      * @return The axis value of the left trigger, i.e. how far it is pushed in
      */
     public double getLTAxis(){
-        return xbox.getTriggerAxis(Hand.kLeft);
+        return xbox.getLeftTriggerAxis();
     }
 
     /**

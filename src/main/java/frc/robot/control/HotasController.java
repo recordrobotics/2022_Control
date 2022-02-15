@@ -26,7 +26,7 @@ public class HotasController extends Controller{
 	 */
 	public double getYAxis(){
 		/**it's negative because all the way forward is -1*/
-		return -hotas.getY(Hand.kRight);
+		return -hotas.getRightY();
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class HotasController extends Controller{
 	 * @return The amount the Hotas controller has been pushed to the side as a double
 	 */
 	public double getXAxis(){
-		return hotas.getX(Hand.kRight);
+		return hotas.getRightX();
 	}
 }
 
