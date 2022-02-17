@@ -1,7 +1,6 @@
 package frc.robot.control;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class HotasController extends Controller{
 	//Creates a specific instance of a hotas controller
@@ -26,7 +25,7 @@ public class HotasController extends Controller{
 	 */
 	public double getYAxis(){
 		/**it's negative because all the way forward is -1*/
-		return -hotas.getRightY();
+		return -hotas.getY();
 	}
 
 	/**
@@ -34,7 +33,7 @@ public class HotasController extends Controller{
 	 * @return The amount the Hotas controller has been pushed to the side as a double
 	 */
 	public double getXAxis(){
-		return hotas.getRightX();
+		return hotas.getX();
 	}
 }
 
