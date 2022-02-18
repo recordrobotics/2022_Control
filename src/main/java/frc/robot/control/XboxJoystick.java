@@ -76,7 +76,7 @@ public class XboxJoystick extends Controller{
      * @return The X axis value of the left stick
      */
     public double getXAxis (){
-        return xbox.getLeftX();
+        return xbox.getLeftY();
     }
 
     /**
@@ -90,7 +90,7 @@ public class XboxJoystick extends Controller{
      * @return The Y axis value of the left stick
      */
     public double getYAxis (){
-        return xbox.getLeftY();
+        return xbox.getLeftX();
     }
     /**
      * Gets whether or not a button is pressed as a boolean
