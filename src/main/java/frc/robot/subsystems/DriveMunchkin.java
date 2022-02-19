@@ -35,8 +35,9 @@ public class DriveMunchkin extends DriveTrain {
    * Library Differential Drive object
    */
   private DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
-  public DriveMunchkin() {
-
+  public DriveMunchkin(){
+ leftMotors.stopMotor();
+ rightMotors.stopMotor();
   }
 
   private long disabled_time = 0;

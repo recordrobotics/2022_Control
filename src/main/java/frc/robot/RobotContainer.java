@@ -86,7 +86,8 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
-    
+    m_driveTrain = new DriveMunchkin();
+    m_driveTrain.setDefaultCommand(new ManualDrive());
   }
 
   /**

@@ -29,7 +29,7 @@ public class ManualDrive extends CommandBase {
   public void execute() {
     switch (Constants.CURRENT_ROBOT) {
       case MUNCHKIN: 
-        drive2020();
+        driveMunchkin();
       case MONOLITH:
         driveMonolith();
         break;
@@ -43,7 +43,8 @@ public class ManualDrive extends CommandBase {
     }
   }
 
-  private void driveMunchKin() {
+  private void driveMunchkin() {
+    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * Constants.FORWARD_MULTIPLIER, OI.getTurn() * Constants.TURN_MULTIPLIER);
 
   }
 
@@ -65,7 +66,7 @@ public class ManualDrive extends CommandBase {
 
     return ((leftAmount + rightAmount) / 2);
   }
-
+  
   private void drive2020() {
     double fwdMult2020 = Constants.FORWARD_MULTIPLIER;
     double turnMult2020 = Constants.TURN_MULTIPLIER;
