@@ -86,6 +86,8 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
+    m_acquisition = new AcquisitionMunchkin();
+    m_acquisition.setDefaultCommand(new ControlAcquisition());
     
   }
 

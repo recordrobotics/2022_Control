@@ -14,6 +14,7 @@ import frc.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
+import com.revrobotics.CANSparkMax;
 
 public class AcquisitionMunchkin extends Acquisition {
     /**
@@ -23,18 +24,20 @@ public class AcquisitionMunchkin extends Acquisition {
      * tiltPostition Whether the aquisition is up or down.
      */
 
-    private WPI_VictorSPX acquireMotor = new WPI_VictorSPX(RobotMap.acquireMotorPort); //TODO: REPLACE WITH NEW MOTORS
-    private WPI_VictorSPX tiltMotor = new WPI_VictorSPX(RobotMap.tiltMotorPort);
+    private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acquireMotorPort, null);
+    private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acquireMotorPort, null);
+    private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
+    private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
     DigitalInput tiltLimit;
 
-//TODO: ONCE ROBOT IS FIGURED OUT UPDATE TO BE CORRECT
+
     private double tiltSpeed = 0.5;
     boolean tiltPosition = true;  /**true is up, false is down*/
     /**
      * Creates an acquisition object with a specific tilt limit.
      */
     public AcquisitionMunchkin(){
-        tiltLimit = new DigitalInput(7);
+        
     }
     /**
      * Gets how fast the acquisition is tilting.
@@ -62,14 +65,14 @@ public class AcquisitionMunchkin extends Acquisition {
      * @param v speed to spin the acquisition at.
      */
     public void moveAcq(double v) {
-        acquireMotor.set(ControlMode.PercentOutput, v);
+        acquireMotor.set(v);
     }
     /**
      * Moves the acquisition up and down.
      * @param v speed of the motor.
      */
     public void moveTilt(double v) {
-        tiltMotor.set(ControlMode.PercentOutput, v);
+        tiltMotor.set(v);
     }
     /**
      * Returns how far the acquisition can tilt.
@@ -93,9 +96,9 @@ public class AcquisitionMunchkin extends Acquisition {
     
     
     public double getAcquireVoltage(){
-        return acquireMotor.getMotorOutputVoltage();
+        return acquireMotor.getVoltageCompensationNominalVoltage();
     }
     public double getTiltVoltage(){
-        return tiltMotor.getMotorOutputVoltage();
+        return tiltMotor.getVoltageCompensationNominalVoltage();
     }
 }
