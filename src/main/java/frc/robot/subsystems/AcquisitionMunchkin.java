@@ -12,8 +12,8 @@ import frc.robot.RobotMap;
 import frc.robot.commands.ControlAcquisition; // in commented-out code
 import frc.robot.Constants;
 
-import com.ctre.phoenix.motorcontrol.*;
-import com.ctre.phoenix.motorcontrol.can.*;
+//import com.ctre.phoenix.motorcontrol.*;
+//import com.ctre.phoenix.motorcontrol.can.*;
 import com.revrobotics.CANSparkMax;
 
 public class AcquisitionMunchkin extends Acquisition {

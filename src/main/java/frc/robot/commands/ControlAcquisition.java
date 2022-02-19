@@ -27,7 +27,7 @@ public class ControlAcquisition extends CommandBase {
         addRequirements(m_acquisition);
     }
     //TODO: FILL IN WITH CORRECT STUFF
-    private void controlAcqMoron() {
+    private void controlAcqMunchkin() {
 
     }
     /**
@@ -79,8 +79,8 @@ public class ControlAcquisition extends CommandBase {
       case ROBOT2020:
       controlAcq2020();
         break;
-        case MORON:
-        controlAcqMoron();
+        case MUNCHKIN:
+        controlAcqMunchkin();
       default:
         break; }
     }
