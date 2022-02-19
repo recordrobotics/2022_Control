@@ -15,7 +15,7 @@ import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 
-public class AcquisitionMoron extends Acquisition {
+public class AcquisitionMunchkin extends Acquisition {
     /**
      * aquireMotor tiltMotor Creating variables for the acquisition's motors.
      * tiltLimit The maximum angle the acquisition can be at (to avoid unwanted accidents with the acquisition hitting something).
@@ -33,7 +33,7 @@ public class AcquisitionMoron extends Acquisition {
     /**
      * Creates an acquisition object with a specific tilt limit.
      */
-    public AcquisitionMoron(){
+    public AcquisitionMunchkin(){
         tiltLimit = new DigitalInput(7);
     }
     /**
