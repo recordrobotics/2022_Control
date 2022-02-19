@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -30,7 +30,7 @@ public class CamStream extends SubsystemBase {
         camera = new UsbCamera[numCameras];
 
         for (int i = 0; i < numCameras; i++) {
-            camera[i] = CameraServer.getInstance().startAutomaticCapture(0);
+            camera[i] = CameraServer.startAutomaticCapture(0);
             camera[i].setResolution(512, 288);
         }
 
