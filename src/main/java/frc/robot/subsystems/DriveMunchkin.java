@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+
 import com.revrobotics.*;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -27,8 +29,8 @@ public class DriveMunchkin extends DriveTrain {
                                   new CANSparkMax(4, CANSparkMax.MotorType.kBrushless),
                                   new CANSparkMax(5, CANSparkMax.MotorType.kBrushless)};
 
-  private SpeedControllerGroup leftMotors = new SpeedControllerGroup(left);
-  private SpeedControllerGroup rightMotors = new SpeedControllerGroup(right);
+  private MotorControllerGroup leftMotors = new MotorControllerGroup(left);
+  private MotorControllerGroup rightMotors = new MotorControllerGroup(right);
   /**
    * Library Differential Drive object
    */
