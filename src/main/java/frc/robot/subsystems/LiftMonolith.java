@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 import frc.robot.RobotMap;  
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import frc.robot.commands.*;
 
 public class LiftMonolith extends RobotLift{

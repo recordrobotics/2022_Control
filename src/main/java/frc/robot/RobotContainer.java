@@ -8,7 +8,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -68,8 +68,8 @@ public class RobotContainer {
     
     // Init based on the current robot
     switch (Constants.CURRENT_ROBOT) {
-      case MORON: 
-        this.initMoron();
+      case MUNCHKIN: 
+        this.initMunchkin();
       case ROBOT2020:
         this.init2020();
         break;
@@ -85,9 +85,8 @@ public class RobotContainer {
     this.configureButtonBindings();
   }
 
-  private void initMoron() {
-    m_acquisition = new AcquisitionMoron();
-    m_acquisition.setDefaultCommand(new ControlAcquisition());
+  private void initMunchkin() {
+    
   }
 
   /**
