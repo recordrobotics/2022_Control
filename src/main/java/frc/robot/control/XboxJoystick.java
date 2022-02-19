@@ -74,6 +74,7 @@ public class XboxJoystick extends Controller{
     
     /**
      * @return The X axis value of the left stick
+     * This gets the other axis because things are broken, needs to be fixed some day
      */
     public double getXAxis (){
         return xbox.getLeftY();
@@ -88,6 +89,7 @@ public class XboxJoystick extends Controller{
 
     /**
      * @return The Y axis value of the left stick
+     * This gets the other axis because things are broken, needs to be fixed some day
      */
     public double getYAxis (){
         return xbox.getLeftX();
