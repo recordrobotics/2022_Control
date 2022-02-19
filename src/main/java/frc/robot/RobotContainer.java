@@ -27,6 +27,7 @@ public class RobotContainer {
   private static RobotContainer m_robotContainer;
 
   // Robot Subsystems
+  private MotorTestingSubsystem m_test;
   private DriveTrain m_driveTrain;
   private RobotLift m_robotLift;
   private Gyroscope m_gyro;
@@ -58,6 +59,7 @@ public class RobotContainer {
   public Dashboard getDashboard() { return m_dashboard; }
   public CamStream getCamStream() { return m_camStream; }
   public Command getAutonomousCommand() { return m_autonomousCommand; }
+  public MotorTestingSubsystem getTestSubsystem() {return m_test; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public void init() {
@@ -86,7 +88,8 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
-    
+    m_test = new MotorTestingSubsystem();
+    m_test.setDefaultCommand(new TestingCommand());
   }
 
   /**
