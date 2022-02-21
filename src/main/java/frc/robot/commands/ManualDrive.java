@@ -30,6 +30,7 @@ public class ManualDrive extends CommandBase {
     switch (Constants.CURRENT_ROBOT) {
       case MUNCHKIN: 
         driveMunchkin();
+        break;
       case MONOLITH:
         driveMonolith();
         break;
@@ -38,6 +39,7 @@ public class ManualDrive extends CommandBase {
         break;
       case MONTY:
         driveMonty();
+        break;
       default:
         break;
     }
@@ -45,7 +47,8 @@ public class ManualDrive extends CommandBase {
 
   private void driveMunchkin() {
     m_driveTrain.getDrive().arcadeDrive(OI.getForward() * Constants.FORWARD_MULTIPLIER, OI.getTurn() * Constants.TURN_MULTIPLIER);
-
+    System.out.println(OI.getForward() * Constants.FORWARD_MULTIPLIER);
+    System.out.println(OI.getTurn() * Constants.TURN_MULTIPLIER);
   }
 
   private double driveMonolith() {
