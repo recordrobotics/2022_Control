@@ -7,9 +7,11 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
 import frc.robot.RobotContainer;
+import frc.robot.control.XboxJoystick;
 import frc.robot.subsystems.MotorTestingSubsystem;
 
 /**
@@ -21,7 +23,6 @@ public class TestingCommand extends CommandBase {
     addRequirements(m_test);
     /** Use robot container to declare the subsytem's default command */
   }
-
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
@@ -31,10 +32,10 @@ public class TestingCommand extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    
+    runMotors();
   }
 public void runMotors(){
-  m_test.testMotors(OI.getForward());
+  m_test.testMotors(OI.getForward()*0.2);
 }
   /** Make this return true when this Command no longer needs to run execute() */
   @Override

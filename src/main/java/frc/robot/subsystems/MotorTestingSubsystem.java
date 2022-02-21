@@ -21,22 +21,17 @@ public class MotorTestingSubsystem extends SubsystemBase {
 */ 
 
 CANSparkMax dr1 = new CANSparkMax(1, CANSparkMax.MotorType.kBrushed);
-CANSparkMax dr2 = new CANSparkMax(2, CANSparkMax.MotorType.kBrushed);
-CANSparkMax dr3 = new CANSparkMax(3, CANSparkMax.MotorType.kBrushed);
+
 
 
 public void motorTestingSubsysytem(){
     dr1.stopMotor();
-    dr2.stopMotor();
-    dr3.stopMotor();
 }
 
 
 public void testMotors(double amount){
     System.out.println("testMotor() called with " + amount);
     dr1.set(amount);
-    dr2.set(amount);
-    dr3.set(amount);
 };
 
   
