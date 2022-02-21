@@ -64,6 +64,12 @@ public class RobotMap {
 	public static int robotLiftLeftMotorPort = 9; 
 
 	/**
+	 * Set of subsystem motors for Munchkin (temporary, set later)
+	 */
+	public static int acqSpinMotorPort = 8;
+	public static int acqTiltMotorPort = 7;
+
+	/**
 	 * encoder ports
 	 * Format of [Port A, Port B]
 	 */
