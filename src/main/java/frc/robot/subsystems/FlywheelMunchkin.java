@@ -16,15 +16,18 @@ public class FlywheelMunchkin extends Flywheel {
      * The target voltage of the flywheel.
      */
     private int falcon500port = 12;
-    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(falcon500port);
+    private WPI_TalonFX flywheelForwardMotor = new WPI_TalonFX(falcon500port);
+    private WPI_TalonFX flywheelReverseMotor = new WPI_TalonFX(falcon500port);
     private double targetVoltage = 11.5;
 
     /**
      * Creates an Object for the flywheel class.
      */
     public FlywheelMunchkin() {
-        flywheelMotor.enableVoltageCompensation(true);
-        flywheelMotor.setVoltage(targetVoltage);
+        flywheelForwardMotor.enableVoltageCompensation(true);
+        flywheelReverseMotor.enableVoltageCompensation(true);
+        flywheelForwardMotor.setVoltage(targetVoltage);
+        flywheelReverseMotor.setVoltage(targetVoltage);
     }
 
     /**
@@ -33,7 +36,8 @@ public class FlywheelMunchkin extends Flywheel {
      * @param v The speed at which the flywheel motor turns.
      */
     public void moveWheel(double v) {
-        flywheelMotor.set(ControlMode.PercentOutput, v);
+        flywheelForwardMotor.set(ControlMode.PercentOutput, v);
+        flywheelReverseMotor.set(ControlMode.PercentOutput, -v);
     }
 
     /**
@@ -42,7 +46,7 @@ public class FlywheelMunchkin extends Flywheel {
      * @return The flywheel's voltage output.
      */
     public double getVoltage() {
-        return flywheelMotor.getMotorOutputVoltage();
+        return flywheelForwardMotor.getMotorOutputVoltage();
     }
 
 }
