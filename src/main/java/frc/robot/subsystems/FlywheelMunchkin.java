@@ -50,4 +50,8 @@ public class FlywheelMunchkin extends Flywheel {
         return flywheelForwardMotor.getMotorOutputVoltage();
     }
 
+    //TODO: Rename this function once we know which motor is which
+    public double getOtherVoltage() {
+        return flywheelReverseMotor.getMotorOutputVoltage();
+    }
 }
