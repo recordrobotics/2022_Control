@@ -63,6 +63,9 @@ public class RobotMap {
 	public static int spoolLiftRightMotor = 11;
 	public static int robotLiftLeftMotorPort = 9; 
 
+	public static int flywheelForwardPort = 5;
+	public static int flywheelReversePort = 4;
+
 	/**
 	 * encoder ports
 	 * Format of [Port A, Port B]
