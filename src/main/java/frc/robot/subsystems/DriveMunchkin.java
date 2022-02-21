@@ -22,12 +22,10 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class DriveMunchkin extends DriveTrain {
   private CANSparkMax[] left = {
                                   new CANSparkMax(0, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(1, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(2, CANSparkMax.MotorType.kBrushless)};
+                                  new CANSparkMax(1, CANSparkMax.MotorType.kBrushless)};
   private CANSparkMax[] right = {
-                                  new CANSparkMax(3, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(4, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(5, CANSparkMax.MotorType.kBrushless)};
+                                  new CANSparkMax(2, CANSparkMax.MotorType.kBrushless),
+                                  new CANSparkMax(3, CANSparkMax.MotorType.kBrushless)};
 
   private MotorControllerGroup leftMotors = new MotorControllerGroup(left);
   private MotorControllerGroup rightMotors = new MotorControllerGroup(right);
