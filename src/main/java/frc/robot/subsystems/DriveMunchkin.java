@@ -36,8 +36,6 @@ public class DriveMunchkin extends DriveTrain {
   public DriveMunchkin(){
     leftMotors.stopMotor();
     rightMotors.stopMotor();
-    leftMotors.set(0);
-    rightMotors.set(0);
   }
 
   private long disabled_time = 0;
