@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
@@ -21,11 +22,11 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveMunchkin extends DriveTrain {
   private CANSparkMax[] left = {
-                                  new CANSparkMax(0, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(1, CANSparkMax.MotorType.kBrushless)};
+                                  new CANSparkMax(RobotMap.driveFrontLeftPortMunchkin, CANSparkMax.MotorType.kBrushless),
+                                  new CANSparkMax(RobotMap.driveBackLeftPortMunchkin, CANSparkMax.MotorType.kBrushless)};
   private CANSparkMax[] right = {
-                                  new CANSparkMax(2, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(3, CANSparkMax.MotorType.kBrushless)};
+                                  new CANSparkMax(RobotMap.driveFrontRightPortMunchkin, CANSparkMax.MotorType.kBrushless),
+                                  new CANSparkMax(RobotMap.driveBackRightPortMunchkin, CANSparkMax.MotorType.kBrushless)};
 
   private MotorControllerGroup leftMotors = new MotorControllerGroup(left);
   private MotorControllerGroup rightMotors = new MotorControllerGroup(right);
