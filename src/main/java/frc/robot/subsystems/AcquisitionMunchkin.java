@@ -9,42 +9,34 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
-import frc.robot.commands.ControlAcquisition; // in commented-out code
 import frc.robot.Constants;
 
 //import com.ctre.phoenix.motorcontrol.*;
 //import com.ctre.phoenix.motorcontrol.can.*;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class AcquisitionMunchkin extends Acquisition {
     /**
      * aquireMotor tiltMotor Creating variables for the acquisition's motors.
      * tiltLimit The maximum angle the acquisition can be at (to avoid unwanted accidents with the acquisition hitting something).
-     * tiltSpeed How fast the aquisition tilts.
      * tiltPostition Whether the aquisition is up or down.
      */
 
-    private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acquireMotorPort, null);
-    private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acquireMotorPort, null);
+    private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acquireMotorPort, MotorType.kBrushless);
+    private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acquireMotorPort, MotorType.kBrushless);
     private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
     private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
     DigitalInput tiltLimit;
 
 
-    private double tiltSpeed = 0.5;
     boolean tiltPosition = true;  /**true is up, false is down*/
     /**
      * Creates an acquisition object with a specific tilt limit.
      */
     public AcquisitionMunchkin(){
-        
-    }
-    /**
-     * Gets how fast the acquisition is tilting.
-     * @return returns said speed.
-     */
-    public double getTiltSpeed(){
-        return tiltSpeed;
+        acquireMotor.set(0);
+        tiltMotor.set(0);
     }
     /**
      * Gets where the acquisition is in its tilt path.
@@ -81,11 +73,6 @@ public class AcquisitionMunchkin extends Acquisition {
     public boolean getTiltLimit(){
         return tiltLimit.get();
      }
-     /*
-    public double getAngle(){
-        return acqEncoder.get() * 360/174.9;
-    }
-    */
     /**
      * Returns if the acqusition is spinning.
      * @return is the motor running.
@@ -94,7 +81,7 @@ public class AcquisitionMunchkin extends Acquisition {
         return acquireMotor.get() > 0;
     }
     
-    
+    //TODO: make sure these get the proper value if we use them
     public double getAcquireVoltage(){
         return acquireMotor.getVoltageCompensationNominalVoltage();
     }

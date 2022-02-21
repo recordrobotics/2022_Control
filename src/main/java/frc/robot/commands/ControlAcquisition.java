@@ -16,7 +16,17 @@ import frc.robot.OI;
 
 public class ControlAcquisition extends CommandBase {
     /**
-     * Constants.ACQ_SPEED This is how fast the aquisition spins.
+     * reverseSpinButton Which button lowers the tilt of the aquisition.
+     * forwardSpinButton Which button spins the aquisition.
+     * tiltUpButton Which button lowers the tilt of the aquisition.
+     * tiltDownButton Which button spins the aquisition.
+     */
+    String forwardSpinButton = "LT";
+    String reverseSpinButton = "LB";
+    String tiltUpButton = "RSYUP";
+    String tiltDownButton = "RSYDOWN";
+    /**
+     * Constants.SPIN_SPEED This is how fast the aquisition spins.
      */
     private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
     /**
@@ -28,7 +38,31 @@ public class ControlAcquisition extends CommandBase {
     }
     //TODO: FILL IN WITH CORRECT STUFF
     private void controlAcqMunchkin() {
+        /**
+         * if: spin forward (sucks balls in) when forwardSpinButton is pressed.
+         * else if: spin backwards (expels balls out) when reverseSpinButton is pressed.
+         * else: stop motor from spinning.
+         */
+        if (OI.getXboxButtonState(forwardSpinButton)) {
+            m_acquisition.moveAcq(Constants.SPIN_SPEED);
+        } else if (OI.getXboxButtonState(reverseSpinButton)) {
+            m_acquisition.moveAcq(-Constants.SPIN_SPEED);
+        } else {
+            m_acquisition.moveAcq(0);
+        }
 
+        /**
+         * if: tilt up when tiltUpButton is pressed.
+         * else if: tilt down when tiltDownButton is pressed.
+         * else: stop motor from spinning.
+         */
+        if (OI.getXboxButtonState(tiltUpButton)) {
+            m_acquisition.moveTilt(Constants.TILT_SPEED);
+        } else if (OI.getXboxButtonState(tiltDownButton)) {
+            m_acquisition.moveTilt(-Constants.TILT_SPEED);
+        } else {
+            m_acquisition.moveTilt(0);
+        }
     }
     /**
      * Method to spin and tilt acquisition.
@@ -36,26 +70,26 @@ public class ControlAcquisition extends CommandBase {
     private void controlAcq2020() {
         //control the acqusition wheels
         /**
-         * IF: if the aquisition button is pressed, move the aquisition by Constants.ACQ_SPEED.
-         * ELSE IF: if the reverse button is pressed, move the aquisition by Constants.ACQ_SPEED in the other direction.
+         * IF: if the aquisition button is pressed, move the aquisition by Constants.SPIN_SPEED.
+         * ELSE IF: if the reverse button is pressed, move the aquisition by Constants.SPIN_SPEED in the other direction.
          * ELSE: the aquisition shouldn't spin if either button is not pressed.
          */
-        if (OI.getXboxButtonState(acqButton)){
-            m_acquisition.moveAcq(Constants.ACQ_SPEED);
-        } else if (OI.getXboxButtonState(reverseButton)){
-            m_acquisition.moveAcq(-Constants.ACQ_SPEED);
+        if (OI.getXboxButtonState(forwardSpinButton)) {
+            m_acquisition.moveAcq(Constants.SPIN_SPEED);
+        } else if (OI.getXboxButtonState(reverseSpinButton)) {
+            m_acquisition.moveAcq(-Constants.SPIN_SPEED);
         } else {
             m_acquisition.moveAcq(0);
         }
         /**
-         * IF: if the right bumper is pressed, tilt the aquisition up by acq.getTiltSpeed().
-         * ELSE IF: if the left bumper is pressed, tilt the aquisition down by acq.getTiltSpeed().
+         * IF: if the right bumper is pressed, tilt the aquisition up by Constants.TILT_SPEED.
+         * ELSE IF: if the left bumper is pressed, tilt the aquisition down by Constants.TILT_SPEED.
          * ELSE: the aquisition shouldn't tilt if either bumper is not pressed.
          */
-        if (OI.getXboxButtonState("RSYUP")){
-            m_acquisition.moveTilt(m_acquisition.getTiltSpeed());
-        } else if (OI.getXboxButtonState("RSYDOWN")){
-            m_acquisition.moveTilt(-m_acquisition.getTiltSpeed());
+        if (OI.getXboxButtonState(tiltUpButton)) {
+            m_acquisition.moveTilt(Constants.TILT_SPEED);
+        } else if (OI.getXboxButtonState(tiltDownButton)) {
+            m_acquisition.moveTilt(-Constants.TILT_SPEED);
         } else {
             m_acquisition.moveTilt(0);
         }
@@ -64,12 +98,7 @@ public class ControlAcquisition extends CommandBase {
     /** Called just before this Command runs the first time*/
     
 
-    /**
-     * @param reverseButton Which button lowers the tilt of the aquisition.
-     * @param acqButton Which button spins the aquisition.
-     */
-    String reverseButton = "LB";
-    String acqButton = "LT";
+    
 
     /** Called repeatedly when this Command is scheduled to run*/
     @Override

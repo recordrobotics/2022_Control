@@ -19,7 +19,6 @@ public class Acquisition2020 extends Acquisition {
     /**
      * aquireMotor tiltMotor Creating variables for the acquisition's motors.
      * tiltLimit The maximum angle the acquisition can be at (to avoid unwanted accidents with the acquisition hitting something).
-     * tiltSpeed How fast the aquisition tilts.
      * tiltPostition Whether the aquisition is up or down.
      */
 
@@ -30,20 +29,12 @@ public class Acquisition2020 extends Acquisition {
     DigitalInput tiltLimit;
 
 
-    private double tiltSpeed = 0.5;
     boolean tiltPosition = true;  /**true is up, false is down*/
     /**
      * Creates an acquisition object with a specific tilt limit.
      */
     public Acquisition2020(){
         tiltLimit = new DigitalInput(7);
-    }
-    /**
-     * Gets how fast the acquisition is tilting.
-     * @return returns said speed.
-     */
-    public double getTiltSpeed(){
-        return tiltSpeed;
     }
     /**
      * Gets where the acquisition is in its tilt path.
