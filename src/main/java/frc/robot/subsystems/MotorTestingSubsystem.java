@@ -20,7 +20,7 @@ public class MotorTestingSubsystem extends SubsystemBase {
 *   here. Call these from Commands.
 */ 
 
-CANSparkMax dr1 = new CANSparkMax(1, CANSparkMax.MotorType.kBrushed);
+CANSparkMax dr1 = new CANSparkMax(1, CANSparkMax.MotorType.kBrushless);
 
 
 
@@ -34,8 +34,10 @@ public void stopTestMotor(){
 }
 
 public void testMotors(double amount){
+    
     System.out.println("testMotor() called with " + amount);
     dr1.set(amount);
+    
 };
 
   

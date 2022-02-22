@@ -32,11 +32,11 @@ public class TestingCommand extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    runMotors();
+    m_test.testMotors(OI.getForward()*0.2);
   }
-public void runMotors(){
-  m_test.testMotors(OI.getForward()*0.2);
-}
+
+  
+
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
