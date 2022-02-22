@@ -25,9 +25,13 @@ CANSparkMax dr1 = new CANSparkMax(1, CANSparkMax.MotorType.kBrushed);
 
 
 public void motorTestingSubsysytem(){
-    dr1.stopMotor();
+   
 }
 
+public void stopTestMotor(){
+    dr1.stopMotor();
+    dr1.set(0);
+}
 
 public void testMotors(double amount){
     System.out.println("testMotor() called with " + amount);
