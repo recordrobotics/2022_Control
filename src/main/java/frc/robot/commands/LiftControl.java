@@ -42,17 +42,32 @@ public class LiftControl extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    liftControl();
+    switch (Constants.CURRENT_ROBOT) {
+      case MUNCHKIN:
+      liftControlMunchkin();
+      break;
+      case ROBOT2020:
+        liftControl2020();
+        break;
+      default:
+        break;
+    } 
+    liftControl2020();
+  }
+
+  public void liftControlMunchkin(){
+    
   }
 
   /**
    * Moves lift based on GREEN PANEL BUTTONS OR YELLOW PANEL BUTTONS.
    */
-  public void liftControl() {
+  public void liftControl2020() {
     /**
      * if the left green button is pressed, move up if the right green button is
      * pressed, move down
      */
+    
     if ((OI.getPanelButtonState(ButtonMap.liftRaise)) || OI.getPanelButtonState(ButtonMap.LiftOverrideUp)) {
       m_lift.moveLift(Constants.SPEED);
       position++;

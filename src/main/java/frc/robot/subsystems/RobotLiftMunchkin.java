@@ -44,13 +44,20 @@ public class RobotLiftMunchkin extends RobotLift{
         robotLiftVerticalMotors.set(0.0);
     }
     public double getPosition(){
-        return liftEncoder.get();
+        return 0;//liftEncoder.get();
     }
     /**
      * moveLift() moves lift up and down.
      * @param v how fast the left lift motor spins.
      */
     public void moveLift(double v) {
+        System.out.println("You are running the wrong Lift Function");
+    }
 
+    public void moveVerticalLift(double v){
+        robotLiftVerticalMotors.set(v);
+    }
+    public void moveRotateLift(double v){
+        robotLiftRotateMotors.set(v);
     }
 }
