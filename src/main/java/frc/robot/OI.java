@@ -100,6 +100,12 @@ public class OI {
     return joystick.getYAxis();
   }
 
+  public static double getRightStickHorizontal(){
+    return xbox.getCStickXAxis();
+  }
+  public static double getRightStickVertical(){
+    return xbox.getCStickYAxis();
+  }
   /**
    * @return The turn (yaw) value of the current joystick
    */

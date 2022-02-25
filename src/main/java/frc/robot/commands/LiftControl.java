@@ -52,11 +52,10 @@ public class LiftControl extends CommandBase {
       default:
         break;
     } 
-    liftControl2020();
   }
-
+ 
   public void liftControlMunchkin(){
-    
+    m_lift.moveLift(OI.getRightStickVertical());
   }
 
   /**

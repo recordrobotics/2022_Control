@@ -40,6 +40,7 @@ public class RobotContainer {
   private CamStream m_camStream = new CamStream(2);
   private Command m_autonomousCommand;
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
+  private LiftRotater m_rotater;
 
   // Network table setup
   private NetworkTableInstance m_netTableInst;
@@ -58,6 +59,7 @@ public class RobotContainer {
   public Dashboard getDashboard() { return m_dashboard; }
   public CamStream getCamStream() { return m_camStream; }
   public Command getAutonomousCommand() { return m_autonomousCommand; }
+  public LiftRotater getRotater() {return m_rotater; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public void init() {
@@ -86,7 +88,9 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
-    
+    m_rotater = new LiftRotater();
+    m_rotater.setDefaultCommand(new RotateLiftControl());
+    m_robotLift = new RobotLiftMunchkin();
   }
 
   /**
