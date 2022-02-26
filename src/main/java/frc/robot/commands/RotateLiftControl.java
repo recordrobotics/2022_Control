@@ -36,6 +36,7 @@ public class RotateLiftControl extends CommandBase {
 
   private void moveRotater(double v){
     m_rotater.RotateLift(v);
+    System.out.println("rotate value" + v);
   }
   
   /** Make this return true when this Command no longer needs to run execute() */
