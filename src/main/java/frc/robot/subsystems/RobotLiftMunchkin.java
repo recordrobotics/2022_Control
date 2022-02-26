@@ -9,8 +9,8 @@ import frc.robot.RobotMap;
 import frc.robot.Constants;
 
 public class RobotLiftMunchkin extends RobotLift{
-    private CANSparkMax robotLiftVerticalMotorLeft = new CANSparkMax(RobotMap.robotLiftLeftMotorPort, MotorType.kBrushless);
-    private CANSparkMax robotLiftVerticalMotorRight = new CANSparkMax(RobotMap.robotLiftLeftMotorPort, MotorType.kBrushless);
+    private CANSparkMax robotLiftVerticalMotorLeft = new CANSparkMax(RobotMap.robotLiftMunchkinLeftMotorPort, MotorType.kBrushless);
+    private CANSparkMax robotLiftVerticalMotorRight = new CANSparkMax(RobotMap.robotLiftMunchkinRightMotorPort, MotorType.kBrushless);
     private double targetVoltage = Constants.robotLiftTargetVoltage;
     private MotorControllerGroup robotLiftVerticalMotors = new MotorControllerGroup(robotLiftVerticalMotorLeft, robotLiftVerticalMotorRight);
     public RobotLiftMunchkin(){

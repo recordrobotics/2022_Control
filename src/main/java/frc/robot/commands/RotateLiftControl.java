@@ -31,12 +31,19 @@ public class RotateLiftControl extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    moveRotater(OI.getRightStickHorizontal()*0.2);
+    if(OI.getRightStickLeft()){
+      moveRotater(0.15);
+    }
+    if(OI.getRightStickRight()){
+      moveRotater(-0.15);
+    }
+    else{
+      moveRotater(0);
+    }
   }
 
   private void moveRotater(double v){
     m_rotater.RotateLift(v);
-    System.out.println("rotate value" + v);
   }
   
   /** Make this return true when this Command no longer needs to run execute() */

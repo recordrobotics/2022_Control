@@ -33,6 +33,8 @@ public class RobotMap {
 	 */
 	public static int robotLiftRotaterRightMotorPort = 2;
     public static int robotLiftRotaterLeftMotorPort = 1;
+	public static int robotLiftMunchkinRightMotorPort = 3;
+	public static int robotLiftMunchkinLeftMotorPort = 4;
 
     /**
 	 * Spark Motors for Monolith
