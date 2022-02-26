@@ -12,7 +12,6 @@ public class LiftRotater extends SubsystemBase{
     private CANSparkMax robotLiftRotateMotorLeft = new CANSparkMax(RobotMap.robotLiftLeftMotorPort, MotorType.kBrushless);
     private CANSparkMax robotLiftRotateMotorRight = new CANSparkMax(RobotMap.robotLiftLeftMotorPort, MotorType.kBrushless);
     private double targetVoltage = Constants.liftRotaterTargetVoltage;
-    private MotorControllerGroup robotLiftRotateMotors = new MotorControllerGroup(robotLiftRotateMotorLeft, robotLiftRotateMotorRight);
     public LiftRotater(){
      // robotLiftMotor.enableVoltageCompensation(true);
      // robotLiftMotor.setVoltage(targetVoltage);
@@ -25,8 +24,10 @@ public class LiftRotater extends SubsystemBase{
 
     public void stop() {
 
-        robotLiftRotateMotors.stopMotor();
-        robotLiftRotateMotors.set(0.0);
+        robotLiftRotateMotorLeft.stopMotor();
+        robotLiftRotateMotorLeft.set(0.0);
+        robotLiftRotateMotorRight.stopMotor();
+        robotLiftRotateMotorRight.set(0.0);
     }
     public double getPosition(){
         return 0;//liftEncoder.get();
@@ -36,6 +37,7 @@ public class LiftRotater extends SubsystemBase{
      * @param v how fast the left lift motor spins.
      */
     public void RotateLift(double v) {
-        robotLiftRotateMotors.set(v);
+        robotLiftRotateMotorLeft.set(v);
+        robotLiftRotateMotorRight.set(-v);
     }
 }
