@@ -104,7 +104,7 @@ public class OI {
    * @return The turn (yaw) value of the current joystick
    */
   public static double getTurn(){
-    return joystick.getXAxis();
+    return -joystick.getXAxis();
 
   }
 }
