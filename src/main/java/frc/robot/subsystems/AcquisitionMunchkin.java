@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
-import frc.robot.Constants;
+//import frc.robot.Constants;
 
 //import com.ctre.phoenix.motorcontrol.*;
 //import com.ctre.phoenix.motorcontrol.can.*;
@@ -25,8 +25,8 @@ public class AcquisitionMunchkin extends Acquisition {
 
     private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acqSpinMotorPort, MotorType.kBrushless);
     private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acqTiltMotorPort, MotorType.kBrushless);
-    private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
-    private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
+    //private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
+    //private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
     DigitalInput tiltLimit;
 
 
