@@ -55,7 +55,7 @@ public class LiftControl extends CommandBase {
   }
  
   public void liftControlMunchkin(){
-    m_lift.moveLift(OI.getRightStickVertical());
+    m_lift.moveLift(OI.getRightStickVertical()*0.2);
   }
 
   /**
