@@ -23,8 +23,10 @@ public class ControlAcquisition extends CommandBase {
      */
     String forwardSpinButton = "LT";
     String reverseSpinButton = "LB";
-    String tiltUpButton = "RSYUP";
-    String tiltDownButton = "RSYDOWN";
+    String tiltUpButton2020 = "RSYUP";
+    String tiltDownButton2020 = "RSYDOWN";
+    String tiltUpButtonMunchkin = "RT";
+    String tiltDownButtonMunchkin = "RB";
     /**
      * Constants.SPIN_SPEED This is how fast the aquisition spins.
      */
@@ -44,9 +46,9 @@ public class ControlAcquisition extends CommandBase {
          * else: stop motor from spinning.
          */
         if (OI.getXboxButtonState(forwardSpinButton)) {
-            m_acquisition.moveAcq(Constants.SPIN_SPEED);
+            m_acquisition.moveAcq(Constants.SPIN_SPEEDMUNCHKIN);
         } else if (OI.getXboxButtonState(reverseSpinButton)) {
-            m_acquisition.moveAcq(-Constants.SPIN_SPEED);
+            m_acquisition.moveAcq(-Constants.SPIN_SPEEDMUNCHKIN);
         } else {
             m_acquisition.moveAcq(0);
         }
@@ -56,10 +58,10 @@ public class ControlAcquisition extends CommandBase {
          * else if: tilt down when tiltDownButton is pressed.
          * else: stop motor from spinning.
          */
-        if (OI.getXboxButtonState(tiltUpButton)) {
-            m_acquisition.moveTilt(Constants.TILT_SPEED);
-        } else if (OI.getXboxButtonState(tiltDownButton)) {
-            m_acquisition.moveTilt(-Constants.TILT_SPEED);
+        if (OI.getXboxButtonState(tiltUpButtonMunchkin)) {
+            m_acquisition.moveTilt(Constants.TILT_SPEEDMUNCHKIN);
+        } else if (OI.getXboxButtonState(tiltDownButtonMunchkin)) {
+            m_acquisition.moveTilt(-Constants.TILT_SPEEDMUNCHKIN);
         } else {
             m_acquisition.moveTilt(0);
         }
@@ -75,9 +77,9 @@ public class ControlAcquisition extends CommandBase {
          * ELSE: the aquisition shouldn't spin if either button is not pressed.
          */
         if (OI.getXboxButtonState(forwardSpinButton)) {
-            m_acquisition.moveAcq(Constants.SPIN_SPEED);
+            m_acquisition.moveAcq(Constants.SPIN_SPEED2020);
         } else if (OI.getXboxButtonState(reverseSpinButton)) {
-            m_acquisition.moveAcq(-Constants.SPIN_SPEED);
+            m_acquisition.moveAcq(-Constants.SPIN_SPEED2020);
         } else {
             m_acquisition.moveAcq(0);
         }
@@ -86,10 +88,10 @@ public class ControlAcquisition extends CommandBase {
          * ELSE IF: if the left bumper is pressed, tilt the aquisition down by Constants.TILT_SPEED.
          * ELSE: the aquisition shouldn't tilt if either bumper is not pressed.
          */
-        if (OI.getXboxButtonState(tiltUpButton)) {
-            m_acquisition.moveTilt(Constants.TILT_SPEED);
-        } else if (OI.getXboxButtonState(tiltDownButton)) {
-            m_acquisition.moveTilt(-Constants.TILT_SPEED);
+        if (OI.getXboxButtonState(tiltUpButton2020)) {
+            m_acquisition.moveTilt(Constants.TILT_SPEED2020);
+        } else if (OI.getXboxButtonState(tiltDownButton2020)) {
+            m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
         } else {
             m_acquisition.moveTilt(0);
         }
