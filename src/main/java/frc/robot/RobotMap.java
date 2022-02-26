@@ -29,6 +29,12 @@ public class RobotMap {
 	 */
 
 	/**
+	 * Motors for Munchkin
+	 */
+	public static int robotLiftRotaterRightMotorPort = 2;
+    public static int robotLiftRotaterLeftMotorPort = 1;
+
+    /**
 	 * Spark Motors for Monolith
 	 */ 
 	public static int driveFrontRightPortMonolith = 15;

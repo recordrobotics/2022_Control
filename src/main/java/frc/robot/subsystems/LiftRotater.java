@@ -9,8 +9,8 @@ import frc.robot.RobotMap;
 import frc.robot.Constants;
 
 public class LiftRotater extends SubsystemBase{
-    private CANSparkMax robotLiftRotateMotorLeft = new CANSparkMax(RobotMap.robotLiftLeftMotorPort, MotorType.kBrushless);
-    private CANSparkMax robotLiftRotateMotorRight = new CANSparkMax(RobotMap.robotLiftLeftMotorPort, MotorType.kBrushless);
+    private CANSparkMax robotLiftRotateMotorLeft = new CANSparkMax(RobotMap.robotLiftRotaterLeftMotorPort, MotorType.kBrushless);
+    private CANSparkMax robotLiftRotateMotorRight = new CANSparkMax(RobotMap.robotLiftRotaterRightMotorPort, MotorType.kBrushless);
     private double targetVoltage = Constants.liftRotaterTargetVoltage;
     public LiftRotater(){
      // robotLiftMotor.enableVoltageCompensation(true);
