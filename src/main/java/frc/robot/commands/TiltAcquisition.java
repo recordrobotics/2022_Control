@@ -32,9 +32,9 @@ public class TiltAcquisition extends CommandBase {
   @Override
   public void execute() {
     if (m_acquisition.getTiltPosition()) {
-      m_acquisition.moveTilt(-Constants.TILT_SPEED);
+      m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
     } else {
-      m_acquisition.moveTilt(Constants.TILT_SPEED);
+      m_acquisition.moveTilt(Constants.TILT_SPEED2020);
     }
   }
 
