@@ -92,6 +92,7 @@ public class RobotContainer {
     m_rotater.setDefaultCommand(new RotateLiftControl());
     m_robotLift = new RobotLiftMunchkin();
     m_robotLift.setDefaultCommand(new LiftControl());
+    m_dashboard = new DashboardMunchkin();
   }
 
   /**
