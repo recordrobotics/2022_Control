@@ -33,13 +33,17 @@ public class RotateLiftControl extends CommandBase {
   public void execute() {
     if(OI.getRightStickLeft()){
       moveRotater(0.15);
+      System.out.print("Moving Left Pressed");
+    } else{
+      if(OI.getRightStickRight()){
+        moveRotater(-0.15);
+        System.out.print("Moving Right Pressed");
+      }
+      else{
+        moveRotater(0);
+      }
     }
-    if(OI.getRightStickRight()){
-      moveRotater(-0.15);
-    }
-    else{
-      moveRotater(0);
-    }
+    
   }
 
   private void moveRotater(double v){
