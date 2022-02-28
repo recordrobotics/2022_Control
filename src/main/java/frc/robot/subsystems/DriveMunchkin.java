@@ -33,6 +33,10 @@ public class DriveMunchkin extends DriveTrain {
    * Library Differential Drive object
    */
   private DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
+  
+  /**
+   * creates drive object, stopping motors like a good boi
+   */
   public DriveMunchkin(){
     leftMotors.stopMotor();
     rightMotors.stopMotor();
@@ -42,16 +46,14 @@ public class DriveMunchkin extends DriveTrain {
   private long disabled_start_time = 0;
 
   /**
-   * @param amount amount to move the wheel. Depends on contex, is usually percent
-   *               output
+   * @param amount amount to move the wheel. Depends on contex, is usually percent output
    */
   public void moveLeftWheels(double amount) {
     leftMotors.set(amount);
   };
 
   /**
-   * @param amount amount to move the wheel. Depends on contex, is usually percent
-   *               output
+   * @param amount amount to move the wheel. Depends on contex, is usually percent output
    */
   public void moveRightWheels(double amount) {
     rightMotors.set(amount);
