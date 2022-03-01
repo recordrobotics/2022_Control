@@ -56,11 +56,12 @@ public class LiftControl extends CommandBase {
  
   public void liftControlMunchkin(){
     if(OI.getRightStickUp()){
-    m_lift.moveLift(0.2);
-    }else{
-      if(OI.getRightStickDown()){
-        m_lift.moveLift(-0.2);
-      }else{
+    m_lift.moveLift(0.3);
+    }
+    else if(OI.getRightStickDown()){
+        m_lift.moveLift(-0.3);
+    }
+    else{
         m_lift.moveLift(0);
       }
     }
