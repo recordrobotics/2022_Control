@@ -23,7 +23,7 @@ public class AcquisitionMunchkin extends Acquisition {
      * tiltPostition Whether the aquisition is up or down.
      */
 
-    private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acqSpinMotorPort, MotorType.kBrushless);
+    private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acqSpinMotorPort, MotorType.kBrushed);
     private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acqTiltMotorPort, MotorType.kBrushless);
     private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
     private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
