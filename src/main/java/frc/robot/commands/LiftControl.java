@@ -65,7 +65,7 @@ public class LiftControl extends CommandBase {
         m_lift.moveLift(0);
       }
     }
-  }
+  
 
   /**
    * Moves lift based on GREEN PANEL BUTTONS OR YELLOW PANEL BUTTONS.
