@@ -38,6 +38,8 @@ public class LiftMonolith extends RobotLift{
     public double getPosition(){
         return 0;
     }
+    public void resetEncoder(){
+    }
     /**
      * Stops the lift from moving.
      */

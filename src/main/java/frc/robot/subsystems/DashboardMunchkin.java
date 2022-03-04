@@ -19,6 +19,7 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putData("Move to 3ft", new MoveToRange(36));
         SmartDashboard.putData("Turn to Goal", new TurnToGoal());
         SmartDashboard.putData("Rotate Lift Supposedly 10 degrees", new RotateToPosition(10));
+        SmartDashboard.putData("Lift Lift to 5 abstract units", new RotateToPosition(5));
         m_container = RobotContainer.getInstance();
     }
 

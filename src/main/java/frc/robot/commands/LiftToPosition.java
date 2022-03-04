@@ -9,54 +9,50 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.LiftRotater;
+import frc.robot.subsystems.RobotLift;
+import frc.robot.subsystems.RobotLiftMunchkin;
 import frc.robot.control.PID;
 
 /**
  * An example command. You can replace me with your own command.
  */
-public class RotateToPosition extends CommandBase {
+public class LiftToPosition extends CommandBase {
   private double pos;
-  private LiftRotater m_rotater = RobotContainer.getInstance().getRotater();
+  private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   private PID pid;
 
-  public RotateToPosition(double position) {
+  public LiftToPosition(double position) {
     /** Converts degree input to abstract units for the encoders
      * Currently large margin of error, may need to be adjusted
     */
-    pos = position * 0.5;
-    pid = new PID(0.1,0.1,0,pos);
+    pos = position;
   }
 
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-    m_rotater.resetLeftRotateEncoder();
+    m_lift.resetEncoder();
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
     if(pos < 0){
-      m_rotater.RotateLift(-0.2*pid.control(m_rotater.getPosition()-pos));
-      System.out.println(m_rotater.getPosition()+ "moving to negative");
+      m_lift.moveLift(-0.15);
     }else{
       if(pos > 0){
-        m_rotater.RotateLift(0.2*pid.control(m_rotater.getPosition()-pos));
-        System.out.println(m_rotater.getPosition()+ "moving to positive");
+        m_lift.moveLift(0.15);
       }else{
-        m_rotater.RotateLift(0);
+        m_lift.moveLift(0);
       }
     }
-    
-    System.out.println("Running Auto Lift" + pos);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
-  public boolean isFinished() {
-    if (m_rotater.getPosition() > pos - 1 && m_rotater.getPosition() < pos + 1){
-        System.out.println("Done turing at angle: " + m_rotater.getPosition());
+  public boolean isFinished(){
+    if (m_lift.getPosition()>pos){
+        System.out.println("Done lifting at: " + m_lift.getPosition());
         return true;
     } else{
         return false;
@@ -66,7 +62,7 @@ public class RotateToPosition extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
-    m_rotater.RotateLift(0);
+    m_lift.moveLift(0);
   }
 
 }

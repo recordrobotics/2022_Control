@@ -3,6 +3,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.RobotMap;
@@ -13,6 +14,7 @@ public class RobotLiftMunchkin extends RobotLift{
     private CANSparkMax robotLiftVerticalMotorRight = new CANSparkMax(RobotMap.robotLiftMunchkinRightMotorPort, MotorType.kBrushless);
     private double targetVoltage = Constants.robotLiftTargetVoltage;
     private MotorControllerGroup robotLiftVerticalMotors = new MotorControllerGroup(robotLiftVerticalMotorLeft, robotLiftVerticalMotorRight);
+    private RelativeEncoder liftEncoder = robotLiftVerticalMotorLeft.getEncoder();
     public RobotLiftMunchkin(){
      // robotLiftMotor.enableVoltageCompensation(true);
      // robotLiftMotor.setVoltage(targetVoltage);
@@ -29,7 +31,10 @@ public class RobotLiftMunchkin extends RobotLift{
     }
 
     public double getPosition(){
-        return 0;//liftEncoder.get();
+        return liftEncoder.getPosition();
+    }
+    public void resetEncoder(){
+        liftEncoder.setPosition(0);
     }
 
     /**
