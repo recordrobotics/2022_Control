@@ -69,4 +69,6 @@ public final class Constants {
     //for Acquisition2020.java
     public static final double Acq2020AcquireMotorVoltage = 11.5;
     public static final double Acq2020TiltMotorVoltage = 11.5;
+    //for DiagonalStartingPositionMunchkin.java
+    public static final double DISTANCE_BETWEEN_RANGE_FINDERS = 0.0;
 }

@@ -46,9 +46,7 @@ public class ManualDrive extends CommandBase {
   }
 
   private void driveMunchkin() {
-    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * Constants.FORWARD_MULTIPLIER, OI.getTurn() * Constants.TURN_MULTIPLIER);
-    System.out.println(OI.getForward() * Constants.FORWARD_MULTIPLIER);
-    System.out.println(OI.getTurn() * Constants.TURN_MULTIPLIER);
+    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * 0.45, OI.getTurn() * 0.45);
   }
 
   private double driveMonolith() {
