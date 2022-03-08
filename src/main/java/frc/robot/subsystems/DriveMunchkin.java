@@ -16,16 +16,18 @@ import com.revrobotics.*;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import frc.robot.RobotMap;
+
 /**
  * This is the class that all Record Robotics drive trains should extend
  */
 public class DriveMunchkin extends DriveTrain {
   private CANSparkMax[] left = {
-                                  new CANSparkMax(1, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(2, CANSparkMax.MotorType.kBrushless)};
+                                  new CANSparkMax(RobotMap.driveMotor_lf, CANSparkMax.MotorType.kBrushless),
+                                  new CANSparkMax(RobotMap.driveMotor_lb, CANSparkMax.MotorType.kBrushless)};
   private CANSparkMax[] right = {
-                                  new CANSparkMax(3, CANSparkMax.MotorType.kBrushless),
-                                  new CANSparkMax(4, CANSparkMax.MotorType.kBrushless)};
+                                  new CANSparkMax(RobotMap.driveMotor_rf, CANSparkMax.MotorType.kBrushless),
+                                  new CANSparkMax(RobotMap.driveMotor_rb, CANSparkMax.MotorType.kBrushless)};
 
   private MotorControllerGroup leftMotors = new MotorControllerGroup(left);
   private MotorControllerGroup rightMotors = new MotorControllerGroup(right);
@@ -46,14 +48,14 @@ public class DriveMunchkin extends DriveTrain {
   private long disabled_start_time = 0;
 
   /**
-   * @param amount amount to move the wheel. Depends on contex, is usually percent output
+   * @param amount amount to move the wheel. Depends on context, is usually percent output
    */
   public void moveLeftWheels(double amount) {
     leftMotors.set(amount);
   };
 
   /**
-   * @param amount amount to move the wheel. Depends on contex, is usually percent output
+   * @param amount amount to move the wheel. Depends on context, is usually percent output
    */
   public void moveRightWheels(double amount) {
     rightMotors.set(amount);

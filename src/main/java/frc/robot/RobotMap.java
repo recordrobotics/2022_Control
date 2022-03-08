@@ -104,5 +104,14 @@ public class RobotMap {
 	public static int extendSolenoidModulePort;
 	public static int extendSolenoidForwardPort;
 	public static int extendSolenoidBackwardPort;
+
+	/**
+	* 2022 Robot Motor CAN bus IDs
+	* l = left, r = right, b = back, f = front
+	 */
+	public static int driveMotor_lf = 1;
+	public static int driveMotor_lb = 2;
+	public static int driveMotor_rb = 3;
+	public static int driveMotor_rf = 4;
 }
 
