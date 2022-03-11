@@ -16,7 +16,7 @@ public final class Constants {
     /**
     * The robot currently selected
     */
-    public static final RobotModel CURRENT_ROBOT = RobotModel.ROBOT2020;
+    public static final RobotModel CURRENT_ROBOT = RobotModel.MUNCHKIN;
 
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
@@ -73,4 +73,6 @@ public final class Constants {
     //for Acquisition2020.java
     public static final double Acq2020AcquireMotorVoltage = 11.5;
     public static final double Acq2020TiltMotorVoltage = 11.5;
+    //for DiagonalStartingPositionMunchkin.java
+    public static final double DISTANCE_BETWEEN_RANGE_FINDERS = 0.0;
 }
