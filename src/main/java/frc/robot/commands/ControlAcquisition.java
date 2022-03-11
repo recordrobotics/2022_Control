@@ -38,7 +38,7 @@ public class ControlAcquisition extends CommandBase {
         /** Use requires() here to declare subsystem dependencies*/
         addRequirements(m_acquisition);
     }
-    //TODO: FILL IN WITH CORRECT STUFF
+
     private void controlAcqMunchkin() {
         /**
          * if: spin forward (sucks balls in) when forwardSpinButton is pressed.
