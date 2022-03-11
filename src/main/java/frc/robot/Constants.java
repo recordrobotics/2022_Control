@@ -30,7 +30,11 @@ public final class Constants {
     //for CamControl.java
     public static final String SWITCH_BUTTON = "Y";
     //for ControlAcquisition.java
-    public static final double ACQ_SPEED = -0.5d;
+    public static final double SPIN_SPEED2020 = -0.5d;
+    public static final double TILT_SPEED2020 = -0.5d;
+    //TODO: set these once we know what they need to be (testing)
+    public static final double SPIN_SPEEDMUNCHKIN = -0.5d;
+    public static final double TILT_SPEEDMUNCHKIN = -0.5d;
     //for ControlFlywheel.java
     public static final boolean USE_XBOX_CONTROLLER = true;
     public static final String XBOX_BUTTON = "X";
