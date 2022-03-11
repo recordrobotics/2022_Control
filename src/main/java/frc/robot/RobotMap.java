@@ -29,6 +29,7 @@ public class RobotMap {
 	 */
 
 	/**
+//TODO: Set the motor values in here properly based on numbers on the real robot
 	 * Motors for Munchkin
 	 */
 	public static int robotLiftRotaterRightMotorPort = 5;
@@ -37,6 +38,14 @@ public class RobotMap {
 	public static int robotLiftMunchkinLeftMotorPort = 4;
 
     /**
+	 * Drive Motors for Munchkin
+	 */
+	public static int driveFrontLeftPortMunchkin = 1;
+	public static int driveBackLeftPortMunchkin = 2;
+	public static int driveFrontRightPortMunchkin = 3;
+	public static int driveBackRightPortMunchkin = 4;
+
+	/**
 	 * Spark Motors for Monolith
 	 */ 
 	public static int driveFrontRightPortMonolith = 15;
@@ -70,6 +79,12 @@ public class RobotMap {
 	public static int spoolLiftLeftMotor = 10;
 	public static int spoolLiftRightMotor = 11;
 	public static int robotLiftLeftMotorPort = 9; 
+
+	/**
+	 * Set of subsystem motors for Munchkin (temporary, set later)
+	 */
+	public static int acqSpinMotorPort = 8;
+	public static int acqTiltMotorPort = 7;
 
 	/**
 	 * encoder ports
@@ -112,5 +127,14 @@ public class RobotMap {
 	public static int extendSolenoidModulePort;
 	public static int extendSolenoidForwardPort;
 	public static int extendSolenoidBackwardPort;
+
+	/**
+	* 2022 Robot Motor CAN bus IDs
+	* l = left, r = right, b = back, f = front
+	 */
+	public static int driveMotor_lf = 1;
+	public static int driveMotor_lb = 2;
+	public static int driveMotor_rb = 3;
+	public static int driveMotor_rf = 4;
 }
 

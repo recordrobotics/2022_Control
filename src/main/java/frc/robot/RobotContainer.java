@@ -46,6 +46,7 @@ public class RobotContainer {
   private NetworkTableInstance m_netTableInst;
   private NetworkTable m_netTable;
   private NetworkTableEntry m_netTableEntry;
+  private AcqServosMunchkin acqServos;
 
   public DriveTrain getDriveTrain() { return m_driveTrain; }
   public RobotLift getRobotLift() { return m_robotLift; }
@@ -60,6 +61,7 @@ public class RobotContainer {
   public CamStream getCamStream() { return m_camStream; }
   public Command getAutonomousCommand() { return m_autonomousCommand; }
   public LiftRotater getRotater() {return m_rotater; }
+  public AcqServosMunchkin getAcqServos() { return acqServos; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public void init() {
@@ -93,6 +95,13 @@ public class RobotContainer {
     m_robotLift = new RobotLiftMunchkin();
     m_robotLift.setDefaultCommand(new LiftControl());
     m_dashboard = new DashboardMunchkin();
+    m_driveTrain = new DriveMunchkin();
+    m_driveTrain.setDefaultCommand(new ManualDrive());
+    m_acquisition = new AcquisitionMunchkin();
+    m_acquisition.setDefaultCommand(new ControlAcquisition());
+    acqServos = new AcqServosMunchkin();
+    acqServos.setDefaultCommand(new ControlMunchkinServos());
+    
   }
 
   /**
