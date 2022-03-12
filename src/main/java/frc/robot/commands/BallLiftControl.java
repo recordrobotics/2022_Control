@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.OI;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.BallLift;
@@ -16,6 +17,7 @@ import frc.robot.subsystems.BallLift;
 public class BallLiftControl extends CommandBase {
   private BallLift m_ballLift = RobotContainer.getInstance().getBallLift();
   private double ballLiftSpeed = 0.6;
+  private double ballLiftSpeedMunchkin = 0.5;
   private boolean moveUp = false;
   private boolean moveDown = false;
 
@@ -51,19 +53,7 @@ return OI.getXboxButtonState("RB");
   }
 
   /** Called just before this Command runs the first time*/
-  
-
-  /** Called repeatedly when this Command is scheduled to run*/
-  @Override
-  public void execute(){
-    moveUp = checkInput(); /** || checkNewBall();*/
-  /** Called repeatedly when this Command is scheduled to run*/
-    
-    /**
-     * Checks whether to run forwards or in reverse, then runs ball lift either forwards or in reverse
-     */
-    moveDown = checkReverseInput();
-
+  public void ballLift2020(){
     if (moveUp) { 
       m_ballLift.moveBallLift(ballLiftSpeed);
     } else if (moveDown){
@@ -72,6 +62,40 @@ return OI.getXboxButtonState("RB");
     else {
       m_ballLift.moveBallLift(0);
     }
+  }
+  public void conveyorMunchkin(){
+    if(OI.getXboxButtonState("LT")){
+      m_ballLift.moveBallLift(ballLiftSpeedMunchkin);
+    }else{
+      if(OI.getXboxButtonState("LB")){
+      m_ballLift.moveBallLift(ballLiftSpeedMunchkin);
+      }else{
+        m_ballLift.moveBallLift(0);
+      }}
+  }
+
+  /** Called repeatedly when this Command is scheduled to run*/
+  @Override
+  public void execute(){
+    switch (Constants.CURRENT_ROBOT) {
+      case MUNCHKIN: 
+        //
+        break;
+      case ROBOT2020:
+        //
+        break;
+      default:
+        break;
+    }
+    moveUp = checkInput(); /** || checkNewBall();*/
+  /** Called repeatedly when this Command is scheduled to run*/
+    
+    /**
+     * Checks whether to run forwards or in reverse, then runs ball lift either forwards or in reverse
+     */
+    moveDown = checkReverseInput();
+
+    
     
   }
 
