@@ -101,7 +101,6 @@ public class RobotContainer {
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     acqServos = new AcqServosMunchkin();
     acqServos.setDefaultCommand(new ControlMunchkinServos());
-    
   }
 
   /**

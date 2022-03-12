@@ -56,13 +56,13 @@ public class LiftControl extends CommandBase {
  
   public void liftControlMunchkin(){
     if(OI.getRightStickUp()){
-    m_lift.moveLift(0.3);
+      m_lift.moveLift(OI.getCStickYAxis() / 2);
     }
     else if(OI.getRightStickDown()){
-        m_lift.moveLift(-0.3);
+      m_lift.moveLift(OI.getCStickYAxis() / 2);
     }
     else {
-        m_lift.moveLift(0);
+      m_lift.moveLift(0);
     }
   }
 

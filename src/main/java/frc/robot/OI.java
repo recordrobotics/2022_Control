@@ -112,6 +112,14 @@ public class OI {
   public static boolean getRightStickDown(){
     return xbox.getRightStickYDown();
   }
+
+  public static double getCStickXAxis(){
+    return xbox.getCStickXAxis();
+  }
+  public static double getCStickYAxis(){
+    return xbox.getCStickYAxis();
+  }
+  
   /**
    * @return The turn (yaw) value of the current joystick
    */
