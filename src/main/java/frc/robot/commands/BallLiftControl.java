@@ -68,7 +68,7 @@ return OI.getXboxButtonState("RB");
       m_ballLift.moveBallLift(ballLiftSpeedMunchkin);
     }else{
       if(OI.getXboxButtonState("LB")){
-      m_ballLift.moveBallLift(ballLiftSpeedMunchkin);
+      m_ballLift.moveBallLift(-ballLiftSpeedMunchkin);
       }else{
         m_ballLift.moveBallLift(0);
       }}
