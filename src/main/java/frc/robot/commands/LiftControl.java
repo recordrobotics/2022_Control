@@ -61,11 +61,10 @@ public class LiftControl extends CommandBase {
     else if(OI.getRightStickDown()){
         m_lift.moveLift(-0.3);
     }
-    else{
+    else {
         m_lift.moveLift(0);
-      }
     }
-  
+  }
 
   /**
    * Moves lift based on GREEN PANEL BUTTONS OR YELLOW PANEL BUTTONS.

@@ -12,19 +12,19 @@ import frc.robot.Constants;
 public class RobotLiftMunchkin extends RobotLift{
     private CANSparkMax robotLiftVerticalMotorLeft = new CANSparkMax(RobotMap.robotLiftMunchkinLeftMotorPort, MotorType.kBrushless);
     private CANSparkMax robotLiftVerticalMotorRight = new CANSparkMax(RobotMap.robotLiftMunchkinRightMotorPort, MotorType.kBrushless);
-    private double targetVoltage = Constants.robotLiftTargetVoltage;
     private MotorControllerGroup robotLiftVerticalMotors = new MotorControllerGroup(robotLiftVerticalMotorLeft, robotLiftVerticalMotorRight);
     private RelativeEncoder liftEncoder = robotLiftVerticalMotorLeft.getEncoder();
+    private double targetVoltage = Constants.robotLiftTargetVoltage;
     public RobotLiftMunchkin(){
+    
      // robotLiftMotor.enableVoltageCompensation(true);
      // robotLiftMotor.setVoltage(targetVoltage);
     }
+
     /**
      * robotLiftMotorLeft creates variable for the left lift motor.
      * stop() stops the motor.
      */
-  
-
     public void stop() {
         robotLiftVerticalMotors.stopMotor();
         robotLiftVerticalMotors.set(0.0);
