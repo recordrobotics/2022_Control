@@ -33,10 +33,10 @@ public class RobotMap {
 	 * Motors for Munchkin
 	 */
 	public static int robotLiftRotaterRightMotorPort = 5;
-    public static int robotLiftRotaterLeftMotorPort = 6;
-	public static int robotLiftMunchkinRightMotorPort = 5;
+    public static int robotLiftRotaterLeftMotorPort = 10;
+	public static int robotLiftMunchkinRightMotorPort = 6;
 	// This could be 11 in the future, we don't know if we'll add another motor
-	public static int robotLiftMunchkinLeftMotorPort = 10;
+	public static int robotLiftMunchkinLeftMotorPort = 9;
 
     /**
 	 * Drive Motors for Munchkin
