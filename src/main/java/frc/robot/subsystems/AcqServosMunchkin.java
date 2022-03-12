@@ -18,8 +18,8 @@ public class AcqServosMunchkin extends SubsystemBase {
 *   Put methods for controlling this subsystem
 *   here. Call these from Commands.
 */
-    private Servo acqServo1 = new Servo(1);
-    private Servo acqServo2 = new Servo(2);
+    private Servo acqServo1 = new Servo(8);
+    private Servo acqServo2 = new Servo(9);
     public AcqServosMunchkin(){
     }
     public void setServos(double v){

@@ -20,6 +20,7 @@ public class ControlMunchkinServos extends CommandBase {
   private AcqServosMunchkin m_servos = RobotContainer.getInstance().getAcqServos();
   public ControlMunchkinServos() {
     /** Use robot container to declare the subsytem's default command */
+    addRequirements(m_servos);
   }
 
   /** Called just before this Command runs the first time */
@@ -37,7 +38,7 @@ public class ControlMunchkinServos extends CommandBase {
     }
 
     if (servosFlipped){  
-    m_servos.setServos(1);
+    m_servos.setServos(0.33);
     } else {
     m_servos.setServos(0);
     }
