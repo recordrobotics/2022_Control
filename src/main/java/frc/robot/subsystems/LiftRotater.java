@@ -14,6 +14,7 @@ public class LiftRotater extends SubsystemBase{
     private CANSparkMax robotLiftRotateMotorRight = new CANSparkMax(RobotMap.robotLiftRotaterRightMotorPort, MotorType.kBrushless);
     private double targetVoltage = Constants.liftRotaterTargetVoltage;
     private RelativeEncoder robotLiftRotaterLeftEncoder = robotLiftRotateMotorLeft.getEncoder();
+    private RelativeEncoder robotLiftRotaterRightEncoder = robotLiftRotateMotorRight.getEncoder();
     public LiftRotater(){
      // robotLiftMotor.enableVoltageCompensation(true);
      // robotLiftMotor.setVoltage(targetVoltage);
@@ -30,10 +31,11 @@ public class LiftRotater extends SubsystemBase{
         robotLiftRotateMotorRight.set(0.0);
     }
     public double getPosition(){
-        return robotLiftRotaterLeftEncoder.getPosition();
+        return (robotLiftRotaterLeftEncoder.getPosition() + robotLiftRotaterRightEncoder.getPosition()) / 2;
     }
-    public void resetLeftRotateEncoder(){
+    public void resetRotateEncoders(){
         robotLiftRotaterLeftEncoder.setPosition(0);
+        robotLiftRotaterRightEncoder.setPosition(0);
     }
     /**
      * moveLift() moves lift up and down.
