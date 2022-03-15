@@ -19,6 +19,7 @@ public class RotateToPosition extends CommandBase {
   private double pos;
   private LiftRotater m_rotater = RobotContainer.getInstance().getRotater();
   private PID pid;
+  private final double PID_MODIFIER = 0.2;
 
   public RotateToPosition(double position) {
     /** Converts degree input to abstract units for the encoders
@@ -38,11 +39,11 @@ public class RotateToPosition extends CommandBase {
   @Override
   public void execute() {
     if(pos < 0){
-      m_rotater.RotateLift(-0.2*pid.control(m_rotater.getPosition()-pos));
+      m_rotater.RotateLift(-PID_MODIFIER*pid.control(m_rotater.getPosition()-pos));
       System.out.println(m_rotater.getPosition()+ "moving to negative");
     }else{
       if(pos > 0){
-        m_rotater.RotateLift(0.2*pid.control(m_rotater.getPosition()-pos));
+        m_rotater.RotateLift(PID_MODIFIER*pid.control(m_rotater.getPosition()-pos));
         System.out.println(m_rotater.getPosition()+ "moving to positive");
       }else{
         m_rotater.RotateLift(0);

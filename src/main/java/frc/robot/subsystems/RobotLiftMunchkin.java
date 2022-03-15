@@ -42,6 +42,7 @@ public class RobotLiftMunchkin extends RobotLift{
      * @param v how fast the lift motors spins.
      */
     public void moveLift(double v) {
-        robotLiftVerticalMotors.set(v);
+        robotLiftVerticalMotorLeft.set(v);
+        robotLiftVerticalMotorRight.set(-v);
     }
 }

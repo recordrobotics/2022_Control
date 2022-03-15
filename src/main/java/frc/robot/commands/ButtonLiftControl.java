@@ -15,12 +15,12 @@ import frc.robot.Constants;
 import frc.robot.control.*;
 import frc.robot.subsystems.RobotLift;
 
-public class LiftControl extends CommandBase {
+public class ButtonLiftControl extends CommandBase {
   private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   /**
    * Creates a LiftControl constructor.
    */
-  public LiftControl() {
+  public ButtonLiftControl() {
     /** Use requires() here to declare subsystem dependencies */
     addRequirements(m_lift);
   }
@@ -42,34 +42,6 @@ public class LiftControl extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    switch (Constants.CURRENT_ROBOT) {
-      case MUNCHKIN:
-      liftControlMunchkin();
-      break;
-      case ROBOT2020:
-        liftControl2020();
-        break;
-      default:
-        break;
-    } 
-  }
- 
-  public void liftControlMunchkin(){
-    if(OI.getRightStickUp()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2);
-    }
-    else if(OI.getRightStickDown()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2);
-    }
-    else {
-      m_lift.moveLift(0);
-    }
-  }
-
-  /**
-   * Moves lift based on GREEN PANEL BUTTONS OR YELLOW PANEL BUTTONS.
-   */
-  public void liftControl2020() {
     /**
      * if the left green button is pressed, move up if the right green button is
      * pressed, move down

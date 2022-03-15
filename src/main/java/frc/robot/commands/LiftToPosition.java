@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.RobotLift;
 import frc.robot.subsystems.RobotLiftMunchkin;
@@ -20,6 +21,7 @@ public class LiftToPosition extends CommandBase {
   private double pos;
   private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   private PID pid;
+  private final double LIFT_SPEED = 0.15;
 
   public LiftToPosition(double position) {
     /** Converts degree input to abstract units for the encoders
@@ -38,10 +40,10 @@ public class LiftToPosition extends CommandBase {
   @Override
   public void execute() {
     if(pos < 0){
-      m_lift.moveLift(-0.15);
+      m_lift.moveLift(-LIFT_SPEED);
     }else{
       if(pos > 0){
-        m_lift.moveLift(0.15);
+        m_lift.moveLift(LIFT_SPEED);
       }else{
         m_lift.moveLift(0);
       }

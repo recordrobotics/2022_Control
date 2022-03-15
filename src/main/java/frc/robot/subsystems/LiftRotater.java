@@ -26,9 +26,7 @@ public class LiftRotater extends SubsystemBase{
 
     public void stop() {
 
-        robotLiftRotateMotorLeft.stopMotor();
         robotLiftRotateMotorLeft.set(0.0);
-        robotLiftRotateMotorRight.stopMotor();
         robotLiftRotateMotorRight.set(0.0);
     }
     public double getPosition(){

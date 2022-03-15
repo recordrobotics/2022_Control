@@ -93,7 +93,7 @@ public class RobotContainer {
     m_rotater = new LiftRotater();
     m_rotater.setDefaultCommand(new RotateLiftControl());
     m_robotLift = new RobotLiftMunchkin();
-    m_robotLift.setDefaultCommand(new LiftControl());
+    m_robotLift.setDefaultCommand(new ControllerLiftControl());
     m_dashboard = new DashboardMunchkin();
     m_driveTrain = new DriveMunchkin();
     m_driveTrain.setDefaultCommand(new ManualDrive());
@@ -121,7 +121,7 @@ public class RobotContainer {
     m_liftSpool = new LiftSpool();
     m_liftSpool.setDefaultCommand(new ControlSpool());
     m_robotLift = new RobotLift2020();
-    m_robotLift.setDefaultCommand(new LiftControl());
+    m_robotLift.setDefaultCommand(new ButtonLiftControl());
     m_rangeFinder = new RangeFinder2020();
     m_camStream = new CamStream();
     m_dashboard = new Dashboard2020();
@@ -138,7 +138,7 @@ public class RobotContainer {
     System.out.println("Monolith Initialized");
     /**Lift constructor*/
     m_robotLift = new LiftMonolith();
-    m_robotLift.setDefaultCommand(new LiftControl());
+    m_robotLift.setDefaultCommand(new ButtonLiftControl());
     /**gyro*/
     m_gyro = new GyroMonolith();  
     this.gyroInit();

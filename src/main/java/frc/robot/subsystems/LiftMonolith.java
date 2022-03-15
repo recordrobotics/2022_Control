@@ -23,7 +23,7 @@ public class LiftMonolith extends RobotLift{
     DigitalInput bottomLimit = new DigitalInput(2);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new LiftControl());
+        setDefaultCommand(new ButtonLiftControl());
     }
     /**
      * Moves the lift up and down.

@@ -18,6 +18,7 @@ import frc.robot.subsystems.LiftRotater;
  */
 public class RotateLiftControl extends CommandBase {
   private LiftRotater m_rotater = RobotContainer.getInstance().getRotater();
+  private final double ROTATOR_SPEED = 0.25;
   public RotateLiftControl() {
     /** Use robot container to declare the subsytem's default command */
     addRequirements(m_rotater);
@@ -32,10 +33,10 @@ public class RotateLiftControl extends CommandBase {
   @Override
   public void execute() {
     if(OI.getRightStickLeft()){
-      moveRotater(0.25);
+      moveRotater(ROTATOR_SPEED);
       System.out.print("Moving Left Pressed");
     } else if(OI.getRightStickRight()){
-      moveRotater(-0.25);
+      moveRotater(-ROTATOR_SPEED);
       System.out.print("Moving Right Pressed");
     } else {
         moveRotater(0);
