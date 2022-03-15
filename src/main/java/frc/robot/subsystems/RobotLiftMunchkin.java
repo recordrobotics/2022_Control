@@ -33,6 +33,9 @@ public class RobotLiftMunchkin extends RobotLift{
     public double getPosition(){
         return liftEncoder.getPosition();
     }
+    public double getVelocity() {
+        return liftEncoder.getVelocity();
+    }
     public void resetEncoder(){
         liftEncoder.setPosition(0);
     }

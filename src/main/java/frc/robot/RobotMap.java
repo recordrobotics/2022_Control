@@ -36,7 +36,7 @@ public class RobotMap {
     public static int robotLiftRotaterLeftMotorPort = 10;
 	public static int robotLiftMunchkinRightMotorPort = 6;
 	// This could be 11 in the future, we don't know if we'll add another motor
-	public static int robotLiftMunchkinLeftMotorPort = 9;
+	public static int robotLiftMunchkinLeftMotorPort = 2;
 	/**
 	 * Set of subsystem motors for Munchkin (temporary, set later)
 	 */
@@ -47,7 +47,7 @@ public class RobotMap {
 	 * l = left, r = right, b = back, f = front
 	 */
 	public static int driveMotor_lf = 1;
-	public static int driveMotor_lb = 2;
+	public static int driveMotor_lb = 11;
 	public static int driveMotor_rb = 3;
 	public static int driveMotor_rf = 4;
     
@@ -55,7 +55,7 @@ public class RobotMap {
 	 * Drive Motors for Munchkin
 	 */
 	public static int driveFrontLeftPortMunchkin = 1;
-	public static int driveBackLeftPortMunchkin = 2;
+	public static int driveBackLeftPortMunchkin = 11;
 	public static int driveFrontRightPortMunchkin = 3;
 	public static int driveBackRightPortMunchkin = 4;
 

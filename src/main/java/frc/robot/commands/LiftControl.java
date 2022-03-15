@@ -17,6 +17,9 @@ import frc.robot.subsystems.RobotLift;
 
 public class LiftControl extends CommandBase {
   private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
+  private boolean liftIsOn = true;
+  private boolean prevToggle = true;
+
   /**
    * Creates a LiftControl constructor.
    */
@@ -55,14 +58,25 @@ public class LiftControl extends CommandBase {
   }
  
   public void liftControlMunchkin(){
-    if(OI.getRightStickUp()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2);
+    /**toggle (emergency manual stop)*/
+    if ((OI.getXboxButtonState("A") != prevToggle) && OI.getXboxButtonState("A")){
+      liftIsOn = !liftIsOn;
+      System.out.println("toggle! " + liftIsOn);
     }
-    else if(OI.getRightStickDown()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2);
+    if (liftIsOn){
+      if(OI.getRightStickUp()){
+        m_lift.moveLift(OI.getCStickYAxis() / 2);
+      }
+      else if(OI.getRightStickDown()){
+        m_lift.moveLift(OI.getCStickYAxis() / 2);
+      }
+      else {
+        System.out.println(m_lift.getVelocity());
+        m_lift.moveLift(-m_lift.getVelocity()/5760);
+      }
     }
     else {
-      m_lift.moveLift(0);
+        m_lift.moveLift(0);
     }
   }
 

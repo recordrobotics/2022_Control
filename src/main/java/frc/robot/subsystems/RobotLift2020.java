@@ -41,6 +41,9 @@ public class RobotLift2020 extends RobotLift{
     }
     public void resetEncoder(){
     }
+    public double getVelocity() {
+        return 0.0;
+    }
     /**
      * moveLift() moves lift up and down.
      * @param v how fast the left lift motor spins.
