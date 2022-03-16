@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveMunchkin;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.Constants;
 import frc.robot.OI;
@@ -27,6 +28,9 @@ public class ManualDrive extends CommandBase {
   @Override
   public void execute() {
     switch (Constants.CURRENT_ROBOT) {
+      case MUNCHKIN: 
+        driveMunchkin();
+        break;
       case MONOLITH:
         driveMonolith();
         break;
@@ -35,9 +39,14 @@ public class ManualDrive extends CommandBase {
         break;
       case MONTY:
         driveMonty();
+        break;
       default:
         break;
     }
+  }
+
+  private void driveMunchkin() {
+    m_driveTrain.getDrive().arcadeDrive(OI.getForward() * 0.45, OI.getTurn() * 0.45);
   }
 
   private double driveMonolith() {
@@ -58,7 +67,7 @@ public class ManualDrive extends CommandBase {
 
     return ((leftAmount + rightAmount) / 2);
   }
-
+  
   private void drive2020() {
     double fwdMult2020 = Constants.FORWARD_MULTIPLIER;
     double turnMult2020 = Constants.TURN_MULTIPLIER;
