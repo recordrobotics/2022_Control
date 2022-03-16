@@ -92,6 +92,8 @@ public class RobotContainer {
     m_driveTrain.setDefaultCommand(new ManualDrive());
     m_acquisition = new AcquisitionMunchkin();
     m_acquisition.setDefaultCommand(new ControlAcquisition());
+    m_flywheel = new FlywheelMunchkin();
+    m_flywheel.setDefaultCommand(new ControlFlywheel());
     acqServos = new AcqServosMunchkin();
     acqServos.setDefaultCommand(new ControlMunchkinServos());
     

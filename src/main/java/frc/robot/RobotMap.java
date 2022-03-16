@@ -36,6 +36,8 @@ public class RobotMap {
 	public static int driveFrontRightPortMunchkin = 3;
 	public static int driveBackRightPortMunchkin = 4;
 
+	public static int flywheelMunchkin = 11;
+
 	/**
 	 * Spark Motors for Monolith
 	 */ 

@@ -17,18 +17,15 @@ public class FlywheelMunchkin extends Flywheel {
      * flywheelMotor Creates a motor object for the flywheel motor. targetVoltage
      * The target voltage of the flywheel.
      */
-    private WPI_TalonFX flywheelForwardMotor = new WPI_TalonFX(RobotMap.flywheelForwardPort);
-    private WPI_TalonFX flywheelReverseMotor = new WPI_TalonFX(RobotMap.flywheelReversePort);
+    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(RobotMap.flywheelMunchkin);
     private double targetVoltage = 11.5;
 
     /**
      * Creates an Object for the flywheel class.
      */
     public FlywheelMunchkin() {
-        flywheelForwardMotor.enableVoltageCompensation(true);
-        flywheelReverseMotor.enableVoltageCompensation(true);
-        flywheelForwardMotor.setVoltage(targetVoltage);
-        flywheelReverseMotor.setVoltage(targetVoltage);
+        flywheelMotor.enableVoltageCompensation(true);
+        flywheelMotor.setVoltage(targetVoltage);
     }
 
     /**
@@ -37,8 +34,7 @@ public class FlywheelMunchkin extends Flywheel {
      * @param v The speed at which the flywheel motor turns.
      */
     public void moveWheel(double v) {
-        flywheelForwardMotor.set(ControlMode.PercentOutput, v);
-        flywheelReverseMotor.set(ControlMode.PercentOutput, -v);
+        flywheelMotor.set(ControlMode.PercentOutput, v);
     }
 
     /**
@@ -47,11 +43,6 @@ public class FlywheelMunchkin extends Flywheel {
      * @return The flywheel's voltage output.
      */
     public double getVoltage() {
-        return flywheelForwardMotor.getMotorOutputVoltage();
-    }
-
-    //TODO: Rename this function once we know which motor is which
-    public double getOtherVoltage() {
-        return flywheelReverseMotor.getMotorOutputVoltage();
+        return flywheelMotor.getMotorOutputVoltage();
     }
 }
