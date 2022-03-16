@@ -73,9 +73,6 @@ public class RobotMap {
 	public static int spoolLiftRightMotor = 11;
 	public static int robotLiftLeftMotorPort = 9; 
 
-	public static int flywheelForwardPort = 5;
-	public static int flywheelReversePort = 4;
-
 	/**
 	 * Set of subsystem motors for Munchkin (temporary, set later)
 	 */
