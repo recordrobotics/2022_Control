@@ -23,8 +23,8 @@ public class AcqServosMunchkin extends SubsystemBase {
     public AcqServosMunchkin(){
     }
     public void setServos(double v){
-    acqServo1.set(v);
-    acqServo2.set(v);
+        acqServo1.set(v);
+        acqServo2.set(v);
     }
   
 }

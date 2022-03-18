@@ -17,6 +17,7 @@ import frc.robot.subsystems.AcqServosMunchkin;
  */
 public class ControlMunchkinServos extends CommandBase {
   private boolean prevToggle = false, servosFlipped = false;
+  private final String SERVO_BUTTON = "A";
   private AcqServosMunchkin m_servos = RobotContainer.getInstance().getAcqServos();
   public ControlMunchkinServos() {
     /** Use robot container to declare the subsytem's default command */
@@ -31,18 +32,18 @@ public class ControlMunchkinServos extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if ((OI.getXboxButtonState("X") != prevToggle) && (OI.getXboxButtonState("X"))){
+    if ((OI.getXboxButtonState(SERVO_BUTTON) != prevToggle) && (OI.getXboxButtonState(SERVO_BUTTON))){
       servosFlipped = !servosFlipped;
       System.out.println("toggle! " + servosFlipped);
     }
 
     if (servosFlipped){  
-    m_servos.setServos(1);
+      m_servos.setServos(1);
     } else {
-    m_servos.setServos(0);
+      m_servos.setServos(0);
     }
 
-    prevToggle = OI.getXboxButtonState("X") ;
+    prevToggle = OI.getXboxButtonState(SERVO_BUTTON) ;
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
