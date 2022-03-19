@@ -14,9 +14,8 @@ public class BallLiftMunchkin extends BallLift {
 
   
   public BallLiftMunchkin() {
-
-    
-   }
+    ballLiftMotor.set(0);
+  }
   
   
   /**

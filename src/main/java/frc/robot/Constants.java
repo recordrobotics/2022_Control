@@ -18,6 +18,15 @@ public final class Constants {
     */
     public static final RobotModel CURRENT_ROBOT = RobotModel.MUNCHKIN;
 
+    public static final String FORWARD_SPIN_BUTTON = "LT";
+    public static final String REVERSE_SPIN_BUTTON = "LB";
+    public static final String TILT_UP_BUTTON_2020 = "RSYUP";
+    public static final String TILT_DOWN_BUTTON_2020 = "RSYDOWN";
+    public static final String TILT_UP_BUTTON_MUNCHKIN = "RT";
+    public static final String TILT_DOWN_BUTTON_MUNCHKIN = "RB";
+
+
+
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
     public static final double FLYWHEEL_SPEED = 0.85d;

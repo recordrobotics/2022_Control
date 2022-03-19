@@ -45,11 +45,11 @@ public class BallLiftControl extends CommandBase {
  * checkReverseInput checks for the button to move down
  */
   private boolean checkInput(){
-    return OI.getXboxButtonState("RT");
+    return OI.getXboxButtonState(Constants.FORWARD_SPIN_BUTTON);
   }
 
   private boolean checkReverseInput(){
-return OI.getXboxButtonState("RB");
+    return OI.getXboxButtonState(Constants.REVERSE_SPIN_BUTTON);
   }
 
   /** Called just before this Command runs the first time*/
@@ -58,20 +58,18 @@ return OI.getXboxButtonState("RB");
       m_ballLift.moveBallLift(ballLiftSpeed);
     } else if (moveDown){
       m_ballLift.moveBallLift(-ballLiftSpeed);
-    }
-    else {
+    } else {
       m_ballLift.moveBallLift(0);
     }
   }
   public void conveyorMunchkin(){
-    if(OI.getXboxButtonState("LT")){
+    if (OI.getXboxButtonState(Constants.FORWARD_SPIN_BUTTON)) {
       m_ballLift.moveBallLift(ballLiftSpeedMunchkin);
-    }else{
-      if(OI.getXboxButtonState("LB")){
+    } else if (OI.getXboxButtonState(Constants.REVERSE_SPIN_BUTTON)) {
       m_ballLift.moveBallLift(-ballLiftSpeedMunchkin);
-      }else{
+    } else {
         m_ballLift.moveBallLift(0);
-      }}
+    }
   }
 
   /** Called repeatedly when this Command is scheduled to run*/
@@ -79,16 +77,16 @@ return OI.getXboxButtonState("RB");
   public void execute(){
     switch (Constants.CURRENT_ROBOT) {
       case MUNCHKIN: 
-        //
+        conveyorMunchkin();
         break;
       case ROBOT2020:
-        //
+        ballLift2020();
         break;
       default:
         break;
     }
     moveUp = checkInput(); /** || checkNewBall();*/
-  /** Called repeatedly when this Command is scheduled to run*/
+    /** Called repeatedly when this Command is scheduled to run*/
     
     /**
      * Checks whether to run forwards or in reverse, then runs ball lift either forwards or in reverse
