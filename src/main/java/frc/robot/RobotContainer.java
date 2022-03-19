@@ -92,7 +92,7 @@ public class RobotContainer {
   private void initMunchkin() {
     m_rotater = new LiftRotater();
     m_rotater.setDefaultCommand(new RotateLift());
-    m_robotLift = new RobotLiftMunchkin();
+    m_robotLift = new CIBMunchkin();
     m_robotLift.setDefaultCommand(new CIBControl());
     m_dashboard = new DashboardMunchkin();
     m_driveTrain = new DriveMunchkin();
