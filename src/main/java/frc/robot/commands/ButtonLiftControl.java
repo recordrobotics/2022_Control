@@ -15,12 +15,12 @@ import frc.robot.Constants;
 import frc.robot.control.*;
 import frc.robot.subsystems.RobotLift;
 
-public class LiftControl extends CommandBase {
+public class ButtonLiftControl extends CommandBase {
   private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   /**
    * Creates a LiftControl constructor.
    */
-  public LiftControl() {
+  public ButtonLiftControl() {
     /** Use requires() here to declare subsystem dependencies */
     addRequirements(m_lift);
   }
@@ -42,17 +42,11 @@ public class LiftControl extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    liftControl();
-  }
-
-  /**
-   * Moves lift based on GREEN PANEL BUTTONS OR YELLOW PANEL BUTTONS.
-   */
-  public void liftControl() {
     /**
      * if the left green button is pressed, move up if the right green button is
      * pressed, move down
      */
+    
     if ((OI.getPanelButtonState(ButtonMap.liftRaise)) || OI.getPanelButtonState(ButtonMap.LiftOverrideUp)) {
       m_lift.moveLift(Constants.SPEED);
       position++;

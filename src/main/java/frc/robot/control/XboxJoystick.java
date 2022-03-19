@@ -173,7 +173,7 @@ public class XboxJoystick extends Controller{
      * @return Whether or not the right stick is more than halfway to the left
      */
     public boolean getRightStickXLeft() {
-        if (getCStickXAxis() > -0.5) {
+        if (getCStickXAxis() < -0.5) {
             return true;
         }
         else {

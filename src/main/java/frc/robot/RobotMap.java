@@ -29,12 +29,25 @@ public class RobotMap {
 	 */
 
 	/**
-	 * Drive Motors for Munchkin
+	 * Motors for Munchkin
 	 */
-	public static int driveFrontLeftPortMunchkin = 1;
-	public static int driveBackLeftPortMunchkin = 2;
-	public static int driveFrontRightPortMunchkin = 3;
-	public static int driveBackRightPortMunchkin = 4;
+	public static int robotLiftRotaterRightMotorPort = 5;
+    public static int robotLiftRotaterLeftMotorPort = 12;
+	public static int cibRightMotorPort = 6;
+	public static int cibLeftMotorPort = 10;
+	/**
+	 * Set of subsystem motors for Munchkin (temporary, set later)
+	 */
+	public static int acqSpinMotorPort = 7;
+	public static int acqTiltMotorPort = 9;
+	/**
+	 * 2022 Robot Motor CAN bus IDs
+	 * l = left, r = right, b = back, f = front
+	 */
+	public static int driveMotor_lf = 1;
+	public static int driveMotor_lb = 2;
+	public static int driveMotor_rb = 3;
+	public static int driveMotor_rf = 4;
 
 	public static int flywheelMunchkin = 11;
 
@@ -72,12 +85,6 @@ public class RobotMap {
 	public static int spoolLiftLeftMotor = 10;
 	public static int spoolLiftRightMotor = 11;
 	public static int robotLiftLeftMotorPort = 9; 
-
-	/**
-	 * Set of subsystem motors for Munchkin (temporary, set later)
-	 */
-	public static int acqSpinMotorPort = 8;
-	public static int acqTiltMotorPort = 7;
 
 	/**
 	 * encoder ports
@@ -121,13 +128,5 @@ public class RobotMap {
 	public static int extendSolenoidForwardPort;
 	public static int extendSolenoidBackwardPort;
 
-	/**
-	* 2022 Robot Motor CAN bus IDs
-	* l = left, r = right, b = back, f = front
-	 */
-	public static int driveMotor_lf = 1;
-	public static int driveMotor_lb = 2;
-	public static int driveMotor_rb = 3;
-	public static int driveMotor_rf = 4;
 }
 
