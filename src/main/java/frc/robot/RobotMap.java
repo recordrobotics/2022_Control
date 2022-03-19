@@ -35,6 +35,12 @@ public class RobotMap {
 	public static int robotLiftRotaterRightMotorPort = 5;
     public static int robotLiftRotaterLeftMotorPort = 10;
 	public static int robotLiftMunchkinRightMotorPort = 6;
+
+	/** 
+	 * DIO ports for limit switches on Munchkin
+	 */
+	public static int rotateLiftForwardLimitSwitch = 0;
+	public static int rotateLiftBackwardLimitSwitch = 1;
 	// This could be 11 in the future, we don't know if we'll add another motor
 	public static int robotLiftMunchkinLeftMotorPort = 9;
 	/**
