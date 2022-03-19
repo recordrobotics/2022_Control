@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+import edu.wpi.first.wpilibj.Servo;
 import frc.robot.RobotMap;
 
 public class FlywheelMunchkin extends Flywheel {
@@ -19,13 +20,15 @@ public class FlywheelMunchkin extends Flywheel {
      */
     private WPI_TalonFX flywheelMotor = new WPI_TalonFX(RobotMap.flywheelMunchkin);
     private double targetVoltage = 11.5;
-
+    private Servo acqServo1 = new Servo(0);
+    private Servo acqServo2 = new Servo(1);
     /**
      * Creates an Object for the flywheel class.
      */
     public FlywheelMunchkin() {
         flywheelMotor.enableVoltageCompensation(true);
         flywheelMotor.setVoltage(targetVoltage);
+        setServos(0, 0.33);
     }
 
     /**
@@ -45,4 +48,8 @@ public class FlywheelMunchkin extends Flywheel {
     public double getVoltage() {
         return flywheelMotor.getMotorOutputVoltage();
     }
+    public void setServos(double v1, double v2){
+        acqServo1.set(v1);
+        acqServo2.set(v2);
+        }
 }
