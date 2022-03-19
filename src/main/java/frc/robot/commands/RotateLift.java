@@ -16,10 +16,10 @@ import frc.robot.subsystems.LiftRotater;
 /**
  * An example command. You can replace me with your own command.
  */
-public class ControllerRotateLift extends CommandBase {
+public class RotateLift extends CommandBase {
   private LiftRotater m_rotater = RobotContainer.getInstance().getRotater();
   private final double ROTATOR_SPEED = 0.25;
-  public ControllerRotateLift() {
+  public RotateLift() {
     /** Use robot container to declare the subsytem's default command */
     addRequirements(m_rotater);
   }
@@ -32,15 +32,23 @@ public class ControllerRotateLift extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if(OI.getRightStickLeft()){
-      moveRotater(ROTATOR_SPEED);
-      System.out.print("Moving Left Pressed");
-    } else if(OI.getRightStickRight()){
-      moveRotater(-ROTATOR_SPEED);
-      System.out.print("Moving Right Pressed");
-    } else {
-        moveRotater(0);
+    double speed = OI.getCStickXAxis();
+    if (Math.abs(speed) < 0.15) {
+      speed = 0;
     }
+    else if (Math.abs(speed)> 0.5) {
+      speed = Math.abs(speed)/(speed*2);
+    }
+    moveRotater(speed);
+    // if(OI.getRightStickLeft()){
+    //   moveRotater(ROTATOR_SPEED);
+    //   System.out.print("Moving Left Pressed");
+    // } else if(OI.getRightStickRight()){
+    //   moveRotater(-ROTATOR_SPEED);
+    //   System.out.print("Moving Right Pressed");
+    // } else {
+    //     moveRotater(0);
+    // }
     
   }
 

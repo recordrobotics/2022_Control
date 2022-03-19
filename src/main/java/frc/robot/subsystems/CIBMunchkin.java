@@ -9,13 +9,14 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.RobotMap;
 import frc.robot.Constants;
 
-public class RobotLiftMunchkin extends RobotLift{
-    private CANSparkMax robotLiftVerticalMotorLeft = new CANSparkMax(RobotMap.robotLiftMunchkinLeftMotorPort, MotorType.kBrushless);
-    private CANSparkMax robotLiftVerticalMotorRight = new CANSparkMax(RobotMap.robotLiftMunchkinRightMotorPort, MotorType.kBrushless);
-    private MotorControllerGroup robotLiftVerticalMotors = new MotorControllerGroup(robotLiftVerticalMotorLeft, robotLiftVerticalMotorRight);
-    private RelativeEncoder liftEncoder = robotLiftVerticalMotorLeft.getEncoder();
+public class CIBMunchkin extends RobotLift{
+    private CANSparkMax cibMotorLeft = new CANSparkMax(RobotMap.cibLeftMotorPort, MotorType.kBrushless);
+    private CANSparkMax cibMotorRight = new CANSparkMax(RobotMap.cibRightMotorPort, MotorType.kBrushless);
+    private MotorControllerGroup cibMotors = new MotorControllerGroup(cibMotorLeft, cibMotorRight);
+    private RelativeEncoder cibEncoder = cibMotorLeft.getEncoder();
     private double targetVoltage = Constants.robotLiftTargetVoltage;
-    public RobotLiftMunchkin(){
+
+    public CIBMunchkin(){
     
      // robotLiftMotor.enableVoltageCompensation(true);
      // robotLiftMotor.setVoltage(targetVoltage);
@@ -26,15 +27,15 @@ public class RobotLiftMunchkin extends RobotLift{
      * stop() stops the motor.
      */
     public void stop() {
-        robotLiftVerticalMotors.stopMotor();
-        robotLiftVerticalMotors.set(0.0);
+        cibMotors.stopMotor();
+        cibMotors.set(0.0);
     }
 
     public double getPosition(){
-        return liftEncoder.getPosition();
+        return cibEncoder.getPosition();
     }
     public void resetEncoder(){
-        liftEncoder.setPosition(0);
+        cibEncoder.setPosition(0);
     }
 
     /**
@@ -42,6 +43,6 @@ public class RobotLiftMunchkin extends RobotLift{
      * @param v how fast the lift motors spins.
      */
     public void moveLift(double v) {
-        robotLiftVerticalMotors.set(v);
+        cibMotors.set(v);
     }
 }

@@ -74,6 +74,7 @@ public class RobotContainer {
     switch (Constants.CURRENT_ROBOT) {
       case MUNCHKIN: 
         this.initMunchkin();
+        break;
       case ROBOT2020:
         this.init2020();
         break;
@@ -91,9 +92,9 @@ public class RobotContainer {
 
   private void initMunchkin() {
     m_rotater = new LiftRotater();
-    m_rotater.setDefaultCommand(new ControllerRotateLift());
-    m_robotLift = new RobotLiftMunchkin();
-    m_robotLift.setDefaultCommand(new ControllerLiftControl());
+    m_rotater.setDefaultCommand(new RotateLift());
+    m_robotLift = new CIBMunchkin();
+    m_robotLift.setDefaultCommand(new CIBControl());
     m_dashboard = new DashboardMunchkin();
     m_driveTrain = new DriveMunchkin();
     m_driveTrain.setDefaultCommand(new ManualDrive());
