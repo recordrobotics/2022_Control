@@ -16,10 +16,10 @@ import frc.robot.subsystems.LiftRotater;
 /**
  * An example command. You can replace me with your own command.
  */
-public class ControllerRotateLift extends CommandBase {
+public class RotateLift extends CommandBase {
   private LiftRotater m_rotater = RobotContainer.getInstance().getRotater();
   private final double ROTATOR_SPEED = 0.25;
-  public ControllerRotateLift() {
+  public RotateLift() {
     /** Use robot container to declare the subsytem's default command */
     addRequirements(m_rotater);
   }
