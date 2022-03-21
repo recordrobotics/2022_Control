@@ -24,6 +24,7 @@ public class AcquisitionMunchkin extends Acquisition {
      */
 
     private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acqSpinMotorPort, MotorType.kBrushless);
+    private CANSparkMax ballChannelMotor = new CANSparkMax(RobotMap.ballChannelMotorPort, MotorType.kBrushless);
     private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acqTiltMotorPort, MotorType.kBrushed);
     //private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
     //private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
@@ -35,6 +36,7 @@ public class AcquisitionMunchkin extends Acquisition {
      * Creates an acquisition object with a specific tilt limit.
      */
     public AcquisitionMunchkin(){
+        ballChannelMotor.set(0);
         acquireMotor.set(0);
         tiltMotor.set(0);
     }
@@ -57,6 +59,7 @@ public class AcquisitionMunchkin extends Acquisition {
      * @param v speed to spin the acquisition at.
      */
     public void moveAcq(double v) {
+        ballChannelMotor.set(v*5/3);
         acquireMotor.set(v);
     }
     /**
