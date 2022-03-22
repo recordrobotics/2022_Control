@@ -44,7 +44,9 @@ public class LiftRotater extends SubsystemBase{
      * @param v how fast the left lift motor spins.
      */
     public void RotateLift(double v) {
-        if (!(forwardLimit.get() || backwardLimit.get())) v=0;
+        System.out.println("LIMIT SWITCH 1: " + forwardLimit.get());
+        System.out.println("LIMIT SWITCH 2: " + backwardLimit.get());
+        if (!(forwardLimit.get() && backwardLimit.get())) v=0;
         robotLiftRotateMotorLeft.set(v);
         robotLiftRotateMotorRight.set(-v);
     }

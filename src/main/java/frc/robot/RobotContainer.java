@@ -74,6 +74,7 @@ public class RobotContainer {
     switch (Constants.CURRENT_ROBOT) {
       case MUNCHKIN: 
         this.initMunchkin();
+        break;
       case ROBOT2020:
         this.init2020();
         break;
