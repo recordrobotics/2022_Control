@@ -20,8 +20,8 @@ public class ControlFlywheel extends CommandBase {
 
   // TODO: figure out what speed we actually need
   private final double SPEED_IDLE = 0.0;
-  private final double SPEED_NORMAL = 0.6;
-  private final double SPEED_BOOSTED = 1.0;
+  private final double SPEED_NORMAL = 0.25;
+  private final double SPEED_BOOSTED = 0.5;
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
@@ -36,10 +36,10 @@ public class ControlFlywheel extends CommandBase {
     if (enabled) {
       // Holding Y accelerates the flywheel and shoots ball
       if (boosted()) {
-        // m_flywheel.setWheelSpeed(SPEED_BOOSTED);
+        m_flywheel.setWheelSpeed(SPEED_BOOSTED);
         m_flywheel.shoot();
       } else {
-        // m_flywheel.setWheelSpeed(SPEED_NORMAL);
+        m_flywheel.setWheelSpeed(SPEED_NORMAL);
       }
     } else {
       m_flywheel.setWheelSpeed(SPEED_IDLE);
