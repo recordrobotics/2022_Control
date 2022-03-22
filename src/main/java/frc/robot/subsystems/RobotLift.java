@@ -13,4 +13,6 @@ public abstract class RobotLift extends SubsystemBase {
 
     public abstract void moveLift(double v);
     public abstract void stop();
+    public abstract double getPosition();
+    public abstract void resetEncoder();
 }

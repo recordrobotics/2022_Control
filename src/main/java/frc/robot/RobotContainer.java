@@ -40,6 +40,7 @@ public class RobotContainer {
   private CamStream m_camStream = new CamStream(2);
   private Command m_autonomousCommand;
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
+  private LiftRotater m_rotater;
 
   // Network table setup
   private NetworkTableInstance m_netTableInst;
@@ -58,6 +59,7 @@ public class RobotContainer {
   public Dashboard getDashboard() { return m_dashboard; }
   public CamStream getCamStream() { return m_camStream; }
   public Command getAutonomousCommand() { return m_autonomousCommand; }
+  public LiftRotater getRotater() {return m_rotater; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public void init() {
@@ -87,13 +89,17 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
+    m_rotater = new LiftRotater();
+    m_rotater.setDefaultCommand(new RotateLift());
+    m_robotLift = new CIBMunchkin();
+    m_robotLift.setDefaultCommand(new CIBControl());
+    m_dashboard = new DashboardMunchkin();
     m_driveTrain = new DriveMunchkin();
     m_driveTrain.setDefaultCommand(new ManualDrive());
     m_acquisition = new AcquisitionMunchkin();
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     m_flywheel = new FlywheelMunchkin();
     m_flywheel.setDefaultCommand(new ControlFlywheel());
-    
   }
 
   /**
@@ -114,7 +120,7 @@ public class RobotContainer {
     m_liftSpool = new LiftSpool();
     m_liftSpool.setDefaultCommand(new ControlSpool());
     m_robotLift = new RobotLift2020();
-    m_robotLift.setDefaultCommand(new LiftControl());
+    m_robotLift.setDefaultCommand(new ButtonLiftControl());
     m_rangeFinder = new RangeFinder2020();
     m_camStream = new CamStream();
     m_dashboard = new Dashboard2020();
@@ -131,7 +137,7 @@ public class RobotContainer {
     System.out.println("Monolith Initialized");
     /**Lift constructor*/
     m_robotLift = new LiftMonolith();
-    m_robotLift.setDefaultCommand(new LiftControl());
+    m_robotLift.setDefaultCommand(new ButtonLiftControl());
     /**gyro*/
     m_gyro = new GyroMonolith();  
     this.gyroInit();
