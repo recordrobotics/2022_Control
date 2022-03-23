@@ -31,10 +31,17 @@ public class RobotMap {
 	/**
 	 * Motors for Munchkin
 	 */
-	public static int robotLiftRotaterRightMotorPort = 5;
+	public static int robotLiftRotaterRightMotorPort = 5;	
     public static int robotLiftRotaterLeftMotorPort = 12;
 	public static int cibRightMotorPort = 6;
 	public static int cibLeftMotorPort = 10;
+
+	/** 
+	 * DIO ports for limit switches on Munchkin
+	 */
+	public static int rotateLiftForwardLimitSwitch = 0;
+	public static int rotateLiftBackwardLimitSwitch = 1;
+
 	/**
 	 * Set of subsystem motors for Munchkin (temporary, set later)
 	 */
