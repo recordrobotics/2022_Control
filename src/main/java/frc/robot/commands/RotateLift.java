@@ -33,10 +33,10 @@ public class RotateLift extends CommandBase {
   @Override
   public void execute() {
     double speed = OI.getCStickXAxis();
-    if (Math.abs(speed) < 0.15) {
+    if (Math.abs(speed) < 0.05) {
       speed = 0;
-    } else if (Math.abs(speed) > 0.5) {
-      speed = Math.abs(speed) / (speed * 2);
+    } else if (Math.abs(speed) > 0.34) {
+      speed = Math.abs(speed) / (speed * 3);
     }
     moveRotater(speed);
   }

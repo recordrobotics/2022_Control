@@ -54,14 +54,14 @@ public class LiftRotater extends SubsystemBase {
      * @param v speed
      */
     public void RotateLift(double v) {
-        System.out.println("LIMIT SWITCH 1: " + forwardLimit.get());
-        System.out.println("LIMIT SWITCH 2: " + backwardLimit.get());
+        // System.out.println("LIMIT SWITCH 1: " + forwardLimit.get());
+        // System.out.println("LIMIT SWITCH 2: " + backwardLimit.get());
 
-        System.out.println("Rotator Speed: " + v);
+        // System.out.println("left encoder: " + robotLiftRotaterLeftEncoder.getPosition());
 
-        // Right now, hitting the limit switch disables the lift
-        // Needs to be changed to allow movement in the other direction
-        if (forwardLimit.get() && backwardLimit.get()) {
+        // Positive v = moving towards E-Board
+        // Negative v = moving towards Acquisition
+        if ((v > 0 && forwardLimit.get()) || (v < 0 && backwardLimit.get())) {
             robotLiftRotateMotorLeft.set(v);
             robotLiftRotateMotorRight.set(-v);
         } else {
