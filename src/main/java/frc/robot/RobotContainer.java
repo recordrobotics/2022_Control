@@ -91,6 +91,7 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
+    m_autonomousCommand = new AutoMunchkin();
     m_rotater = new LiftRotater();
     m_rotater.setDefaultCommand(new RotateLift());
     m_robotLift = new CIBMunchkin();
