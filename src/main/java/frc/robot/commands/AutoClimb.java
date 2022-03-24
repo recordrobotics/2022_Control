@@ -1,51 +1,13 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
-import frc.robot.Constants;
-import frc.robot.subsystems.RobotLift;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
-/**
- * An example command. You can replace me with your own command.
- */
-public class AutoClimb  extends CommandBase {
-    private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
+public class AutoClimb extends SequentialCommandGroup{
     public AutoClimb() {
-        addRequirements(m_lift);
-    /** Use robot container to declare the subsytem's default command */
-  }
-
-  /** Called just before this Command runs the first time */
-  @Override
-  public void initialize() {
-      //m_lift.resetEncoder();
-  }
-
-  /** Called repeatedly when this Command is scheduled to run */
-  @Override
-  public void execute() {
-      m_lift.moveLift(0.5);
-  }
-
-  /** Make this return true when this Command no longer needs to run execute() */
-  @Override
-  public boolean isFinished() {
-
-    //return true when encoder value is equal to certain value;
-    return false;
-  }
-
-  /** Called once after isFinished returns true */
-  @Override
-  public void end(boolean interrupted) {
-  }
-
+        addCommands(
+            new MoveRotateLift(51, 0.15),
+            new MoveCIB(0, 0.5)); //placeholder values
+            new MoveRotateLift(0, 0);
+    }
+    
 }
-
