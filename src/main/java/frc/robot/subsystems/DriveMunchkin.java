@@ -44,7 +44,7 @@ public class DriveMunchkin extends DriveTrain {
    * creates drive object, stopping motors like a good boi
    */
   public DriveMunchkin(){
-    System.out.println("ENCODER INIT: " + encoderRight.setPositionConversionFactor(21.42/Math.PI));
+    encoderRight.setPositionConversionFactor(21.42/Math.PI);
     encoderLeft.setPositionConversionFactor(21.42/Math.PI);
     leftMotors.stopMotor();
     rightMotors.stopMotor();

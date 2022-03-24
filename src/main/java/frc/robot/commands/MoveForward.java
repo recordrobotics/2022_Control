@@ -30,7 +30,6 @@ public class MoveForward extends CommandBase {
     }
 
     public MoveForward() {
-        System.out.println("DRIVE TRAIN EXISTS: " +  m_driveTrain);
         distance = m_rangeFinder.getDistance();
         speed = 0.7;
     }
@@ -38,6 +37,8 @@ public class MoveForward extends CommandBase {
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
+        // TESTING: getting a fresh instance of the drivetrain for auto
+        m_driveTrain = RobotContainer.getInstance().getDriveTrain();
         /** reset the encoders */
         m_driveTrain.resetEncoders();
         System.out.println("command move init");
