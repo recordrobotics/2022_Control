@@ -52,7 +52,7 @@ public class MoveForward extends CommandBase {
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        return m_driveTrain.getRightEncoder() >= distance || m_driveTrain.getLeftEncoder() >= distance;
+        return Math.abs(m_driveTrain.getRightEncoder()) >= Math.abs(distance) || Math.abs(m_driveTrain.getLeftEncoder()) >= Math.abs(distance);
     }
 
     /** Called once after isFinished returns true */

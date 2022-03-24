@@ -6,36 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-
-/**
- * An example command. You can replace me with your own command.
- */
-public class AutoMunchkin extends CommandBase {
+public class AutoMunchkin extends SequentialCommandGroup {
   public AutoMunchkin() {
     /** Use robot container to declare the subsytem's default command */
-  }
-
-  /** Called just before this Command runs the first time */
-  @Override
-  public void initialize() {
-  }
-
-  /** Called repeatedly when this Command is scheduled to run */
-  @Override
-  public void execute() {
-  }
-
-  /** Make this return true when this Command no longer needs to run execute() */
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
-
-  /** Called once after isFinished returns true */
-  @Override
-  public void end(boolean interrupted) {
+    addCommands(
+        new MoveForward(-4, 0.3),
+        new TiltAcquisition());
   }
 
 }

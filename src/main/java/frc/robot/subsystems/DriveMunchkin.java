@@ -32,6 +32,9 @@ public class DriveMunchkin extends DriveTrain {
 
   private MotorControllerGroup leftMotors = new MotorControllerGroup(left);
   private MotorControllerGroup rightMotors = new MotorControllerGroup(right);
+  //Drive encoders
+  private RelativeEncoder encoderLeft = left[0].getEncoder();
+  private RelativeEncoder encoderRight = right[0].getEncoder();
   /**
    * Library Differential Drive object
    */
@@ -41,6 +44,8 @@ public class DriveMunchkin extends DriveTrain {
    * creates drive object, stopping motors like a good boi
    */
   public DriveMunchkin(){
+    encoderRight.setPositionConversionFactor(21.42/Math.PI);
+    encoderLeft.setPositionConversionFactor(21.42/Math.PI);
     leftMotors.stopMotor();
     rightMotors.stopMotor();
   }
@@ -63,21 +68,24 @@ public class DriveMunchkin extends DriveTrain {
   }
 
   /**
-   * @return The Value of the right encoder in INCHES
+   * @return The Value of the right encoder in FEET
    */
   public double getRightEncoder() {
-    return 0.0;
+    return encoderRight.getPosition();
   }
   /**
-   * @return The Value of the right encoder in INCHES
+   * @return The Value of the right encoder in FEET
    */
   public double getLeftEncoder() {
-    return 0.0;
+    return encoderLeft.getPosition();
   }
   /**
    * Reset both encoders to zero
    */
-  public void resetEncoders() {};
+  public void resetEncoders() {
+    encoderRight.setPosition(0);
+    encoderLeft.setPosition(0);
+  };
   
   /**
    * @return The differential drive object used, if any

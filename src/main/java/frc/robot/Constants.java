@@ -55,6 +55,8 @@ public final class Constants {
     public static final double ACQ_MOVE_TIME = 2.5d;
     //for RobotLift2020.java
     public static final double robotLiftTargetVoltage = 11.5;
+    //for DriveMunchkin.java
+    public static final double DRIVE_GEAR_RATIO = 10.71;
     //for DriveMonty.java
     public static final double driveMontyFrontLeftVoltage = 11.5;
     public static final double driveMontyFrontRightVoltage = 11.5;
