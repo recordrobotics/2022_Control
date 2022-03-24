@@ -44,7 +44,7 @@ public class DriveMunchkin extends DriveTrain {
    * creates drive object, stopping motors like a good boi
    */
   public DriveMunchkin(){
-    encoderRight.setPositionConversionFactor(21.42/Math.PI);
+    System.out.println("ENCODER INIT: " + encoderRight.setPositionConversionFactor(21.42/Math.PI));
     encoderLeft.setPositionConversionFactor(21.42/Math.PI);
     leftMotors.stopMotor();
     rightMotors.stopMotor();
@@ -83,6 +83,7 @@ public class DriveMunchkin extends DriveTrain {
    * Reset both encoders to zero
    */
   public void resetEncoders() {
+    System.out.println("ENCODERS RESETTING");
     encoderRight.setPosition(0);
     encoderLeft.setPosition(0);
   };

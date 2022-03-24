@@ -30,6 +30,7 @@ public class MoveForward extends CommandBase {
     }
 
     public MoveForward() {
+        System.out.println("DRIVE TRAIN EXISTS: " +  m_driveTrain);
         distance = m_rangeFinder.getDistance();
         speed = 0.7;
     }
