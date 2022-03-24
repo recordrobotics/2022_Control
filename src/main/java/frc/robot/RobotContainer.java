@@ -91,14 +91,14 @@ public class RobotContainer {
   }
 
   private void initMunchkin() {
-    m_autonomousCommand = new MoveForward(1, 0.2);
+    m_driveTrain = new DriveMunchkin();
+    m_driveTrain.setDefaultCommand(new ManualDrive());
+    m_autonomousCommand = new MoveForward(25, 0.2);
     m_rotater = new LiftRotater();
     m_rotater.setDefaultCommand(new RotateLift());
     m_robotLift = new CIBMunchkin();
     m_robotLift.setDefaultCommand(new CIBControl());
     m_dashboard = new DashboardMunchkin();
-    m_driveTrain = new DriveMunchkin();
-    m_driveTrain.setDefaultCommand(new ManualDrive());
     m_acquisition = new AcquisitionMunchkin();
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     acqServos = new AcqServosMunchkin();

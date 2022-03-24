@@ -48,13 +48,13 @@ public class MoveForward extends CommandBase {
     @Override
     public void execute() {
         m_driveTrain.moveLeftWheels(speed);
-        m_driveTrain.moveRightWheels(speed);
+        m_driveTrain.moveRightWheels(-speed);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        return Math.abs(m_driveTrain.getRightEncoder()) >= Math.abs(distance) || Math.abs(m_driveTrain.getLeftEncoder()) >= Math.abs(distance);
+        return Math.abs(m_driveTrain.getRightEncoder()) >= Math.abs(distance) && Math.abs(m_driveTrain.getLeftEncoder()) >= Math.abs(distance);
     }
 
     /** Called once after isFinished returns true */
