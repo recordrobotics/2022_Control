@@ -60,7 +60,7 @@ public class AcquisitionMunchkin extends Acquisition {
      * @param v speed to spin the acquisition at.
      */
     public void moveAcq(double v) {
-        ballChannelMotor.set(v * 5 / 3);
+        ballChannelMotor.set(-v * 5 / 3);
         acquireMotor.set(v);
     }
 
