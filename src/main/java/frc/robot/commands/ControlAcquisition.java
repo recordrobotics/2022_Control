@@ -112,6 +112,7 @@ public class ControlAcquisition extends CommandBase {
                 break;
             case MUNCHKIN:
                 controlAcqMunchkin();
+                break;
             default:
                 break;
         }

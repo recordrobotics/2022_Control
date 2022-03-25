@@ -27,7 +27,7 @@ public class AcquisitionMunchkin extends Acquisition {
     private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acqTiltMotorPort, MotorType.kBrushed);
     //private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
     //private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
-    DigitalInput tiltLimit = new DigitalInput(RobotMap.tiltLimitSwitch);;
+    DigitalInput tiltLimit = new DigitalInput(RobotMap.acqTiltLimitSwitch);;
 
 
     boolean tiltPosition = true;  /**true is up, false is down*/
@@ -65,13 +65,14 @@ public class AcquisitionMunchkin extends Acquisition {
      */
     public void moveTilt(double v) {
         if (v > 0 && tiltLimit.get()) {
-            return;
+            tiltMotor.set(v);
+        } else {
+            tiltMotor.set(0);
         }
-        tiltMotor.set(v);
     }
     /**
-     * Returns how far the acquisition can tilt.
-     * @return how far the acquisition can tilt.
+     * Returns the value of the limit switch
+     * @return limit switch value
      */
     public boolean getTiltLimit(){
         return tiltLimit.get();
@@ -88,6 +89,7 @@ public class AcquisitionMunchkin extends Acquisition {
     public double getAcquireVoltage(){
         return acquireMotor.getVoltageCompensationNominalVoltage();
     }
+
     public double getTiltVoltage(){
         return tiltMotor.getVoltageCompensationNominalVoltage();
     }
