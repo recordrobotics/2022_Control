@@ -38,22 +38,24 @@ public class MoveForward extends CommandBase {
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
+        m_driveTrain = RobotContainer.getInstance().getDriveTrain();
         /** reset the encoders */
         m_driveTrain.resetEncoders();
         System.out.println("command move init");
+        System.out.println(m_driveTrain.getLeftEncoder() + m_driveTrain.getRightEncoder());
     }
 
     /** Called repeatedly when this Command is scheduled to run */
     @Override
     public void execute() {
         m_driveTrain.moveLeftWheels(speed);
-        m_driveTrain.moveRightWheels(speed);
+        m_driveTrain.moveRightWheels(-speed);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        return Math.abs(m_driveTrain.getRightEncoder()) >= Math.abs(distance) || Math.abs(m_driveTrain.getLeftEncoder()) >= Math.abs(distance);
+        return Math.abs(m_driveTrain.getRightEncoder()) >= Math.abs(distance) && Math.abs(m_driveTrain.getLeftEncoder()) >= Math.abs(distance);
     }
 
     /** Called once after isFinished returns true */
