@@ -25,19 +25,21 @@ public class AcquisitionMunchkin extends Acquisition {
 
     private CANSparkMax acquireMotor = new CANSparkMax(RobotMap.acqSpinMotorPort, MotorType.kBrushless);
     private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acqTiltMotorPort, MotorType.kBrushed);
-    //private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
-    //private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
+    private CANSparkMax ballChannelMotor = new CANSparkMax(RobotMap.ballChannelMotorPort, MotorType.kBrushless);
+
     DigitalInput tiltLimit = new DigitalInput(RobotMap.acqTiltLimitSwitch);;
 
-
     boolean tiltPosition = true;  /**true is up, false is down*/
+    
     /**
      * Creates an acquisition object with a specific tilt limit.
      */
     public AcquisitionMunchkin(){
+        ballChannelMotor.set(0);
         acquireMotor.set(0);
         tiltMotor.set(0);
     }
+
     /**
      * Gets where the acquisition is in its tilt path.
      * @return returns said position.
@@ -45,6 +47,7 @@ public class AcquisitionMunchkin extends Acquisition {
     public boolean getTiltPosition() {
         return tiltPosition;
     }
+
     /**
      * Sets the acquisition's tilt.
      * @param pos whether the tilt should be up or down.
@@ -52,13 +55,16 @@ public class AcquisitionMunchkin extends Acquisition {
     public void setTiltPosition(boolean pos){
         tiltPosition = pos;
     }
+
     /**
      * Spins the acquisition motor.
      * @param v speed to spin the acquisition at.
      */
     public void moveAcq(double v) {
+        ballChannelMotor.set(-v * 5 / 3);
         acquireMotor.set(v);
     }
+
     /**
      * Moves the acquisition up and down.
      * @param v speed of the motor.
@@ -71,13 +77,16 @@ public class AcquisitionMunchkin extends Acquisition {
             // tiltMotor.set(0);
         // }
     }
+
     /**
      * Returns the value of the limit switch
      * @return limit switch value
      */
     public boolean getTiltLimit(){
-        return tiltLimit.get();
+        // return tiltLimit.get();
+        return true;
      }
+
     /**
      * Returns if the acqusition is spinning.
      * @return is the motor running.
