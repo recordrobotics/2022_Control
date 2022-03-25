@@ -19,6 +19,7 @@ import frc.robot.subsystems.LiftRotater;
 public class RotateLift extends CommandBase {
   private LiftRotater m_rotater = RobotContainer.getInstance().getRotater();
   private final double ROTATOR_SPEED = 0.25;
+
   public RotateLift() {
     /** Use robot container to declare the subsytem's default command */
     addRequirements(m_rotater);
@@ -33,16 +34,16 @@ public class RotateLift extends CommandBase {
   @Override
   public void execute() {
     double speed = OI.getCStickXAxis();
-    if (Math.abs(speed) < 0.05) {
+    if (Math.abs(speed) < 0.15) {
       speed = 0;
     } else if (Math.abs(speed) > 0.34) {
-      speed = Math.abs(speed) / (speed * 3);
+      speed = (Math.abs(speed) - 0.10) * (Math.abs(speed) / speed);
     }
     moveRotater(speed);
   }
 
   private void moveRotater(double v){
-    m_rotater.RotateLift(v);
+    m_rotater.rotateLift(v);
   }
   
   /** Make this return true when this Command no longer needs to run execute() */
