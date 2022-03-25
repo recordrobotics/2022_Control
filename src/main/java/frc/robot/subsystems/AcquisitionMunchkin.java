@@ -64,11 +64,12 @@ public class AcquisitionMunchkin extends Acquisition {
      * @param v speed of the motor.
      */
     public void moveTilt(double v) {
-        if (v > 0 && tiltLimit.get()) {
+        System.out.println(tiltLimit.get());
+        // if ((v < 0 && tiltLimit.get()) || v > 0 ) {
             tiltMotor.set(v);
-        } else {
-            tiltMotor.set(0);
-        }
+        // } else {
+            // tiltMotor.set(0);
+        // }
     }
     /**
      * Returns the value of the limit switch
