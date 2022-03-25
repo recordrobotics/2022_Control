@@ -19,8 +19,9 @@ public class ControlFlywheel extends CommandBase {
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
 
   // TODO: figure out what speed we actually need
-  private final double SPEED = 0.6;
-  private final double SPEED_BOOSTED = 1.0;
+  private final double SPEED_IDLE = 0.0;
+  private final double SPEED_NORMAL = 0.25;
+  private final double SPEED_BOOSTED = 0.5;
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
@@ -33,14 +34,16 @@ public class ControlFlywheel extends CommandBase {
       enabled = !enabled;
     }
     if (enabled) {
-      // Holding Y accelerates the flywheel
+      // Holding Y accelerates the flywheel and shoots ball
       if (boosted()) {
-        m_flywheel.moveWheel(SPEED_BOOSTED);
+        m_flywheel.setWheelSpeed(SPEED_BOOSTED);
+        m_flywheel.shoot();
       } else {
-        m_flywheel.moveWheel(SPEED);
+        m_flywheel.setWheelSpeed(SPEED_NORMAL);
       }
     } else {
-      m_flywheel.moveWheel(0);
+      m_flywheel.setWheelSpeed(SPEED_IDLE);
+      m_flywheel.reset();
     }
 
     prevBtnState = toggled();

@@ -10,15 +10,23 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+import edu.wpi.first.wpilibj.Servo;
 import frc.robot.RobotMap;
 
 public class FlywheelMunchkin extends Flywheel {
-    /**
-     * flywheelMotor Creates a motor object for the flywheel motor. targetVoltage
-     * The target voltage of the flywheel.
-     */
-    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(RobotMap.flywheelMunchkin);
+    // Target Voltage
     private double targetVoltage = 11.5;
+
+    // Servo positions for shoot and reset
+    private final double RIGHT_SERVO_SHOOT = 0.0;
+    private final double LEFT_SERVO_SHOOT = 0.33;
+    private final double RIGHT_SERVO_RESET = 0.33;
+    private final double LEFT_SERVO_RESET = 0.0;
+
+    // Hardware
+    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(RobotMap.flywheelMunchkin);
+    private Servo rightServo = new Servo(0);
+    private Servo leftServo = new Servo(1);
 
     /**
      * Creates an Object for the flywheel class.
@@ -26,6 +34,7 @@ public class FlywheelMunchkin extends Flywheel {
     public FlywheelMunchkin() {
         flywheelMotor.enableVoltageCompensation(true);
         flywheelMotor.setVoltage(targetVoltage);
+        reset();
     }
 
     /**
@@ -33,8 +42,24 @@ public class FlywheelMunchkin extends Flywheel {
      * 
      * @param v The speed at which the flywheel motor turns.
      */
-    public void moveWheel(double v) {
+    @Override
+    public void setWheelSpeed(double v) {
         flywheelMotor.set(ControlMode.PercentOutput, v);
+    }
+
+    /**
+     * Activates the server to push the ball into the flywheel
+     */
+    @Override
+    public void shoot() {
+        rightServo.set(RIGHT_SERVO_SHOOT);
+        leftServo.set(LEFT_SERVO_SHOOT);
+    }
+
+    @Override
+    public void reset() {
+        rightServo.set(RIGHT_SERVO_RESET);
+        leftServo.set(LEFT_SERVO_RESET);
     }
 
     /**

@@ -32,9 +32,22 @@ public class Flywheel2020 extends Flywheel {
      * 
      * @param v The speed at which the flywheel motor turns.
      */
-    public void moveWheel(double v) {
+    @Override
+    public void setWheelSpeed(double v) {
         flywheelMotor.set(ControlMode.PercentOutput, v);
     }
+
+    /**
+     * Not implemented
+     */
+    @Override
+    public void shoot() {}
+
+    /**
+     * Not implemented
+     */
+    @Override
+    public void reset() {}
 
     /**
      * Returns the flywheel's voltage output.
