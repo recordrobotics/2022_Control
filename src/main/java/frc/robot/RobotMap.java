@@ -57,6 +57,8 @@ public class RobotMap {
 	public static int driveMotor_rb = 3;
 	public static int driveMotor_rf = 4;
 
+	public static int flywheelMunchkin = 11;
+
 	/**
 	 * Spark Motors for Monolith
 	 */ 
