@@ -37,7 +37,7 @@ public class RobotContainer {
   private LiftSpool m_liftSpool;
   private RangeFinder m_rangeFinder;
   private Dashboard m_dashboard;
-  private CamStream m_camStream = new CamStream(2);
+  private CamStream m_camStream;
   private Command m_autonomousCommand;
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
   private LiftRotater m_rotater;
@@ -102,6 +102,9 @@ public class RobotContainer {
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     acqServos = new AcqServosMunchkin();
     acqServos.setDefaultCommand(new ControlMunchkinServos());
+    m_flywheel = new FlywheelMunchkin();
+    m_flywheel.setDefaultCommand(new ControlFlywheel());
+    m_camStream = new CamStream(2);
   }
 
   /**
@@ -124,7 +127,7 @@ public class RobotContainer {
     m_robotLift = new RobotLift2020();
     m_robotLift.setDefaultCommand(new ButtonLiftControl());
     m_rangeFinder = new RangeFinder2020();
-    m_camStream = new CamStream();
+    m_camStream = new CamStream(2);
     m_dashboard = new Dashboard2020();
   }
 

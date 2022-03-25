@@ -30,8 +30,8 @@ public class CamStream extends SubsystemBase {
         camera = new UsbCamera[numCameras];
 
         for (int i = 0; i < numCameras; i++) {
-            camera[i] = CameraServer.startAutomaticCapture(0);
-            camera[i].setResolution(512, 288);
+            camera[i] = CameraServer.startAutomaticCapture();
+            //camera[i].setResolution(512, 288);
         }
 
         cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection");
