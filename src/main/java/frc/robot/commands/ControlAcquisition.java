@@ -21,12 +21,12 @@ public class ControlAcquisition extends CommandBase {
      * tiltUpButton Which button lowers the tilt of the aquisition.
      * tiltDownButton Which button spins the aquisition.
      */
-    String forwardSpinButton = "LT";
-    String reverseSpinButton = "LB";
-    String tiltUpButton2020 = "RSYUP";
-    String tiltDownButton2020 = "RSYDOWN";
-    String tiltUpButtonMunchkin = "RT";
-    String tiltDownButtonMunchkin = "RB";
+    private final String forwardSpinButton = "LT";
+    private final String reverseSpinButton = "LB";
+    private final String tiltUpButton2020 = "RSYUP";
+    private final String tiltDownButton2020 = "RSYDOWN";
+    private final String tiltUpButtonMunchkin = "RT";
+    private final String tiltDownButtonMunchkin = "RB";
     /**
      * Constants.SPIN_SPEED This is how fast the aquisition spins.
      */
@@ -107,13 +107,14 @@ public class ControlAcquisition extends CommandBase {
     public void execute() {
         /**control the toggle, this will invert inputPosition when "A" is pressed*/
        switch (Constants.CURRENT_ROBOT) {
-      case ROBOT2020:
-      controlAcq2020();
-        break;
-        case MUNCHKIN:
-        controlAcqMunchkin();
-      default:
-        break; }
+            case ROBOT2020:
+                controlAcq2020();
+                break;
+            case MUNCHKIN:
+                controlAcqMunchkin();
+            default:
+                break;
+        }
     }
 
     /** Make this return true when this Command no longer needs to run execute()*/

@@ -45,7 +45,7 @@ public class ControllerRotateLift extends CommandBase {
   }
 
   private void moveRotater(double v){
-    m_rotater.RotateLift(v);
+    m_rotater.rotateLift(v);
   }
   
   /** Make this return true when this Command no longer needs to run execute() */

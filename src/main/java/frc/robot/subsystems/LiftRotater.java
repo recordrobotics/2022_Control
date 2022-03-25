@@ -39,7 +39,7 @@ public class LiftRotater extends SubsystemBase{
      * moveLift() moves lift up and down.
      * @param v how fast the left lift motor spins.
      */
-    public void RotateLift(double v) {
+    public void rotateLift(double v) {
         robotLiftRotateMotorLeft.set(v);
         robotLiftRotateMotorRight.set(-v);
     }
