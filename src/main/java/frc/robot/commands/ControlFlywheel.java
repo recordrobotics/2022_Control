@@ -7,16 +7,21 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.OI;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Dashboard;
 import frc.robot.subsystems.Flywheel;
+import frc.robot.subsystems.RangeFinder;
 
 public class ControlFlywheel extends CommandBase {
 
   private boolean enabled = false, prevBtnState = false; 
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
+  private Dashboard m_dashboard = RobotContainer.getInstance().getDashboard();
+  private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
 
   // TODO: figure out what speed we actually need
   private final double SPEED_IDLE = 0.0;
@@ -25,10 +30,13 @@ public class ControlFlywheel extends CommandBase {
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
+    addRequirements(m_rangeFinder);
+    addRequirements(m_dashboard);
   }
 
   @Override
   public void execute() {
+    SmartDashboard.putNumber("Range", m_rangeFinder.getDistance());
     // Toggle on/off
     if (toggled() && !prevBtnState) {
       enabled = !enabled;
@@ -40,7 +48,6 @@ public class ControlFlywheel extends CommandBase {
         m_flywheel.shoot();
       } else {
         m_flywheel.setWheelSpeed(SPEED_NORMAL);
-        m_flywheel.reset();
       }
     } else {
       m_flywheel.setWheelSpeed(SPEED_IDLE);

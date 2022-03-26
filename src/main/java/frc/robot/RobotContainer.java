@@ -100,6 +100,7 @@ public class RobotContainer {
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     m_flywheel = new FlywheelMunchkin();
     m_flywheel.setDefaultCommand(new ControlFlywheel());
+    m_rangeFinder = new RangeFinderMunchkin();
     m_camStream = new CamStream(2);
     m_autonomousCommand = new AutoMunchkin();
   }
