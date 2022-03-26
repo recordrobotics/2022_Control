@@ -85,8 +85,8 @@ public class AcquisitionMunchkin extends Acquisition {
      * @return the value of the acq limit switch
      */
     public boolean getTiltLimit(){
-        // return tiltLimit.get();
-        return true;
+        return tiltLimit.get();
+        // return true;
      }
 
     /**

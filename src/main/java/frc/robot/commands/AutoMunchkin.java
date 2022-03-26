@@ -12,7 +12,7 @@ public class AutoMunchkin extends SequentialCommandGroup {
   public AutoMunchkin() {
     /** Use robot container to declare the subsytem's default command */
     addCommands(
-        new MoveForward(-40, 0.2),
+        new MoveForward(40, 0.2),
         new TiltAcquisition());
   }
 

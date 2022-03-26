@@ -31,18 +31,19 @@ public class TiltAcquisition extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if (m_acquisition.getTiltPosition()) {
-      m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
-    } else {
-      m_acquisition.moveTilt(Constants.TILT_SPEED2020);
-    }
+    m_acquisition.moveTilt(Constants.TILT_SPEEDMUNCHKIN);
+    // if (m_acquisition.getTiltPosition()) {
+    //   m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
+    // } else {
+    //   m_acquisition.moveTilt(Constants.TILT_SPEED2020);
+    // }
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
     //return acqTimer.get() > Constants.ACQ_MOVE_TIME && m_acquisition.getTiltLimit();
-    return m_acquisition.getTiltLimit();
+    return !m_acquisition.getTiltLimit();
   }
 
   /** Called once after isFinished returns true */

@@ -54,6 +54,8 @@ public class MoveForward extends CommandBase {
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
+        System.out.println(m_driveTrain.getRightEncoder());
+        System.out.println(m_driveTrain.getLeftEncoder());
         return Math.abs(m_driveTrain.getRightEncoder()) >= distance && Math.abs(m_driveTrain.getLeftEncoder()) >= distance;
     }
 

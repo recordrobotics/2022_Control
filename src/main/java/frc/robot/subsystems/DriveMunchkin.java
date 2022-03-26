@@ -89,10 +89,10 @@ public class DriveMunchkin extends DriveTrain {
    */
   public void resetEncoders() {
     System.out.println("ENCODERS RESETTING");
-    encoderRightb.setPosition(0.0);
-    encoderRightf.setPosition(0.0);
-    encoderLeftb.setPosition(0.0);
-    encoderLeftf.setPosition(0.0);
+    System.out.println(encoderRightb.setPosition(0.0));
+    System.out.println(encoderRightf.setPosition(0.0));
+    System.out.println(encoderLeftb.setPosition(0.0));
+    System.out.println(encoderLeftf.setPosition(0.0));
     System.out.println("ENCODER VALUES AFTER RESET: RIGHT: " + getRightEncoder() + "LEFT: " + getLeftEncoder());
   };
   
