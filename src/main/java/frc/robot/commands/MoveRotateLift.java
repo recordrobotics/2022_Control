@@ -36,7 +36,7 @@ public class MoveRotateLift  extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-      m_lift.RotateLift(speed); //change to ROTATE_SPEED;
+      m_lift.rotateLift(speed); //change to ROTATE_SPEED;
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
@@ -49,7 +49,7 @@ public class MoveRotateLift  extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
-    m_lift.RotateLift(0);
+    m_lift.rotateLift(0);
   }
 
 }

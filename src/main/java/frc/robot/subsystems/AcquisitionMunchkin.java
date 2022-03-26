@@ -27,7 +27,6 @@ public class AcquisitionMunchkin extends Acquisition {
     private CANSparkMax tiltMotor = new CANSparkMax(RobotMap.acqTiltMotorPort, MotorType.kBrushed);
     //private double aquireMotorVoltage = Constants.Acq2020AcquireMotorVoltage;
     //private double tiltMotorVoltage = Constants.Acq2020TiltMotorVoltage;
-    DigitalInput tiltLimit = new DigitalInput(2);
 
     private CANSparkMax ballChannelMotor = new CANSparkMax(RobotMap.ballChannelMotorPort, MotorType.kBrushless);
 
