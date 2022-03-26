@@ -47,6 +47,7 @@ public class RobotMap {
 	 */
 	public static int acqSpinMotorPort = 7;
 	public static int acqTiltMotorPort = 9;
+	public static int ballChannelMotorPort = 8;
 	/**
 	 * 2022 Robot Motor CAN bus IDs
 	 * l = left, r = right, b = back, f = front
