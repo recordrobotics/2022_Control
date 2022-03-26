@@ -91,7 +91,6 @@ public class RobotContainer {
   private void initMunchkin() {
     m_driveTrain = new DriveMunchkin();
     m_driveTrain.setDefaultCommand(new ManualDrive());
-    m_autonomousCommand = new MoveForward(25, 0.2);
     m_rotater = new LiftRotater();
     m_rotater.setDefaultCommand(new RotateLift());
     m_robotLift = new CIBMunchkin();
@@ -102,6 +101,7 @@ public class RobotContainer {
     m_flywheel = new FlywheelMunchkin();
     m_flywheel.setDefaultCommand(new ControlFlywheel());
     m_camStream = new CamStream(2);
+    m_autonomousCommand = new AutoMunchkin();
   }
 
   /**

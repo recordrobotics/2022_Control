@@ -33,8 +33,10 @@ public class DriveMunchkin extends DriveTrain {
   private MotorControllerGroup leftMotors = new MotorControllerGroup(left);
   private MotorControllerGroup rightMotors = new MotorControllerGroup(right);
   //Drive encoders
-  private RelativeEncoder encoderLeft = left[0].getEncoder();
-  private RelativeEncoder encoderRight = right[0].getEncoder();
+  private RelativeEncoder encoderLeftf = left[0].getEncoder();
+  private RelativeEncoder encoderLeftb = left[1].getEncoder();
+  private RelativeEncoder encoderRightb = right[1].getEncoder();
+  private RelativeEncoder encoderRightf = right[0].getEncoder();
   /**
    * Library Differential Drive object
    */
@@ -44,10 +46,13 @@ public class DriveMunchkin extends DriveTrain {
    * creates drive object, stopping motors like a good boi
    */
   public DriveMunchkin(){
-    System.out.println("ENCODER INIT: " + encoderRight.setPositionConversionFactor(21.42/Math.PI));
-    encoderLeft.setPositionConversionFactor(10.71/(6*Math.PI));
+    System.out.println("ENCODER INIT: " + encoderRightb.setPositionConversionFactor(21.42/Math.PI));
+    System.out.println("ENCODER INIT: " + encoderRightf.setPositionConversionFactor(21.42/Math.PI));
+    encoderLeftb.setPositionConversionFactor(10.71/(6*Math.PI));
+    encoderLeftf.setPositionConversionFactor(10.71/(6*Math.PI));
     leftMotors.stopMotor();
     rightMotors.stopMotor();
+    resetEncoders();
   }
 
   private long disabled_time = 0;
@@ -71,21 +76,24 @@ public class DriveMunchkin extends DriveTrain {
    * @return The Value of the right encoder in FEET
    */
   public double getRightEncoder() {
-    return encoderRight.getPosition();
+    return (encoderRightb.getPosition() + encoderRightf.getPosition()) / 2;
   }
   /**
    * @return The Value of the right encoder in FEET
    */
   public double getLeftEncoder() {
-    return encoderLeft.getPosition();
+    return (encoderLeftb.getPosition() + encoderLeftf.getPosition()) / 2;
   }
   /**
    * Reset both encoders to zero
    */
   public void resetEncoders() {
     System.out.println("ENCODERS RESETTING");
-    encoderRight.setPosition(0);
-    encoderLeft.setPosition(0);
+    encoderRightb.setPosition(0.0);
+    encoderRightf.setPosition(0.0);
+    encoderLeftb.setPosition(0.0);
+    encoderLeftf.setPosition(0.0);
+    System.out.println("ENCODER VALUES AFTER RESET: RIGHT: " + getRightEncoder() + "LEFT: " + getLeftEncoder());
   };
   
   /**

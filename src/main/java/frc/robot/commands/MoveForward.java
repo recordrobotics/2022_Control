@@ -31,7 +31,7 @@ public class MoveForward extends CommandBase {
 
     public MoveForward() {
         distance = m_rangeFinder.getDistance();
-        speed = 0.7;
+        speed = 0.5;
     }
 
     /** Called just before this Command runs the first time */
@@ -54,12 +54,15 @@ public class MoveForward extends CommandBase {
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        return Math.abs(m_driveTrain.getRightEncoder()) >= Math.abs(distance) && Math.abs(m_driveTrain.getLeftEncoder()) >= Math.abs(distance);
+        return Math.abs(m_driveTrain.getRightEncoder()) >= distance && Math.abs(m_driveTrain.getLeftEncoder()) >= distance;
     }
 
     /** Called once after isFinished returns true */
     @Override
     public void end(boolean intterupted) {
+        if (intterupted) {
+            System.out.println("AUTO MOVE INTTERUPTED!!! \n\n");
+        }
         m_driveTrain.moveLeftWheels(0);
         m_driveTrain.moveRightWheels(0);
     }
