@@ -15,7 +15,7 @@ import frc.robot.Constants;
  * Subsystem class for the RangeFinder
  */
 public class RangeFinderMunchkin extends RangeFinder {
-	private Ultrasonic rf = new Ultrasonic(8, 9);
+	private Ultrasonic rf = new Ultrasonic(0, 1);
 
   /**
    * Method that enables the rangefinder
