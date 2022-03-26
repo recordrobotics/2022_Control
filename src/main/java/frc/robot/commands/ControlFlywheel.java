@@ -14,63 +14,65 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.Flywheel;
 
 public class ControlFlywheel extends CommandBase {
-  /**
-   * prevToggle if it was last on or off.
-   * flywheelIsOn if the flywheel is currently on or off.
-   * Constants.USE_XBOX_CONTROLLER use xbox controller to toggle flywheel.
-   * Constants.XBOX_BUTTON which button on the xbox controller toggles the flywheel.
-   * Constants.PANEL_BUTTON which button on the panel toggles the flywheel.
-   * WHEEL_SPEED how fast the flywheel spins.
-   */
-  private boolean prevToggle = false, flywheelIsOn = false;
+
+  private boolean enabled = false, prevBtnState = false; 
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
 
-  private final double WHEEL_SPEED = 0.85;
-  /**
-   * Create a ControlFlywheel constructor.
-   */
+  // TODO: figure out what speed we actually need
+  private final double SPEED_IDLE = 0.0;
+  private final double SPEED_NORMAL = 0.25;
+  private final double SPEED_BOOSTED = 0.5;
+
   public ControlFlywheel() {
-    /** Use requires() here to declare subsystem dependencies*/
     addRequirements(m_flywheel);
   }
 
-  /** Called just before this Command runs the first time*/
-  
-
-  /** Called repeatedly when this Command is scheduled to run*/
   @Override
   public void execute() {
-    /**toggle*/
-    if ((getButton() != prevToggle) && getButton()){
-      flywheelIsOn = !flywheelIsOn;
-      System.out.println("toggle! " + flywheelIsOn);
+    // Toggle on/off
+    if (toggled() && !prevBtnState) {
+      enabled = !enabled;
     }
-    /**hold y to slow down flywheel*/
-    if (flywheelIsOn){
-      if (OI.getXboxButtonState("Y")){
-        m_flywheel.moveWheel(WHEEL_SPEED - 0.4);
+    if (enabled) {
+      // Holding Y accelerates the flywheel and shoots ball
+      if (boosted()) {
+        m_flywheel.setWheelSpeed(SPEED_BOOSTED);
+        m_flywheel.shoot();
       } else {
-        m_flywheel.moveWheel(WHEEL_SPEED);
+        m_flywheel.setWheelSpeed(SPEED_NORMAL);
       }
     } else {
-      m_flywheel.moveWheel(0);
+      m_flywheel.setWheelSpeed(SPEED_IDLE);
+      m_flywheel.reset();
     }
 
-    prevToggle = getButton();
+    prevBtnState = toggled();
   }
+
   /**
-   * Returns the button used to toggle the flywheel.
-   * @return the button used to toggle the flywheel.
+   * Checks if toggle button is pressed
+   * @return button state
    */
-  private boolean getButton(){
-    if (Constants.USE_XBOX_CONTROLLER){
-      return OI.getXboxButtonState(Constants.XBOX_BUTTON);
+  private boolean toggled() {
+    if (Constants.FLYWHEEL_USE_XBOX_CONTROLLER){
+      return OI.getXboxButtonState(Constants.XBOX_FLYWHEEL_ENABLE);
     } else {
-      return OI.getPanelButtonState(Constants.PANEL_BUTTON);
+      return OI.getPanelButtonState(Constants.PANEL_FLYWHEEL_ENABLE);
     }
   }
 
-  /** Make this return true when this Command no longer needs to run execute()*/
+  /**
+   * Checks if boost button in pressed
+   * @return button state
+   */
+  private boolean boosted() {
+    if (Constants.FLYWHEEL_USE_XBOX_CONTROLLER) {
+      return OI.getXboxButtonState(Constants.XBOX_FLYWHEEL_BOOST);
+    } else {
+      return false;
+    }
+  }
+
   @Override
   public boolean isFinished() {
     return false;

@@ -11,7 +11,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public abstract class Flywheel extends SubsystemBase {
 
-    public abstract void moveWheel(double v);
+    public abstract void setWheelSpeed(double v);
+    public abstract void shoot();
+    public abstract void reset();
     public abstract double getVoltage();
 
 }

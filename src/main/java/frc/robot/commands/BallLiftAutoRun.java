@@ -35,7 +35,7 @@ public class BallLiftAutoRun extends CommandBase {
    * Starts the timer and turns on the flywheel motor at the set speed
    */
     ballTimer.start();
-    m_flywheel.moveWheel(FLYWHEEL_SPEED);
+    m_flywheel.setWheelSpeed(FLYWHEEL_SPEED);
   }
 
   ///** Called rep Called repeatedly when this Command is scheduled to run
@@ -45,7 +45,7 @@ public class BallLiftAutoRun extends CommandBase {
      * Once again runs the flywheel motor at the set speed
      * If the timer has been running for at least 1 second runs the ball lift at the set speed
      */
-    m_flywheel.moveWheel(FLYWHEEL_SPEED);
+    m_flywheel.setWheelSpeed(FLYWHEEL_SPEED);
 
     if (ballTimer.get() > 1)
     m_ballLift.moveBallLift(BALL_LIFT_SPEED);
@@ -64,7 +64,7 @@ public class BallLiftAutoRun extends CommandBase {
   /** Called once after isFinished returns true*/
   @Override
   public void end(boolean interrupted) {
-    m_flywheel.moveWheel(0);
+    m_flywheel.setWheelSpeed(0);
     m_ballLift.moveBallLift(0);
   }
 
