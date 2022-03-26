@@ -16,7 +16,7 @@ public final class Constants {
     /**
     * The robot currently selected
     */
-    public static final RobotModel CURRENT_ROBOT = RobotModel.MONTY;
+    public static final RobotModel CURRENT_ROBOT = RobotModel.MUNCHKIN;
 
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
@@ -30,7 +30,11 @@ public final class Constants {
     //for CamControl.java
     public static final String SWITCH_BUTTON = "Y";
     //for ControlAcquisition.java
-    public static final double ACQ_SPEED = -0.5d;
+    public static final double SPIN_SPEED2020 = -0.5d;
+    public static final double TILT_SPEED2020 = -0.5d;
+    //TODO: set these once we know what they need to be (testing)
+    public static final double SPIN_SPEEDMUNCHKIN = -0.5d;
+    public static final double TILT_SPEEDMUNCHKIN = -0.5d;
     //for ControlFlywheel.java
     public static final boolean USE_XBOX_CONTROLLER = true;
     public static final String XBOX_BUTTON = "X";
@@ -69,4 +73,9 @@ public final class Constants {
     //for Acquisition2020.java
     public static final double Acq2020AcquireMotorVoltage = 11.5;
     public static final double Acq2020TiltMotorVoltage = 11.5;
+
+
+    public static final double liftRotaterTargetVoltage = 11.5;
+    //for DiagonalStartingPositionMunchkin.java
+    public static final double DISTANCE_BETWEEN_RANGE_FINDERS = 0.0;
 }

@@ -100,11 +100,31 @@ public class OI {
     return joystick.getYAxis();
   }
 
+  public static boolean getRightStickLeft(){
+    return xbox.getRightStickXLeft();
+  }
+  public static boolean getRightStickRight(){
+    return xbox.getRightStickXRight();
+  }
+  public static boolean getRightStickUp(){
+    return xbox.getRightStickYUp();
+  }
+  public static boolean getRightStickDown(){
+    return xbox.getRightStickYDown();
+  }
+
+  public static double getCStickXAxis(){
+    return xbox.getCStickXAxis();
+  }
+  public static double getCStickYAxis(){
+    return xbox.getCStickYAxis();
+  }
+  
   /**
    * @return The turn (yaw) value of the current joystick
    */
   public static double getTurn(){
-    return joystick.getXAxis();
+    return -joystick.getXAxis();
 
   }
 }

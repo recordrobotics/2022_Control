@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 import frc.robot.RobotMap;  
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import frc.robot.commands.*;
 
 public class LiftMonolith extends RobotLift{
@@ -23,7 +23,7 @@ public class LiftMonolith extends RobotLift{
     DigitalInput bottomLimit = new DigitalInput(2);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new LiftControl());
+        setDefaultCommand(new ButtonLiftControl());
     }
     /**
      * Moves the lift up and down.
@@ -37,6 +37,8 @@ public class LiftMonolith extends RobotLift{
     }
     public double getPosition(){
         return 0;
+    }
+    public void resetEncoder(){
     }
     /**
      * Stops the lift from moving.

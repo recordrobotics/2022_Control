@@ -8,47 +8,58 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.OI;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.Acquisition;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.Timer;
+import frc.robot.control.*;
+import frc.robot.subsystems.RobotLift;
 
-public class TiltAcquisition extends CommandBase {
+public class CIBControl extends CommandBase {
+  private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
   /**
-   * acqTimer Timer to time the amount of time that has passed since the
-   * acquisition started tilting. Constants.ACQ_MOVE_TIME How long it should take to tilt.
-   * TiltAcquisition Creates new TiltAcquisition object.
+   * Creates a LiftControl constructor.
    */
-  private Timer acqTimer = new Timer();
-  private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
+  public CIBControl() {
+    /** Use requires() here to declare subsystem dependencies */
+    addRequirements(m_lift);
+  }
+
+  /**
+   * Constants.SPEED the speed the lift moves. position safety or no safety.
+   */
+  private int position = 0;
+
+  /** nonzero value kills the saftey mechanism */
+  /** Use requires() here to declare subsystem dependencies */
 
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-    acqTimer.start();
+    position = 0;
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if (m_acquisition.getTiltPosition()) {
-      m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
-    } else {
-      m_acquisition.moveTilt(Constants.TILT_SPEED2020);
+    if(OI.getRightStickUp()){
+      m_lift.moveLift(OI.getCStickYAxis() / 2);
+    }
+    else if(OI.getRightStickDown()){
+      m_lift.moveLift(OI.getCStickYAxis() / 2);
+    }
+    else if (OI.getXboxButtonState("A")) {
+      m_lift.moveLift(0.125);
+    }
+    else {
+      m_lift.moveLift(0);
     }
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    return acqTimer.get() > Constants.ACQ_MOVE_TIME && m_acquisition.getTiltLimit();
+    return false;
   }
 
-  /** Called once after isFinished returns true */
-  @Override
-  public void end(boolean intterupted) {
-    m_acquisition.setTiltPosition(!m_acquisition.getTiltPosition());
-    acqTimer.stop();
-    acqTimer.reset();
-  }
 }

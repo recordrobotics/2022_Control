@@ -8,47 +8,53 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.Acquisition;
-import frc.robot.Constants;
-import edu.wpi.first.wpilibj.Timer;
+import frc.robot.subsystems.AcqServosMunchkin;
 
-public class TiltAcquisition extends CommandBase {
-  /**
-   * acqTimer Timer to time the amount of time that has passed since the
-   * acquisition started tilting. Constants.ACQ_MOVE_TIME How long it should take to tilt.
-   * TiltAcquisition Creates new TiltAcquisition object.
-   */
-  private Timer acqTimer = new Timer();
-  private Acquisition m_acquisition = RobotContainer.getInstance().getAcquisition();
+/**
+ * An example command. You can replace me with your own command.
+ */
+public class ControlMunchkinServos extends CommandBase {
+  private boolean prevToggle = false, servosFlipped = false;
+  private AcqServosMunchkin m_servos = RobotContainer.getInstance().getAcqServos();
+  public ControlMunchkinServos() {
+    /** Use robot container to declare the subsytem's default command */
+    addRequirements(m_servos);
+  }
 
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-    acqTimer.start();
+    m_servos.setServos(0);
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if (m_acquisition.getTiltPosition()) {
-      m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
-    } else {
-      m_acquisition.moveTilt(Constants.TILT_SPEED2020);
+    if ((OI.getXboxButtonState("X") != prevToggle) && (OI.getXboxButtonState("X"))){
+      servosFlipped = !servosFlipped;
+      System.out.println("toggle! " + servosFlipped);
     }
+
+    if (servosFlipped){  
+    m_servos.setServos(0.33);
+    } else {
+    m_servos.setServos(0);
+    }
+
+    prevToggle = OI.getXboxButtonState("X") ;
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    return acqTimer.get() > Constants.ACQ_MOVE_TIME && m_acquisition.getTiltLimit();
+    return false;
   }
 
   /** Called once after isFinished returns true */
   @Override
-  public void end(boolean intterupted) {
-    m_acquisition.setTiltPosition(!m_acquisition.getTiltPosition());
-    acqTimer.stop();
-    acqTimer.reset();
+  public void end(boolean interrupted) {
   }
+
 }

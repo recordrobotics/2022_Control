@@ -39,6 +39,8 @@ public class RobotLift2020 extends RobotLift{
     public double getPosition(){
         return liftEncoder.get();
     }
+    public void resetEncoder(){
+    }
     /**
      * moveLift() moves lift up and down.
      * @param v how fast the left lift motor spins.
