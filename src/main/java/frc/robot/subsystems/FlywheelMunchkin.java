@@ -10,21 +10,31 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
-public class Flywheel2020 extends Flywheel {
-    /**
-     * flywheelMotor Creates a motor object for the flywheel motor. targetVoltage
-     * The target voltage of the flywheel.
-     */
-    private int falcon500port = 12;
-    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(falcon500port);
+import edu.wpi.first.wpilibj.Servo;
+import frc.robot.RobotMap;
+
+public class FlywheelMunchkin extends Flywheel {
+    // Target Voltage
     private double targetVoltage = 11.5;
+
+    // Servo positions for shoot and reset
+    private final double RIGHT_SERVO_SHOOT = 0.0;
+    private final double LEFT_SERVO_SHOOT = 0.33;
+    private final double RIGHT_SERVO_RESET = 0.33;
+    private final double LEFT_SERVO_RESET = 0.0;
+
+    // Hardware
+    private WPI_TalonFX flywheelMotor = new WPI_TalonFX(RobotMap.flywheelMunchkin);
+    private Servo rightServo = new Servo(0);
+    private Servo leftServo = new Servo(1);
 
     /**
      * Creates an Object for the flywheel class.
      */
-    public Flywheel2020() {
+    public FlywheelMunchkin() {
         flywheelMotor.enableVoltageCompensation(true);
         flywheelMotor.setVoltage(targetVoltage);
+        reset();
     }
 
     /**
@@ -38,16 +48,19 @@ public class Flywheel2020 extends Flywheel {
     }
 
     /**
-     * Not implemented
+     * Activates the server to push the ball into the flywheel
      */
     @Override
-    public void shoot() {}
+    public void shoot() {
+        rightServo.set(RIGHT_SERVO_SHOOT);
+        leftServo.set(LEFT_SERVO_SHOOT);
+    }
 
-    /**
-     * Not implemented
-     */
     @Override
-    public void reset() {}
+    public void reset() {
+        rightServo.set(RIGHT_SERVO_RESET);
+        leftServo.set(LEFT_SERVO_RESET);
+    }
 
     /**
      * Returns the flywheel's voltage output.
@@ -57,5 +70,4 @@ public class Flywheel2020 extends Flywheel {
     public double getVoltage() {
         return flywheelMotor.getMotorOutputVoltage();
     }
-
 }

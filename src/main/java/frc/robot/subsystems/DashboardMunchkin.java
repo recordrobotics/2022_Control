@@ -13,8 +13,6 @@ public class DashboardMunchkin extends Dashboard {
     */
     public DashboardMunchkin(){
         SmartDashboard.putData("Move 3ft", new MoveForward(24, 0.2));
-        SmartDashboard.putData("Turn Left", new AutoTurn(-90));
-        SmartDashboard.putData("Turn Right", new AutoTurn(90));
         SmartDashboard.putData("Tilt Acquisition", new TiltAcquisition());
         SmartDashboard.putData("Move to 3ft", new MoveToRange(36));
         SmartDashboard.putData("Turn to Goal", new TurnToGoal());

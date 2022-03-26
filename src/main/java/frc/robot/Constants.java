@@ -36,9 +36,10 @@ public final class Constants {
     public static final double SPIN_SPEEDMUNCHKIN = -0.5d;
     public static final double TILT_SPEEDMUNCHKIN = -0.5d;
     //for ControlFlywheel.java
-    public static final boolean USE_XBOX_CONTROLLER = true;
-    public static final String XBOX_BUTTON = "X";
-    public static final int PANEL_BUTTON = 6;
+    public static final boolean FLYWHEEL_USE_XBOX_CONTROLLER = true;
+    public static final String XBOX_FLYWHEEL_ENABLE = "X";
+    public static final String XBOX_FLYWHEEL_BOOST = "Y";
+    public static final int PANEL_FLYWHEEL_ENABLE = 6;
     //for ControlSpool.java
     public static final double SPOOL_SPEED = 0.5d;
     //for LiftControl.java

@@ -41,6 +41,7 @@ public class RobotMap {
 	 */
 	public static int rotateLiftForwardLimitSwitch = 0;
 	public static int rotateLiftBackwardLimitSwitch = 1;
+	public static int acqTiltLimitSwitch = 2;
 
 	/**
 	 * Set of subsystem motors for Munchkin (temporary, set later)
@@ -56,6 +57,8 @@ public class RobotMap {
 	public static int driveMotor_lb = 2;
 	public static int driveMotor_rb = 3;
 	public static int driveMotor_rf = 4;
+
+	public static int flywheelMunchkin = 11;
 
 	/**
 	 * Spark Motors for Monolith

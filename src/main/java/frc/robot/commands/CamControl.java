@@ -19,8 +19,8 @@ import frc.robot.subsystems.CamStream; // in commented-out code
  * just before competition, function questionably understood USE AT OWN RISK
  */
 public class CamControl extends CommandBase {
-    private CamStream m_camStream = RobotContainer.getInstance().getCamStream();
-    private String switchButton = "Y";
+    private CamStream m_camStream;
+    private String switchButton = "B";
 
     public CamControl() {
 
@@ -29,6 +29,7 @@ public class CamControl extends CommandBase {
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
+        m_camStream = RobotContainer.getInstance().getCamStream();
         m_camStream.setCamera(0);
     }
 

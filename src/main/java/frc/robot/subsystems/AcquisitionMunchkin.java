@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-// import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
 //import frc.robot.Constants;
 
@@ -30,7 +30,8 @@ public class AcquisitionMunchkin extends Acquisition {
     DigitalInput tiltLimit = new DigitalInput(2);
 
     private CANSparkMax ballChannelMotor = new CANSparkMax(RobotMap.ballChannelMotorPort, MotorType.kBrushless);
-    // DigitalInput tiltLimit;
+
+    DigitalInput tiltLimit = new DigitalInput(RobotMap.acqTiltLimitSwitch);;
 
     boolean tiltPosition = true;  /**true is up, false is down*/
     
@@ -73,7 +74,12 @@ public class AcquisitionMunchkin extends Acquisition {
      * @param v speed of the motor.
      */
     public void moveTilt(double v) {
-        tiltMotor.set(v);
+        System.out.println(tiltLimit.get());
+        // if ((v < 0 && tiltLimit.get()) || v > 0 ) {
+            tiltMotor.set(v);
+        // } else {
+            // tiltMotor.set(0);
+        // }
     }
 
     /**

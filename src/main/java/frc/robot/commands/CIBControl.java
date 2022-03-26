@@ -43,10 +43,10 @@ public class CIBControl extends CommandBase {
   @Override
   public void execute() {
     if(OI.getRightStickUp()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2);
+      m_lift.moveLift(OI.getCStickYAxis() / 2 + 0.15);
     }
     else if(OI.getRightStickDown()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2);
+      m_lift.moveLift(OI.getCStickYAxis() / 2 - 0.15);
     }
     else if (OI.getXboxButtonState("A")) {
       m_lift.moveLift(0.125);

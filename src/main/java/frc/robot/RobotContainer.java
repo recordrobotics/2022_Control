@@ -37,7 +37,7 @@ public class RobotContainer {
   private LiftSpool m_liftSpool;
   private RangeFinder m_rangeFinder;
   private Dashboard m_dashboard;
-  private CamStream m_camStream = new CamStream(2);
+  private CamStream m_camStream;
   private Command m_autonomousCommand;
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
   private LiftRotater m_rotater;
@@ -46,7 +46,6 @@ public class RobotContainer {
   private NetworkTableInstance m_netTableInst;
   private NetworkTable m_netTable;
   private NetworkTableEntry m_netTableEntry;
-  private AcqServosMunchkin acqServos;
 
   public DriveTrain getDriveTrain() { return m_driveTrain; }
   public RobotLift getRobotLift() { return m_robotLift; }
@@ -61,7 +60,6 @@ public class RobotContainer {
   public CamStream getCamStream() { return m_camStream; }
   public Command getAutonomousCommand() { return m_autonomousCommand; }
   public LiftRotater getRotater() {return m_rotater; }
-  public AcqServosMunchkin getAcqServos() { return acqServos; }
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public void init() {
@@ -101,8 +99,9 @@ public class RobotContainer {
     m_dashboard = new DashboardMunchkin();
     m_acquisition = new AcquisitionMunchkin();
     m_acquisition.setDefaultCommand(new ControlAcquisition());
-    acqServos = new AcqServosMunchkin();
-    acqServos.setDefaultCommand(new ControlMunchkinServos());
+    m_flywheel = new FlywheelMunchkin();
+    m_flywheel.setDefaultCommand(new ControlFlywheel());
+    m_camStream = new CamStream(2);
   }
 
   /**
@@ -125,7 +124,7 @@ public class RobotContainer {
     m_robotLift = new RobotLift2020();
     m_robotLift.setDefaultCommand(new ButtonLiftControl());
     m_rangeFinder = new RangeFinder2020();
-    m_camStream = new CamStream();
+    m_camStream = new CamStream(2);
     m_dashboard = new Dashboard2020();
   }
 

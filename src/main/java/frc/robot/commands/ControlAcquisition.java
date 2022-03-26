@@ -21,12 +21,12 @@ public class ControlAcquisition extends CommandBase {
      * tiltUpButton Which button lowers the tilt of the aquisition.
      * tiltDownButton Which button spins the aquisition.
      */
-    private static final String forwardSpinButton = "LT";
-    private static final String reverseSpinButton = "LB";
-    private static final String tiltUpButton2020 = "RSYUP";
-    private static final String tiltDownButton2020 = "RSYDOWN";
-    private static final String tiltUpButtonMunchkin = "RT";
-    private static final String tiltDownButtonMunchkin = "RB";
+    private static final String FORWARD_SPIN_BUTTON = "LT";
+    private static final String REVERSE_SPIN_BUTTON = "LB";
+    private static final String TILT_UP_BUTTON_2020 = "RSYUP";
+    private static final String TILT_DOWN_BUTTON_2020 = "RSYDOWN";
+    private static final String TILT_UP_BUTTON_MUNCHKIN = "RT";
+    private static final String TILT_DOWN_BUTTON_MUNCHKIN = "RB";
     /**
      * Constants.SPIN_SPEED This is how fast the aquisition spins.
      */
@@ -45,9 +45,9 @@ public class ControlAcquisition extends CommandBase {
          * else if: spin backwards (expels balls out) when reverseSpinButton is pressed.
          * else: stop motor from spinning.
          */
-        if (OI.getXboxButtonState(forwardSpinButton)) {
+        if (OI.getXboxButtonState(FORWARD_SPIN_BUTTON)) {
             m_acquisition.moveAcq(Constants.SPIN_SPEEDMUNCHKIN);
-        } else if (OI.getXboxButtonState(reverseSpinButton)) {
+        } else if (OI.getXboxButtonState(REVERSE_SPIN_BUTTON)) {
             m_acquisition.moveAcq(-Constants.SPIN_SPEEDMUNCHKIN);
         } else {
             m_acquisition.moveAcq(0);
@@ -58,9 +58,9 @@ public class ControlAcquisition extends CommandBase {
          * else if: tilt down when tiltDownButton is pressed.
          * else: stop motor from spinning.
          */
-        if (OI.getXboxButtonState(tiltUpButtonMunchkin)) {
+        if (OI.getXboxButtonState(TILT_UP_BUTTON_MUNCHKIN)) {
             m_acquisition.moveTilt(Constants.TILT_SPEEDMUNCHKIN);
-        } else if (OI.getXboxButtonState(tiltDownButtonMunchkin)) {
+        } else if (OI.getXboxButtonState(TILT_DOWN_BUTTON_MUNCHKIN)) {
             m_acquisition.moveTilt(-Constants.TILT_SPEEDMUNCHKIN);
         } else {
             m_acquisition.moveTilt(0);
@@ -76,9 +76,9 @@ public class ControlAcquisition extends CommandBase {
          * ELSE IF: if the reverse button is pressed, move the aquisition by Constants.SPIN_SPEED in the other direction.
          * ELSE: the aquisition shouldn't spin if either button is not pressed.
          */
-        if (OI.getXboxButtonState(forwardSpinButton)) {
+        if (OI.getXboxButtonState(FORWARD_SPIN_BUTTON)) {
             m_acquisition.moveAcq(Constants.SPIN_SPEED2020);
-        } else if (OI.getXboxButtonState(reverseSpinButton)) {
+        } else if (OI.getXboxButtonState(REVERSE_SPIN_BUTTON)) {
             m_acquisition.moveAcq(-Constants.SPIN_SPEED2020);
         } else {
             m_acquisition.moveAcq(0);
@@ -88,9 +88,9 @@ public class ControlAcquisition extends CommandBase {
          * ELSE IF: if the left bumper is pressed, tilt the aquisition down by Constants.TILT_SPEED.
          * ELSE: the aquisition shouldn't tilt if either bumper is not pressed.
          */
-        if (OI.getXboxButtonState(tiltUpButton2020)) {
+        if (OI.getXboxButtonState(TILT_UP_BUTTON_2020)) {
             m_acquisition.moveTilt(Constants.TILT_SPEED2020);
-        } else if (OI.getXboxButtonState(tiltDownButton2020)) {
+        } else if (OI.getXboxButtonState(TILT_DOWN_BUTTON_2020)) {
             m_acquisition.moveTilt(-Constants.TILT_SPEED2020);
         } else {
             m_acquisition.moveTilt(0);
@@ -106,15 +106,16 @@ public class ControlAcquisition extends CommandBase {
     @Override
     public void execute() {
         /**control the toggle, this will invert inputPosition when "A" is pressed*/
-       switch (Constants.CURRENT_ROBOT) {
-      case ROBOT2020:
-      controlAcq2020();
-        break;
-        case MUNCHKIN:
-        controlAcqMunchkin();
-        break;
-      default:
-        break; }
+        switch (Constants.CURRENT_ROBOT) {
+            case ROBOT2020:
+                controlAcq2020();
+                break;
+            case MUNCHKIN:
+                controlAcqMunchkin();
+            break;
+        default:
+            break;
+        }
     }
 
     /** Make this return true when this Command no longer needs to run execute()*/
