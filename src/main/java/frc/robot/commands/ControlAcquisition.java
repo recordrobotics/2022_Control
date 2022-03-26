@@ -21,12 +21,12 @@ public class ControlAcquisition extends CommandBase {
      * tiltUpButton Which button lowers the tilt of the aquisition.
      * tiltDownButton Which button spins the aquisition.
      */
-    String forwardSpinButton = "LT";
-    String reverseSpinButton = "LB";
-    String tiltUpButton2020 = "RSYUP";
-    String tiltDownButton2020 = "RSYDOWN";
-    String tiltUpButtonMunchkin = "RT";
-    String tiltDownButtonMunchkin = "RB";
+    private static final String forwardSpinButton = "LT";
+    private static final String reverseSpinButton = "LB";
+    private static final String tiltUpButton2020 = "RSYUP";
+    private static final String tiltDownButton2020 = "RSYDOWN";
+    private static final String tiltUpButtonMunchkin = "RT";
+    private static final String tiltDownButtonMunchkin = "RB";
     /**
      * Constants.SPIN_SPEED This is how fast the aquisition spins.
      */
@@ -112,6 +112,7 @@ public class ControlAcquisition extends CommandBase {
         break;
         case MUNCHKIN:
         controlAcqMunchkin();
+        break;
       default:
         break; }
     }
