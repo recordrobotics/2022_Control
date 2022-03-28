@@ -35,6 +35,7 @@ public class FlywheelMunchkin extends Flywheel {
         flywheelMotor.enableVoltageCompensation(true);
         flywheelMotor.setVoltage(targetVoltage);
         reset();
+        setWheelSpeed(0);
     }
 
     /**

@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.Constants;
 
@@ -16,19 +17,19 @@ import frc.robot.Constants;
  */
 public class RangeFinderMunchkin extends RangeFinder {
 	private Ultrasonic rf = new Ultrasonic(0, 1);
-
-  /**
-   * Method that enables the rangefinder
-   */
+	
+  	/**
+     * Method that enables the rangefinder
+     */
 	public RangeFinderMunchkin() {
 		rf.setEnabled(true);
-		rf.setAutomaticMode(true);
+		Ultrasonic.setAutomaticMode(true);
 	}
 
 	/**
-	*
-	* @return range returned in inches
-	*/
+	 *
+	 * @return range returned in inches
+	 */
 	public double getDistance() {
 	    return rf.getRangeInches();
 	}

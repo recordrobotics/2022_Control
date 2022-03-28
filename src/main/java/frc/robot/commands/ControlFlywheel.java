@@ -25,8 +25,8 @@ public class ControlFlywheel extends CommandBase {
 
   // TODO: figure out what speed we actually need
   private final double SPEED_IDLE = 0.0;
-  private final double SPEED_NORMAL = 0.25;
-  private final double SPEED_BOOSTED = 0.5;
+  private final double SPEED_NORMAL = 0.5;
+  private final double SPEED_BOOSTED = 0.85;
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
@@ -36,7 +36,7 @@ public class ControlFlywheel extends CommandBase {
 
   @Override
   public void execute() {
-    SmartDashboard.putNumber("Range", m_rangeFinder.getDistance());
+    SmartDashboard.putNumber("RangeFinder output", m_rangeFinder.getDistance());
     // Toggle on/off
     if (toggled() && !prevBtnState) {
       enabled = !enabled;
