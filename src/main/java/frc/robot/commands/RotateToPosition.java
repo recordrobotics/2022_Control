@@ -39,14 +39,14 @@ public class RotateToPosition extends CommandBase {
   @Override
   public void execute() {
     if(pos < 0){
-      m_rotater.RotateLift(-PID_MODIFIER*pid.control(m_rotater.getPosition()-pos));
+      m_rotater.rotateLift(-PID_MODIFIER*pid.control(m_rotater.getPosition()-pos));
       System.out.println(m_rotater.getPosition()+ "moving to negative");
     }else{
       if(pos > 0){
-        m_rotater.RotateLift(PID_MODIFIER*pid.control(m_rotater.getPosition()-pos));
+        m_rotater.rotateLift(PID_MODIFIER*pid.control(m_rotater.getPosition()-pos));
         System.out.println(m_rotater.getPosition()+ "moving to positive");
       }else{
-        m_rotater.RotateLift(0);
+        m_rotater.rotateLift(0);
       }
     }
     
@@ -67,7 +67,7 @@ public class RotateToPosition extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
-    m_rotater.RotateLift(0);
+    m_rotater.rotateLift(0);
   }
 
 }

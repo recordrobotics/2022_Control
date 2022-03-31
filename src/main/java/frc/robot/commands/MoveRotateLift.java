@@ -8,58 +8,49 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI;
 import frc.robot.RobotContainer;
 import frc.robot.Constants;
-import frc.robot.control.*;
+import frc.robot.subsystems.LiftRotater;
 import frc.robot.subsystems.RobotLift;
 
-public class CIBControl extends CommandBase {
-  private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
-  /**
-   * Creates a LiftControl constructor.
-   */
-  public CIBControl() {
-    /** Use requires() here to declare subsystem dependencies */
-    addRequirements(m_lift);
+/**
+ * An example command. You can replace me with your own command.
+ */
+public class MoveRotateLift  extends CommandBase {
+    private LiftRotater m_lift = RobotContainer.getInstance().getRotater();
+    private double distance;
+    private double speed;
+    public MoveRotateLift(double distance, double sp) {
+        this.distance = distance;
+        speed = sp;
+        addRequirements(m_lift);
+    /** Use robot container to declare the subsytem's default command */
   }
-
-  /**
-   * Constants.SPEED the speed the lift moves. position safety or no safety.
-   */
-  private int position = 0;
-
-  /** nonzero value kills the saftey mechanism */
-  /** Use requires() here to declare subsystem dependencies */
 
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-    position = 0;
+      m_lift.resetLeftRotateEncoder();
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if(OI.getRightStickUp()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2 - 0.15);
-    }
-    else if(OI.getRightStickDown()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2 + 0.15);
-    }
-    else if (OI.getXboxButtonState("A")) {
-      m_lift.moveLift(0.125);
-    }
-    else {
-      m_lift.moveLift(0);
-    }
+      m_lift.rotateLift(speed); //change to ROTATE_SPEED;
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    return false;
+    //return true when encoder value is equal to certain value;
+    return Math.abs(m_lift.getPosition()) >= Math.abs(distance);
+  }
+
+  /** Called once after isFinished returns true */
+  @Override
+  public void end(boolean interrupted) {
+    m_lift.rotateLift(0);
   }
 
 }
+

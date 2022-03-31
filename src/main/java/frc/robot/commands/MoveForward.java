@@ -31,33 +31,40 @@ public class MoveForward extends CommandBase {
 
     public MoveForward() {
         distance = m_rangeFinder.getDistance();
-        speed = 0.7;
+        speed = 0.5;
     }
 
     /** Called just before this Command runs the first time */
     @Override
     public void initialize() {
+        m_driveTrain = RobotContainer.getInstance().getDriveTrain();
         /** reset the encoders */
         m_driveTrain.resetEncoders();
         System.out.println("command move init");
+        System.out.println(m_driveTrain.getLeftEncoder() + m_driveTrain.getRightEncoder());
     }
 
     /** Called repeatedly when this Command is scheduled to run */
     @Override
     public void execute() {
         m_driveTrain.moveLeftWheels(speed);
-        m_driveTrain.moveRightWheels(speed);
+        m_driveTrain.moveRightWheels(-speed);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */
     @Override
     public boolean isFinished() {
-        return m_driveTrain.getRightEncoder() >= distance || m_driveTrain.getLeftEncoder() >= distance;
+        System.out.println(m_driveTrain.getRightEncoder());
+        System.out.println(m_driveTrain.getLeftEncoder());
+        return Math.abs(m_driveTrain.getRightEncoder()) >= distance && Math.abs(m_driveTrain.getLeftEncoder()) >= distance;
     }
 
     /** Called once after isFinished returns true */
     @Override
     public void end(boolean intterupted) {
+        if (intterupted) {
+            System.out.println("AUTO MOVE INTTERUPTED!!! \n\n");
+        }
         m_driveTrain.moveLeftWheels(0);
         m_driveTrain.moveRightWheels(0);
     }

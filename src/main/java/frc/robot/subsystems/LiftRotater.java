@@ -53,7 +53,7 @@ public class LiftRotater extends SubsystemBase {
      * Rotates lift forward and backwards
      * @param v speed
      */
-    public void RotateLift(double v) {
+    public void rotateLift(double v) {
         // System.out.println("LIMIT SWITCH 1: " + forwardLimit.get());
         // System.out.println("LIMIT SWITCH 2: " + backwardLimit.get());
 

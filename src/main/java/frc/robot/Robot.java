@@ -87,7 +87,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = new MoveToFire(Constants.SHOOTING_DISTANCE); 
+    //m_autonomousCommand = new MoveToFire(Constants.SHOOTING_DISTANCE); 
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",

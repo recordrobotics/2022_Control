@@ -12,12 +12,12 @@ public class DiagonalStartingPositionMunchkin extends SequentialCommandGroup {
 
     /**
      * sets the RangeFinder fields
-     * @param rf1 left RangeFinder object
-     * @param rf2 right RangeFinder object
+     * @param rfLeft left RangeFinder object
+     * @param rfRight right RangeFinder object
      */
-    public DiagonalStartingPositionMunchkin(RangeFinder rf1, RangeFinder rf2) { //first rangefinder is the left one, second is right one
-        rangeFinder1 = rf1;
-        rangeFinder2 = rf2;
+    public DiagonalStartingPositionMunchkin(RangeFinder rfLeft, RangeFinder rfRight) { //first rangefinder is the left one, second is right one
+        rangeFinder1 = rfLeft;
+        rangeFinder2 = rfRight;
     }
     /**
      * calculates which range finder gets a shorter distance, and outputs 1, 0, or -1 accordingly.
