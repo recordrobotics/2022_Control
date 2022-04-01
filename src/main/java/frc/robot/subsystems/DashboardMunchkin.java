@@ -19,11 +19,11 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putData("Rotate Lift Supposedly 10 degrees", new RotateToPosition(10));
         SmartDashboard.putData("Lift Lift to 5 abstract units", new RotateToPosition(5));
         m_container = RobotContainer.getInstance();
-        SmartDashboard.putNumber("Encoder A", m_container.getRangeFinder().getADistance());
-        SmartDashboard.putNumber("Encoder B", m_container.getRangeFinder().getBDistance());
     }
 
     @Override
     public void periodic() {
+        SmartDashboard.putNumber("Encoder A", m_container.getRangeFinder().getADistance());
+        SmartDashboard.putNumber("Encoder B", m_container.getRangeFinder().getBDistance());
     }
 }
