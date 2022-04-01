@@ -12,13 +12,24 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 public class GetBallMunchkin extends SequentialCommandGroup {
   /**
-   * MoveToBall() Moves the robot to a ball.
+   * distanceToBall the distance the ball is from the robot's starting position (front of base); will be refined on Saturday. TODO: set this
+   */
+  private final double distanceToBall = 0;
+
+
+  /**
+   * GetBallMunchkin() Moves the robot to a ball.
    */
   public GetBallMunchkin(){
+
+
+
+
+
     addCommands(
-      new MoveForward()
+      new TiltAcquisition(),
+      new MoveToRange(distanceToBall)
     );
   }
- 
 
 }

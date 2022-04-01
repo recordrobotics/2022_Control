@@ -140,10 +140,10 @@ public class RobotMap {
 	/**
 	 * Range Finder Ports
 	 */
-	public final static int rangeFinderAPing = 6;
-	public final static int rangeFinderAEcho = 7;
-	public final static int rangeFinderBPing = 8;
-	public final static int rangeFinderBEcho = 9;
+	public final static int rangeFinderAEcho = 6;
+	public final static int rangeFinderAPing = 7;
+	public final static int rangeFinderBEcho = 8;
+	public final static int rangeFinderBPing = 9;
 
 }
 
