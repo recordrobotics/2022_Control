@@ -89,8 +89,6 @@ public class DriveMunchkin extends DriveTrain {
    */
   public void printAllEncoders() {
     System.out.println(encoderLeftb.getPosition() + "left b");
-    System.out.println(encoderLeftf.getPosition() + "left f");
-    System.out.println(encoderRightb.getPosition() + "right b");
     System.out.println(encoderRightf.getPosition() + "right f");
   }
   /**
