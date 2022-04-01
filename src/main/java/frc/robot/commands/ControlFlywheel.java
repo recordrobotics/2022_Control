@@ -31,12 +31,12 @@ public class ControlFlywheel extends CommandBase {
   public ControlFlywheel() {
     addRequirements(m_flywheel);
     addRequirements(m_rangeFinder);
-    addRequirements(m_dashboard);
   }
 
   @Override
   public void execute() {
-    SmartDashboard.putNumber("RangeFinder output", m_rangeFinder.getDistance());
+    //SmartDashboard.putNumber("RangeFinder output", m_rangeFinder.getDistance());
+    //System.out.println(m_rangeFinder.getDistance());
     // Toggle on/off
     if (toggled() && !prevBtnState) {
       enabled = !enabled;

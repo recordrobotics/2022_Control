@@ -25,6 +25,7 @@ public class RangeFinderMunchkin extends RangeFinder {
      * Method that enables the rangefinder
      */
 	public RangeFinderMunchkin() {
+		System.out.println("range finder");
 		rangeFinderA.setEnabled(true);
 		rangeFinderB.setEnabled(true);
 		Ultrasonic.setAutomaticMode(true);
