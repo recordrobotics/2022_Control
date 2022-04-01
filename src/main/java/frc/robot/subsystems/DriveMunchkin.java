@@ -88,10 +88,10 @@ public class DriveMunchkin extends DriveTrain {
    * test method that prints out the individual value of all 4 encoders
    */
   public void printAllEncoders() {
-    System.out.println(encoderLeftb + "left b");
-    System.out.println(encoderLeftf + "left f");
-    System.out.println(encoderRightb + "right b");
-    System.out.println(encoderRightf + "right f");
+    System.out.println(encoderLeftb.getPosition() + "left b");
+    System.out.println(encoderLeftf.getPosition() + "left f");
+    System.out.println(encoderRightb.getPosition() + "right b");
+    System.out.println(encoderRightf.getPosition() + "right f");
   }
   /**
    * Reset both encoders to zero
