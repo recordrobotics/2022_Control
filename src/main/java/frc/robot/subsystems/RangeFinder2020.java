@@ -37,4 +37,16 @@ public class RangeFinder2020 extends RangeFinder {
     return m_ultrasonic.getRangeInches();
   }
 
+  @Override
+  public double getADistance() {
+    // Not implemented
+    return 0;
+  }
+
+  @Override
+  public double getBDistance() {
+    // Not implemented
+    return 0;
+  }
+
 }
