@@ -25,7 +25,7 @@ public final class Constants {
     public static final double PRECISION = 0.5d;
     //for BallUpOne.java
     public static final double MOVE_TIME = 0.1d;
-    //for BallLiftAutoRun.java
+    //for BallLiftAutoRun.java and FlywheelAutoRun.java
     public static final double BALL_TIMEOUT = 5.0d;
     //for CamControl.java
     public static final String SWITCH_BUTTON = "Y";

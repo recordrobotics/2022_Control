@@ -13,7 +13,10 @@ public class AutoMunchkin extends SequentialCommandGroup {
     /** Use robot container to declare the subsytem's default command */
     addCommands(
         new MoveForward(40, 0.2),
-        new TiltAcquisition());
+        new TiltAcquisition(),
+        new FlywheelAutoRun() // Literally just to test if this works 
+        // TODO: Someone should *probably* actually implement proper distance detection along with proper implementation
+        );
   }
 
 }
