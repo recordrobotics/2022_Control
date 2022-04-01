@@ -10,19 +10,23 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.Constants;
+import frc.robot.RobotMap;
 
 
 /**
  * Subsystem class for the RangeFinder
  */
 public class RangeFinderMunchkin extends RangeFinder {
-	private Ultrasonic rf = new Ultrasonic(0, 1);
+	private Ultrasonic rangeFinderA = new Ultrasonic(RobotMap.rangeFinderAPing, RobotMap.rangeFinderAEcho);
+	private Ultrasonic rangeFinderB = new Ultrasonic(RobotMap.rangeFinderBPing, RobotMap.rangeFinderBEcho);
+	//TODO: Rename rangeFinder's to left and right here and in robotmap
 	
   	/**
      * Method that enables the rangefinder
      */
 	public RangeFinderMunchkin() {
-		rf.setEnabled(true);
+		rangeFinderA.setEnabled(true);
+		rangeFinderB.setEnabled(true);
 		Ultrasonic.setAutomaticMode(true);
 	}
 
@@ -31,6 +35,7 @@ public class RangeFinderMunchkin extends RangeFinder {
 	 * @return range returned in inches
 	 */
 	public double getDistance() {
-	    return rf.getRangeInches();
+		//TODO: Actually add proper calculations here
+	    return rangeFinderA.getRangeInches() + rangeFinderB.getRangeInches();
 	}
 }
