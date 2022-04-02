@@ -50,6 +50,8 @@ public class DriveMunchkin extends DriveTrain {
     System.out.println("ENCODER INIT: " + encoderRightf.setPositionConversionFactor(21.42/Math.PI));
     encoderLeftb.setPositionConversionFactor(10.71/(6*Math.PI));
     encoderLeftf.setPositionConversionFactor(10.71/(6*Math.PI));
+    encoderRightb.setPositionConversionFactor(10.71/(6*Math.PI));
+    encoderRightf.setPositionConversionFactor(10.71/(6*Math.PI));  
     leftMotors.stopMotor();
     rightMotors.stopMotor();
     resetEncoders();
@@ -83,13 +85,6 @@ public class DriveMunchkin extends DriveTrain {
    */
   public double getLeftEncoder() {
     return (encoderLeftb.getPosition() + encoderLeftf.getPosition()) / 2;
-  }
-  /**
-   * test method that prints out the individual value of all 4 encoders
-   */
-  public void printAllEncoders() {
-    System.out.println(encoderLeftb.getPosition() + "left b");
-    System.out.println(encoderRightf.getPosition() + "right f");
   }
   /**
    * Reset both encoders to zero

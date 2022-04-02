@@ -70,6 +70,4 @@ public abstract class DriveTrain extends SubsystemBase {
     moveRightWheels(0);
   }
 
-public void printAllEncoders() {
-}
 }
