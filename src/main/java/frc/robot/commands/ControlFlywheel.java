@@ -20,7 +20,7 @@ public class ControlFlywheel extends CommandBase {
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
 
   private final double SPEED_IDLE = 0.0;
-  private final double SPEED_NORMAL = 0.35;
+  private final double SPEED_NORMAL = 0.25;
   private final double SPEED_BOOSTED = 0.4;
 
   public ControlFlywheel() {
