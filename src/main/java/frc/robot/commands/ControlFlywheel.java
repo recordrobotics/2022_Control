@@ -40,7 +40,7 @@ public class ControlFlywheel extends CommandBase {
         m_flywheel.shoot();
       } else {
         m_flywheel.setWheelSpeed(SPEED_NORMAL);
-        m_flywheel.reset();
+        // m_flywheel.reset();
       }
     } else {
       m_flywheel.setWheelSpeed(SPEED_IDLE);
