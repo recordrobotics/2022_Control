@@ -50,6 +50,8 @@ public class DriveMunchkin extends DriveTrain {
     System.out.println("ENCODER INIT: " + encoderRightf.setPositionConversionFactor(21.42/Math.PI));
     encoderLeftb.setPositionConversionFactor(10.71/(6*Math.PI));
     encoderLeftf.setPositionConversionFactor(10.71/(6*Math.PI));
+    encoderRightb.setPositionConversionFactor(10.71/(6*Math.PI));
+    encoderRightf.setPositionConversionFactor(10.71/(6*Math.PI));  
     leftMotors.stopMotor();
     rightMotors.stopMotor();
     resetEncoders();
