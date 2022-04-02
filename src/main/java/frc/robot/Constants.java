@@ -39,6 +39,8 @@ public final class Constants {
     public static final boolean FLYWHEEL_USE_XBOX_CONTROLLER = true;
     public static final String XBOX_FLYWHEEL_ENABLE = "X";
     public static final String XBOX_FLYWHEEL_BOOST = "Y";
+    public static final String XBOX_FLYWHEEL_SHOOT = "A";
+    
     public static final int PANEL_FLYWHEEL_ENABLE = 6;
     //for ControlSpool.java
     public static final double SPOOL_SPEED = 0.5d;
