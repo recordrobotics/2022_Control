@@ -18,6 +18,7 @@ public final class Constants {
     */
     public static final RobotModel CURRENT_ROBOT = RobotModel.MUNCHKIN;
 
+    public static final double MUNCHKIN_SHOOTING_DISTANCE = 80d;
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
     public static final double FLYWHEEL_SPEED = 0.85d;

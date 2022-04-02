@@ -31,6 +31,7 @@ public class FlywheelAutoRun extends CommandBase {
    */
     flywheelShootDurationTimer.start();
     m_flywheel.setWheelSpeed(Constants.FLYWHEEL_SPEED);
+    
   }
 
   ///** Called rep Called repeatedly when this Command is scheduled to run
@@ -41,6 +42,9 @@ public class FlywheelAutoRun extends CommandBase {
      * If the timer has been running for at least 1 second runs the ball lift at the set speed
      */
     m_flywheel.setWheelSpeed(Constants.FLYWHEEL_SPEED);
+    if(flywheelShootDurationTimer.get() > 2){
+      m_flywheel.shoot();
+    }
   }
  /**
   * Ends the command when the timer value is greater than the timeout variable
@@ -57,5 +61,6 @@ public class FlywheelAutoRun extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_flywheel.setWheelSpeed(0);
+    m_flywheel.reset();
   }
 }
