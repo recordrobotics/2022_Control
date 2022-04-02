@@ -23,7 +23,7 @@ public class DashboardMunchkin extends Dashboard {
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Encoder A", m_container.getRangeFinder().getADistance());
-        SmartDashboard.putNumber("Encoder B", m_container.getRangeFinder().getBDistance());
+        SmartDashboard.putNumber("Range Finder Right ", m_container.getRangeFinder().getADistance());
+        SmartDashboard.putNumber("Range Finder Left ", m_container.getRangeFinder().getBDistance());
     }
 }
