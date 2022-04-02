@@ -19,11 +19,15 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putData("Rotate Lift Supposedly 10 degrees", new RotateToPosition(10));
         SmartDashboard.putData("Lift Lift to 5 abstract units", new RotateToPosition(5));
         m_container = RobotContainer.getInstance();
+
     }
 
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Range Finder Right ", m_container.getRangeFinder().getADistance());
         SmartDashboard.putNumber("Range Finder Left ", m_container.getRangeFinder().getBDistance());
+
+        SmartDashboard.putNumber("Left Drive Encoders", m_container.getDriveTrain().getLeftEncoder());
+        SmartDashboard.putNumber("Right Drive Encoders", m_container.getDriveTrain().getRightEncoder());
     }
 }

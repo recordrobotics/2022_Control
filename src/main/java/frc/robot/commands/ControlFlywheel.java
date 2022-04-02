@@ -18,15 +18,15 @@ import frc.robot.subsystems.RangeFinder;
 
 public class ControlFlywheel extends CommandBase {
 
-  private boolean enabled = false, prevBtnState = false; 
+  private boolean enabled = false, boosted = false;
+  private boolean enableBtnDown = false, boostBtnDown = false;
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
   private Dashboard m_dashboard = RobotContainer.getInstance().getDashboard();
   private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
 
-  // TODO: figure out what speed we actually need
   private final double SPEED_IDLE = 0.0;
-  private final double SPEED_NORMAL = 0.5;
-  private final double SPEED_BOOSTED = 0.85;
+  private final double SPEED_NORMAL = 0.25;
+  private final double SPEED_BOOSTED = 0.4;
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
@@ -36,30 +36,45 @@ public class ControlFlywheel extends CommandBase {
   @Override
   public void execute() {
     // Toggle on/off
-    if (toggled() && !prevBtnState) {
+    if (!enableBtnDown && enableBtn()) {
       enabled = !enabled;
+      enableBtnDown = true;
+    } else {
+      enableBtnDown = enableBtn();
     }
+
     if (enabled) {
+      if (!boostBtnDown && boostBtn()) {
+        boosted = !boosted;
+        boostBtnDown = true;
+      } else {
+        boostBtnDown = boostBtn();
+      }
+
       // Holding Y accelerates the flywheel and shoots ball
-      if (boosted()) {
+      if (boosted) {
         m_flywheel.setWheelSpeed(SPEED_BOOSTED);
-        m_flywheel.shoot();
       } else {
         m_flywheel.setWheelSpeed(SPEED_NORMAL);
       }
+      
+      if (shootBtn()) {
+        m_flywheel.shoot();
+      } else {
+        m_flywheel.reset();
+      }
     } else {
+      boosted = false;
       m_flywheel.setWheelSpeed(SPEED_IDLE);
       m_flywheel.reset();
     }
-
-    prevBtnState = toggled();
   }
 
   /**
-   * Checks if toggle button is pressed
+   * Checks if enable button is pressed
    * @return button state
    */
-  private boolean toggled() {
+  private boolean enableBtn() {
     if (Constants.FLYWHEEL_USE_XBOX_CONTROLLER){
       return OI.getXboxButtonState(Constants.XBOX_FLYWHEEL_ENABLE);
     } else {
@@ -71,9 +86,21 @@ public class ControlFlywheel extends CommandBase {
    * Checks if boost button in pressed
    * @return button state
    */
-  private boolean boosted() {
+  private boolean boostBtn() {
     if (Constants.FLYWHEEL_USE_XBOX_CONTROLLER) {
       return OI.getXboxButtonState(Constants.XBOX_FLYWHEEL_BOOST);
+    } else {
+      return false;
+    }
+  }
+  
+  /**
+   * Check if shoot buttton is pressed
+   * @return button state
+   */
+  private boolean shootBtn() {
+    if (Constants.FLYWHEEL_USE_XBOX_CONTROLLER) {
+      return OI.getXboxButtonState(Constants.XBOX_FLYWHEEL_SHOOT);
     } else {
       return false;
     }
