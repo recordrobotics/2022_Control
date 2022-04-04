@@ -17,7 +17,8 @@ public class AutoMunchkin extends SequentialCommandGroup {
       // new MoveToRange(LOW_TARGET),
       new MoveForward(40, 0.5),
       new FlywheelAutoRun(),
-      new TiltAcquisition()
+      new TiltAcquisition(),
+      new ResetLift(0.5)
     );
       //TODO: Set the distance the robot shoots from
         // new MoveToRange(LOW_TARGET),
