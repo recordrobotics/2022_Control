@@ -29,5 +29,8 @@ public class DashboardMunchkin extends Dashboard {
 
         SmartDashboard.putNumber("Left Drive Encoders", m_container.getDriveTrain().getLeftEncoder());
         SmartDashboard.putNumber("Right Drive Encoders", m_container.getDriveTrain().getRightEncoder());
+        
+        SmartDashboard.putNumber("Lift Encoder Value", m_container.getRotater().getPosition());
+        SmartDashboard.putNumber("CIB Encoder Value", m_container.getRobotLift().getPosition());
     }
 }
