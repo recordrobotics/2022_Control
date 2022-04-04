@@ -7,17 +7,22 @@
 
 package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.Constants;
 
 public class AutoMunchkin extends SequentialCommandGroup {
+  
+  private static final double LOW_TARGET = 15.0;
+
   public AutoMunchkin() {
-    /** Use robot container to declare the subsytem's default command */
     addCommands(
+      // new MoveToRange(LOW_TARGET),
+      new MoveForward(40, 0.5),
+      new FlywheelAutoRun(),
+      new TiltAcquisition()
+    );
       //TODO: Set the distance the robot shoots from
-        new MoveToRange(Constants.MUNCHKIN_SHOOTING_DISTANCE),
+        // new MoveToRange(LOW_TARGET),
         //TODO: Test the flywheel running command properly
-        new FlywheelAutoRun(),
-        new TiltAcquisition());
+        // new FlywheelAutoRun(),
   }
 
 }
