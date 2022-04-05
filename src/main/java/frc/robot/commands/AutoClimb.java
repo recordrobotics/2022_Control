@@ -14,19 +14,17 @@ public class AutoClimb extends SequentialCommandGroup {
             // pull up CIB
             new PullUpCIB(0.5),
             // rotate lift to target
-            new LiftToPosition(-42)
+            new LiftToPosition(-42),
             // lift to bar
-
-            // get hooks off bar
-
+            new MoveCIB(-50, -0.4),
             // rotate lift to target
-
+            new LiftToPosition(-96),
             // extend hooks to target
-
+            new MoveCIB(-380, -0.4),
             // rotate lift to bar
-
+            new LiftToPosition(-87),
             // pull up hooks
-
+            new MoveCIB(-250, -0.25)
             // goto 20
 
             // new MoveRotateLift(51, 0.15),

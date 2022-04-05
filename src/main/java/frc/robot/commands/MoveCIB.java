@@ -26,7 +26,7 @@ public class MoveCIB extends CommandBase {
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-      m_lift.resetEncoder();
+      // m_lift.resetEncoder();
   }
 
   /** Called repeatedly when this Command is scheduled to run */
@@ -45,6 +45,7 @@ public class MoveCIB extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
+    m_lift.moveLift(0);
   }
 
 }
