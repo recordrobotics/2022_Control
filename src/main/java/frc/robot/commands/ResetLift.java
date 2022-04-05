@@ -19,6 +19,7 @@ public class ResetLift extends CommandBase {
 	 */
 	@Override
 	public void execute() {
+		System.out.println("reset lift execute");
 		m_rotater.rotateLift(this.speed);
 	} 
 

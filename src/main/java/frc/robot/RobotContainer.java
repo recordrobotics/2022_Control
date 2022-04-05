@@ -90,19 +90,28 @@ public class RobotContainer {
 
   private void initMunchkin() {
     m_driveTrain = new DriveMunchkin();
-    m_driveTrain.setDefaultCommand(new ManualDrive());
+    // m_driveTrain.setDefaultCommand(new ManualDrive());
     m_rotater = new LiftRotater();
-    m_rotater.setDefaultCommand(new RotateLift());
+    // m_rotater.setDefaultCommand(new RotateLift());
     m_robotLift = new CIBMunchkin();
-    m_robotLift.setDefaultCommand(new CIBControl());
+    // m_robotLift.setDefaultCommand(new CIBControl());
     m_dashboard = new DashboardMunchkin();
     m_acquisition = new AcquisitionMunchkin();
-    m_acquisition.setDefaultCommand(new ControlAcquisition());
+    // m_acquisition.setDefaultCommand(new ControlAcquisition());
     m_flywheel = new FlywheelMunchkin();
     m_rangeFinder = new RangeFinderMunchkin();
-    m_flywheel.setDefaultCommand(new ControlFlywheel());
+    // m_flywheel.setDefaultCommand(new ControlFlywheel());
     m_camStream = new CamStream(2);
-    m_autonomousCommand = new AutoMunchkin();
+    // m_autonomousCommand = new AutoMunchkin();
+    m_autonomousCommand = new AutoClimb();
+  }
+  
+  public void munchkinTeleop() {
+    m_rotater.setDefaultCommand(new RotateLift());
+    m_robotLift.setDefaultCommand(new CIBControl());
+    m_acquisition.setDefaultCommand(new ControlAcquisition());
+    m_flywheel.setDefaultCommand(new ControlFlywheel());
+    m_driveTrain.setDefaultCommand(new ManualDrive());
   }
 
   /**

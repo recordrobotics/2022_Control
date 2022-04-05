@@ -40,7 +40,7 @@ public class LiftRotater extends SubsystemBase {
      * @return position
      */
     public double getPosition(){
-        return (leftEncoder.getPosition() + rightEncoder.getPosition());
+        return (leftEncoder.getPosition() - rightEncoder.getPosition());
     }
 
     /**

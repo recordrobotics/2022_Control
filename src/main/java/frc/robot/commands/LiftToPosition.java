@@ -12,6 +12,7 @@ import frc.robot.OI;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.RobotLift;
 import frc.robot.subsystems.CIBMunchkin;
+import frc.robot.subsystems.LiftRotater;
 import frc.robot.control.PID;
 
 /**
@@ -19,7 +20,7 @@ import frc.robot.control.PID;
  */
 public class LiftToPosition extends CommandBase {
   private double pos;
-  private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
+  private LiftRotater m_lift = RobotContainer.getInstance().getRotater();
   private PID pid;
   private final double LIFT_SPEED = 0.15;
 
@@ -33,19 +34,19 @@ public class LiftToPosition extends CommandBase {
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-    m_lift.resetEncoder();
+    // m_lift.resetEncoder();
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
     if(pos < 0){
-      m_lift.moveLift(-LIFT_SPEED);
+      m_lift.rotateLift(-LIFT_SPEED);
     }else{
       if(pos > 0){
-        m_lift.moveLift(LIFT_SPEED);
+        m_lift.rotateLift(LIFT_SPEED);
       }else{
-        m_lift.moveLift(0);
+        m_lift.rotateLift(0);
       }
     }
   }
@@ -53,7 +54,7 @@ public class LiftToPosition extends CommandBase {
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished(){
-    if (m_lift.getPosition()>pos){
+    if (Math.abs(m_lift.getPosition()) > Math.abs(pos)){
         System.out.println("Done lifting at: " + m_lift.getPosition());
         return true;
     } else{
@@ -64,7 +65,7 @@ public class LiftToPosition extends CommandBase {
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
-    m_lift.moveLift(0);
+    m_lift.rotateLift(0);
   }
 
 }

@@ -10,11 +10,11 @@ public class AutoClimb extends SequentialCommandGroup {
     public AutoClimb() {
         addCommands(
             // reset lift
-            new ResetLift(0.5)
-            // rotate lift to target
-
+            new ResetLift(0.5),
             // pull up CIB
-            
+            new PullUpCIB(0.5),
+            // rotate lift to target
+            new LiftToPosition(-42)
             // lift to bar
 
             // get hooks off bar
