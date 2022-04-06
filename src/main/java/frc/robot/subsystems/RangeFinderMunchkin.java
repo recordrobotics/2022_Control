@@ -44,14 +44,14 @@ public class RangeFinderMunchkin extends RangeFinder {
      * @return range finder A 
      */
     public double getADistance(){
-        return rangeFinderA.getRangeInches();
+        return rangeFinderA.getRangeMM();
     }
     /**
      * TODO: Make right and left right and left
      * @return range finder B 
      */
     public double getBDistance(){
-        return rangeFinderB.getRangeInches();
+        return rangeFinderB.getRangeMM();
     }
 
 }
