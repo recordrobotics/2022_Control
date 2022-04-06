@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 /**
@@ -112,6 +113,10 @@ public class RobotContainer {
     m_acquisition.setDefaultCommand(new ControlAcquisition());
     m_flywheel.setDefaultCommand(new ControlFlywheel());
     m_driveTrain.setDefaultCommand(new ManualDrive());
+  }
+  
+  public void munchkinReset() {
+    CommandScheduler.getInstance().cancelAll();
   }
 
   /**
