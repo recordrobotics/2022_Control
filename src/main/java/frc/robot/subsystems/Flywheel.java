@@ -15,5 +15,6 @@ public abstract class Flywheel extends SubsystemBase {
     public abstract void shoot();
     public abstract void reset();
     public abstract double getVoltage();
+    public abstract boolean getBallDetector();
 
 }

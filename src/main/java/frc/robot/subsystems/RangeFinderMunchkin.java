@@ -36,8 +36,7 @@ public class RangeFinderMunchkin extends RangeFinder {
 	 * @return range returned in inches
 	 */
 	public double getDistance() {
-		return getADistance();
-	    // return (rangeFinderA.getRangeInches() + rangeFinderB.getRangeInches())/2;
+		return (rangeFinderA.getRangeInches() + rangeFinderB.getRangeInches())/2;
 	}
     /**
      * TODO: Make right and left right and left

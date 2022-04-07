@@ -12,12 +12,9 @@ public class DashboardMunchkin extends Dashboard {
     * Creates buttons to execute each of the specified commands at the specified values
     */
     public DashboardMunchkin(){
-        SmartDashboard.putData("Move 3ft", new MoveForward(24, 0.2));
         SmartDashboard.putData("Tilt Acquisition", new TiltAcquisition());
         SmartDashboard.putData("Move to 3ft", new MoveToRange(36));
         SmartDashboard.putData("Turn to Goal", new TurnToGoal());
-        SmartDashboard.putData("Rotate Lift Supposedly 10 degrees", new RotateToPosition(10));
-        SmartDashboard.putData("Lift Lift to 5 abstract units", new RotateToPosition(5));
         m_container = RobotContainer.getInstance();
 
     }
@@ -29,5 +26,7 @@ public class DashboardMunchkin extends Dashboard {
 
         SmartDashboard.putNumber("Left Drive Encoders", m_container.getDriveTrain().getLeftEncoder());
         SmartDashboard.putNumber("Right Drive Encoders", m_container.getDriveTrain().getRightEncoder());
+
+        SmartDashboard.putBoolean("Ball in Flywheel", m_container.getFlywheel().getBallDetector());
     }
 }
