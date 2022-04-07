@@ -19,6 +19,7 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putData("Rotate Lift Supposedly 10 degrees", new RotateToPosition(10));
         SmartDashboard.putData("Lift Lift to 5 abstract units", new RotateToPosition(5));
         SmartDashboard.putData("Reset CIB Encoder", new ResetCIBEncoder());
+        SmartDashboard.putData("Run Full Lift Auto Sequence", new AutoClimb());
         m_container = RobotContainer.getInstance();
 
     }
