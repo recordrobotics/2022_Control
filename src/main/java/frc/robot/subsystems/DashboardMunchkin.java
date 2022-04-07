@@ -27,6 +27,6 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putNumber("Left Drive Encoders", m_container.getDriveTrain().getLeftEncoder());
         SmartDashboard.putNumber("Right Drive Encoders", m_container.getDriveTrain().getRightEncoder());
 
-        SmartDashboard.putBoolean("Ball in Flywheel", m_container.getFlywheel().getBallDetector());
+        SmartDashboard.putBoolean("Ball in Flywheel", !m_container.getFlywheel().getBallDetector());
     }
 }
