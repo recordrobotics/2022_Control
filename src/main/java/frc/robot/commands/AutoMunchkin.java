@@ -14,15 +14,17 @@ public class AutoMunchkin extends SequentialCommandGroup {
 
   public AutoMunchkin() {
     addCommands(
-      // new MoveToRange(LOW_TARGET),
-      new MoveForward(40, 0.5),
+      //move to distance to shoot
+      new MoveToRange(LOW_TARGET),
+      // run the flywheel to shoot
       new FlywheelAutoRun(),
+      // move the robot backwards to get out of the way
+      new MoveForward(-120, 0.4),
+      // move the acquisition down
       new TiltAcquisition()
     );
       //TODO: Set the distance the robot shoots from
         // new MoveToRange(LOW_TARGET),
-        //TODO: Test the flywheel running command properly
-        // new FlywheelAutoRun(),
   }
 
 }
