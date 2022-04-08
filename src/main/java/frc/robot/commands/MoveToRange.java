@@ -22,7 +22,7 @@ public class MoveToRange extends CommandBase {
      * the robot has to move to. pid Creates a PID Controller. Constants.KP, Constants.KI, Constants.KD Components
      * of PID Controller.
      */
-    private double distance, speed = 0.25;
+    private double distance, speed = 0.15;
     /** inches */
     /**
      * addSequential(new TurnToAngle(-180+gyroAngle)); addSequential(new
@@ -50,7 +50,7 @@ public class MoveToRange extends CommandBase {
     /** Called repeatedly when this Command is scheduled to run */
     @Override
     public void execute() {
-        range = m_rangeFinder.getDistance();
+        range = m_rangeFinder.getBDistance();
 
         int direction = 1;
         if (range < distance) {

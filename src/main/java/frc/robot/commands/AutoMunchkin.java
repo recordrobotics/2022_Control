@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 public class AutoMunchkin extends SequentialCommandGroup {
   
-  private static final double LOW_TARGET = 15.0;
+  private static final double LOW_TARGET = 200.0;
 
   public AutoMunchkin() {
     addCommands(
@@ -19,7 +19,7 @@ public class AutoMunchkin extends SequentialCommandGroup {
       // run the flywheel to shoot
       new FlywheelAutoRun(),
       // move the robot backwards to get out of the way
-      new MoveForward(-120, 0.4),
+      new MoveForward(120, 0.2),
       // move the acquisition down
       new TiltAcquisition()
     );
