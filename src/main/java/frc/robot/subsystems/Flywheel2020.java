@@ -49,6 +49,14 @@ public class Flywheel2020 extends Flywheel {
     @Override
     public void reset() {}
 
+     /**
+     * Not implemented
+     */
+    @Override
+    public boolean getBallDetector() {
+        return false;
+    }
+
     /**
      * Returns the flywheel's voltage output.
      * 

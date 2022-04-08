@@ -30,10 +30,8 @@ public class MoveToRange extends CommandBase {
      */
     private double range;
 
-    private PID pid;
     private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
     private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
-    private final double KP = 0.1;
 
     /**
      * MoveToRange() Moves the robot to the set location.
@@ -42,7 +40,6 @@ public class MoveToRange extends CommandBase {
      */
     public MoveToRange(double dist) {
         distance = dist;
-        pid = new PID(KP, Constants.KI, Constants.KD, dist);
     }
 
     /** Called just before this Command runs the first time */
@@ -61,20 +58,20 @@ public class MoveToRange extends CommandBase {
         }
 
         /** speed = pid.control(range); */
-        speed = 0.125;
-        if (range > distance) {
-            speed *= (range / distance);
-        } else if (range < distance) {
-            speed *= (distance / range);
-        }
+        // speed = 0.125;
+        // if (range > distance) {
+        //     speed *= (range / distance);
+        // } else if (range < distance) {
+        //     speed *= (distance / range);
+        // }
 
         if (speed > 0.35)
             speed = 0.35;
         if (speed < -0.35)
             speed = -0.35;
-
+        //System.out.println(speed * direction);
         m_driveTrain.moveLeftWheels(speed * -direction);
-        m_driveTrain.moveRightWheels(speed * -direction);
+        m_driveTrain.moveRightWheels(speed * direction);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */

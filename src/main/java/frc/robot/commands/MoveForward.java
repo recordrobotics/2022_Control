@@ -24,6 +24,11 @@ public class MoveForward extends CommandBase {
     private DriveTrain m_driveTrain = RobotContainer.getInstance().getDriveTrain();
     private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
 
+    /**
+     * s
+     * @param dist distance in INCHES 
+     * @param sp speed to move at
+     */
     public MoveForward(double dist, double sp) {
         distance = dist;
         speed = sp;
