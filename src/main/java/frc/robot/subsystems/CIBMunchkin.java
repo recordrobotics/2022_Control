@@ -38,6 +38,14 @@ public class CIBMunchkin extends RobotLift{
         cibEncoder.setPosition(0);
     }
 
+    public void moveLeft(double v) {
+        cibMotorLeft.set(v);
+    }
+
+    public void moveRight(double v) {
+        cibMotorRight.set(v);
+    }
+
     /**
      * moveLift() moves lift up and down.
      * @param v how fast the lift motors spins.

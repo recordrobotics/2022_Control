@@ -40,4 +40,10 @@ public class Dashboard2020 extends Dashboard {
         SmartDashboard.putNumber("Flywheel Voltage", m_container.getFlywheel().getVoltage());
        /** SmartDashboard.putNumber("Balls In Lift", Robot.belt.countBall());*/
     }
+
+    @Override
+    public double getCIB() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }

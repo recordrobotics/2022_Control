@@ -19,5 +19,11 @@ public class DashboardMonolith extends Dashboard {
     @Override
     public void periodic() {
     }
+
+    @Override
+    public double getCIB() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }
     

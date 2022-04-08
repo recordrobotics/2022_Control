@@ -48,4 +48,14 @@ public class LiftMonolith extends RobotLift{
     	motor.stopMotor();
     	motor.set(0.0);
     }
+    @Override
+    public void moveLeft(double v) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void moveRight(double v) {
+        // TODO Auto-generated method stub
+        
+    }
 }

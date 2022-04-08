@@ -49,4 +49,14 @@ public class RobotLift2020 extends RobotLift{
 
         robotLiftMotor.set(ControlMode.PercentOutput, v);
     }
+    @Override
+    public void moveLeft(double v) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void moveRight(double v) {
+        // TODO Auto-generated method stub
+        
+    }
 }

@@ -35,4 +35,8 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putNumber("CIB Encoder Value", m_container.getRobotLift().getPosition());
         SmartDashboard.putBoolean("Ball in Flywheel", m_container.getFlywheel().getBallDetector());
     }
+
+    public double getCIB() {
+        return SmartDashboard.getNumber("CIB RESET (0 = both, 1 = left, 2 = right)", 0.0);
+    }
 }

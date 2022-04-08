@@ -42,13 +42,14 @@ public class CIBControl extends CommandBase {
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-    if(OI.getRightStickUp()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2 - 0.15);
-    }
-    else if(OI.getRightStickDown()){
-      m_lift.moveLift(OI.getCStickYAxis() / 2 + 0.15);
-    }
-    else {
+    double SET_CIB = RobotContainer.getInstance().getDashboard().getCIB();
+    if (SET_CIB == 0) {
+      moveLift();
+    } else if (SET_CIB == 1) {
+      moveLeft();
+    } else if (SET_CIB == 2) {
+      moveRight();
+    } else {
       m_lift.moveLift(0);
     }
   }
@@ -59,4 +60,38 @@ public class CIBControl extends CommandBase {
     return false;
   }
 
+
+  public void moveLift() {
+    if(OI.getRightStickUp()){
+      m_lift.moveLift(OI.getCStickYAxis() / 2 - 0.15);
+    }
+    else if(OI.getRightStickDown()){
+      m_lift.moveLift(OI.getCStickYAxis() / 2 + 0.15);
+    }
+    else {
+      m_lift.moveLift(0);
+    }
+  }
+  public void moveLeft() {
+    if(OI.getRightStickUp()){
+      m_lift.moveLeft(OI.getCStickYAxis() / 2 - 0.15);
+    }
+    else if(OI.getRightStickDown()){
+      m_lift.moveLeft(OI.getCStickYAxis() / 2 + 0.15);
+    }
+    else {
+      m_lift.moveLeft(0);
+    }
+  }
+  public void moveRight() {
+    if(OI.getRightStickUp()){
+      m_lift.moveRight(OI.getCStickYAxis() / 2 - 0.15);
+    }
+    else if(OI.getRightStickDown()){
+      m_lift.moveRight(OI.getCStickYAxis() / 2 + 0.15);
+    }
+    else {
+      m_lift.moveRight(0);
+    }
+  }
 }
