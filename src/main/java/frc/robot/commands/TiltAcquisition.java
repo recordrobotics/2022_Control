@@ -42,7 +42,6 @@ public class TiltAcquisition extends CommandBase {
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
-    //return acqTimer.get() > Constants.ACQ_MOVE_TIME && m_acquisition.getTiltLimit();
     return !m_acquisition.getTiltLimit();
   }
 

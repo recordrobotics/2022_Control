@@ -67,6 +67,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    RobotContainer.getInstance().munchkinReset();    
   }
 
   @Override
@@ -121,6 +122,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    
+    RobotContainer.getInstance().munchkinTeleop();
   }
 
   /**
