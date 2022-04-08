@@ -28,6 +28,7 @@ public class FlywheelAutoRun extends CommandBase {
       /**
    * Starts the timer and turns on the flywheel motor at the set speed
    */
+    flywheelShootDurationTimer.reset();
     flywheelShootDurationTimer.start();
     m_flywheel.setWheelSpeed(Constants.FLYWHEEL_SPEED);
     
