@@ -51,6 +51,7 @@ public class FlywheelAutoRun extends CommandBase {
   /** Make this return true when this Command no longer needs to run execute()*/
   @Override
   public boolean isFinished() {
+    System.out.println(flywheelShootDurationTimer.get());
     return flywheelShootDurationTimer.get() >= Constants.BALL_TIMEOUT;
   }
 /**

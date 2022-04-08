@@ -11,10 +11,11 @@ import frc.robot.RobotMap;
 import frc.robot.Constants;
 
 public class LiftRotater extends SubsystemBase {
-    private CANSparkMax robotLiftRotateMotorLeft = new CANSparkMax(RobotMap.robotLiftRotaterLeftMotorPort, MotorType.kBrushless);
-    private CANSparkMax robotLiftRotateMotorRight = new CANSparkMax(RobotMap.robotLiftRotaterRightMotorPort, MotorType.kBrushless);
+    private CANSparkMax motorLeft = new CANSparkMax(RobotMap.robotLiftRotaterLeftMotorPort, MotorType.kBrushless);
+    private CANSparkMax motorRight = new CANSparkMax(RobotMap.robotLiftRotaterRightMotorPort, MotorType.kBrushless);
     private double targetVoltage = Constants.liftRotaterTargetVoltage;
-    private RelativeEncoder robotLiftRotaterLeftEncoder = robotLiftRotateMotorLeft.getEncoder();
+    private RelativeEncoder leftEncoder = motorLeft.getEncoder();
+    private RelativeEncoder rightEncoder = motorRight.getEncoder();
 
     // true/1 = not pressed; false/0 = pressed
     // When pressed, should stop lift going into that direction
@@ -30,8 +31,8 @@ public class LiftRotater extends SubsystemBase {
      * Stop the motors
      */
     public void stop() {
-        robotLiftRotateMotorLeft.set(0.0);
-        robotLiftRotateMotorRight.set(0.0);
+        motorLeft.set(0.0);
+        motorRight.set(0.0);
     }
 
     /**
@@ -39,14 +40,15 @@ public class LiftRotater extends SubsystemBase {
      * @return position
      */
     public double getPosition(){
-        return robotLiftRotaterLeftEncoder.getPosition();
+        return (leftEncoder.getPosition() - rightEncoder.getPosition());
     }
 
     /**
      * Reset the encoder
      */
-    public void resetLeftRotateEncoder(){
-        robotLiftRotaterLeftEncoder.setPosition(0);
+    public void resetEncoders() {
+        leftEncoder.setPosition(0);
+        rightEncoder.setPosition(0);
     }
 
     /**
@@ -62,11 +64,15 @@ public class LiftRotater extends SubsystemBase {
         // Positive v = moving towards E-Board
         // Negative v = moving towards Acquisition
         if ((v > 0 && forwardLimit.get()) || (v < 0 && backwardLimit.get())) {
-            robotLiftRotateMotorLeft.set(v);
-            robotLiftRotateMotorRight.set(-v);
+            motorLeft.set(v);
+            motorRight.set(-v);
         } else {
             stop();
         }
 
+    }
+    
+    public boolean getFwdLimit() {
+        return forwardLimit.get();
     }
 }

@@ -30,7 +30,7 @@ public class MoveRotateLift  extends CommandBase {
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-      m_lift.resetLeftRotateEncoder();
+      m_lift.resetEncoders();
   }
 
   /** Called repeatedly when this Command is scheduled to run */
