@@ -14,24 +14,24 @@ public class AutoClimb extends SequentialCommandGroup {
                     // reset lift
                     new ResetLift(0.5),
                     // pull up CIB
-                    new PullUpCIB(0.5),
+                    new PullUpCIB(0.7),
                     // rotate lift to target
                     new LiftToPosition(-42),
                     // lift to bar
-                    new MoveCIB(-50, -0.6),
+                    new MoveCIB(-50, -0.7),
                     // rotate lift to target
                     new LiftToPosition(-96),
                     // extend hooks to target
-                    new MoveCIB(-380, -0.6),
+                    new MoveCIB(-390, -0.7),
                     // rotate lift to bar
                     new LiftToPosition(-83),
                     // pull up hooks
-                    new MoveCIB(-250, -0.4),
+                    new MoveCIB(-250, -0.7),
                     // pull up rotator
                     new ResetLift(0.5),
-                    new PullUpCIB(0.25),
+                    new PullUpCIB(0.7),
                     new LiftToPosition(-42),
-                    new MoveCIB(-50, -0.2)
+                    new MoveCIB(-50, -0.7)
 
                     // new MoveRotateLift(51, 0.15),
                     // new MoveCIB(0, 0.5)); //placeholder values
@@ -43,40 +43,40 @@ public class AutoClimb extends SequentialCommandGroup {
                     // reset lift
                     new ResetLift(0.5),
                     // pull up CIB
-                    new PullUpCIB(0.5),
+                    new PullUpCIB(0.7),
                     // rotate lift to target
                     new LiftToPosition(-42),
                     // lift to bar
-                    new MoveCIB(-50, -0.6),
+                    new MoveCIB(-50, -0.7),
                     // rotate lift to target
                     new LiftToPosition(-96),
                     // extend hooks to target
-                    new MoveCIB(-380, -0.6),
+                    new MoveCIB(-380, -0.7),
                     // rotate lift to bar
                     new LiftToPosition(-83),
                     // pull up hooks
-                    new MoveCIB(-250, -0.4),
+                    new MoveCIB(-250, -0.7),
                     // pull up rotator
-                    new ResetLift(0.5),
-                    new PullUpCIB(0.25),
+                    new ResetLift(0.7),
+                    new PullUpCIB(0.7),
                     new LiftToPosition(-42),
-                    new MoveCIB(-50, -0.2),
+                    new MoveCIB(-50, -0.7),
                     new LiftToPosition(-42),
                     // lift to bar
-                    new MoveCIB(-50, -0.6),
+                    new MoveCIB(-50, -0.7),
                     // rotate lift to target
                     new LiftToPosition(-96),
                     // extend hooks to target
-                    new MoveCIB(-380, -0.6),
+                    new MoveCIB(-380, -0.7),
                     // rotate lift to bar
                     new LiftToPosition(-83),
                     // pull up hooks
-                    new MoveCIB(-250, -0.4),
+                    new MoveCIB(-250, -0.7),
                     // pull up rotator
-                    new ResetLift(0.5),
-                    new PullUpCIB(0.25),
+                    new ResetLift(0.7),
+                    new PullUpCIB(0.7),
                     new LiftToPosition(-42),
-                    new MoveCIB(-50, -0.2)
+                    new MoveCIB(-50, -0.7)
                     // new MoveRotateLift(51, 0.15),
                     // new MoveCIB(0, 0.5)); //placeholder values
                     // new MoveRotateLift(0, 0);
