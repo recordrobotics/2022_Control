@@ -42,10 +42,10 @@ public class FlywheelAutoRun extends CommandBase {
      * If the timer has been running for at least 1 second runs the ball lift at the set speed
      */
     m_flywheel.setWheelSpeed(Constants.FLYWHEEL_SPEED);
-    if (flywheelShootDurationTimer.get() > 2.5) m_flywheel.reset();
-    else if (flywheelShootDurationTimer.get() > 2) m_flywheel.shoot();
+    if (flywheelShootDurationTimer.get() > 4.5) m_flywheel.reset();
+    else if (flywheelShootDurationTimer.get() > 3) m_flywheel.shoot();
     else if (flywheelShootDurationTimer.get() > 1.5) m_flywheel.reset();
-    else if(flywheelShootDurationTimer.get() > 1) m_flywheel.shoot();
+    else if(flywheelShootDurationTimer.get() > 0.5) m_flywheel.shoot();
 
   }
  /**
