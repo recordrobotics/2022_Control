@@ -26,7 +26,7 @@ public class ControlFlywheel extends CommandBase {
 
   private final double SPEED_IDLE = 0.0;
   private final double SPEED_NORMAL = 0.22;
-  private final double SPEED_BOOSTED = 0.4;
+  private final double SPEED_BOOSTED = 0.35;
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
