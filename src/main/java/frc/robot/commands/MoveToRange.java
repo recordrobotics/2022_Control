@@ -70,8 +70,8 @@ public class MoveToRange extends CommandBase {
         if (speed < -0.35)
             speed = -0.35;
         //System.out.println(speed * direction);
-        m_driveTrain.moveLeftWheels(speed * direction);
-        m_driveTrain.moveRightWheels(speed * -direction);
+        m_driveTrain.moveLeftWheels(speed * -direction);
+        m_driveTrain.moveRightWheels(speed * direction);
     }
 
     /** Make this return true when this Command no longer needs to run execute() */

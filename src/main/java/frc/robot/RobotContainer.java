@@ -103,7 +103,7 @@ public class RobotContainer {
     m_rangeFinder = new RangeFinderMunchkin();
     // m_flywheel.setDefaultCommand(new ControlFlywheel());
     m_camStream = new CamStream(2);
-    m_autonomousCommand = new AutoMunchkin(true);
+    m_autonomousCommand = new AutoMunchkin();
   }
   
   public void munchkinTeleop() {

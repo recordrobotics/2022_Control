@@ -52,7 +52,7 @@ public final class Constants {
     //for MoveToAim.java, MoveToFire.java
     public static final double CAMERA_OFF_CENTER = 5.25d;
     //for MoveToRange.java, TurnToAngle.java, TurnToGoal.java
-    public static final double TOLERANCE = 7.0d;
+    public static final double TOLERANCE =7.0d;
     public static final double KI = 0.0d, KD = 0.0d;
     //for TiltAcquisition.java
     public static final double ACQ_MOVE_TIME = 2.5d;
