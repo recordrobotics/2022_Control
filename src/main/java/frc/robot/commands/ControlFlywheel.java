@@ -68,6 +68,8 @@ public class ControlFlywheel extends CommandBase {
       m_flywheel.setWheelSpeed(SPEED_IDLE);
       m_flywheel.reset();
     }
+    SmartDashboard.putBoolean("Flywheel Enabled: ", enabled);
+    SmartDashboard.putBoolean("Flywheel BOOSTED: ", boosted);
   }
 
   /**

@@ -58,9 +58,6 @@ public class FlywheelMunchkin extends Flywheel {
     public void shoot() {
         rightServo.set(RIGHT_SERVO_SHOOT);
         leftServo.set(LEFT_SERVO_SHOOT);
-        reset(); 
-        rightServo.set(RIGHT_SERVO_SHOOT);
-        leftServo.set(LEFT_SERVO_SHOOT);
     }
 
     @Override
