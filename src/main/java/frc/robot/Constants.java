@@ -20,7 +20,7 @@ public final class Constants {
 
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
-    public static final double FLYWHEEL_SPEED = 0.15d;
+    public static final double FLYWHEEL_SPEED = 0.22d;
     //for AutoTurn.java
     public static final double PRECISION = 0.5d;
     //for BallUpOne.java

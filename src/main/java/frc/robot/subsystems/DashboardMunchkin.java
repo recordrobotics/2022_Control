@@ -20,7 +20,7 @@ public class DashboardMunchkin extends Dashboard {
         SmartDashboard.putData("Reset CIB Encoder", new ResetCIBEncoder());
         SmartDashboard.putData("Run Full Lift Auto Sequence (without traversal)", new AutoClimb(ClimbEnum.HIGH));
         SmartDashboard.putData("Run Full Lift Auto Sequence (with traversal)", new AutoClimb(ClimbEnum.TRAVERSAL));
-        SmartDashboard.putData("Move to High Target Shooting distance [UNTESTED MAY BE TOO FAR FOR RANGEFINDERS]", new MoveToRange(64));
+        SmartDashboard.putData("Move to High Target Shooting distance [UNTESTED MAY BE TOO FAR FOR RANGEFINDERS]", new MoveToRange(1625));
         m_container = RobotContainer.getInstance();
 
     }

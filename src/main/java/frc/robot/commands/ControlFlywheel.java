@@ -25,7 +25,7 @@ public class ControlFlywheel extends CommandBase {
   private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
 
   private final double SPEED_IDLE = 0.0;
-  private final double SPEED_NORMAL = 0.25;
+  private final double SPEED_NORMAL = 0.22;
   private final double SPEED_BOOSTED = 0.4;
 
   public ControlFlywheel() {
