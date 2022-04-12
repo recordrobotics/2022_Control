@@ -7,24 +7,30 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.OI;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Dashboard;
 import frc.robot.subsystems.Flywheel;
+import frc.robot.subsystems.RangeFinder;
 
 public class ControlFlywheel extends CommandBase {
 
   private boolean enabled = false, boosted = false;
   private boolean enableBtnDown = false, boostBtnDown = false;
   private Flywheel m_flywheel = RobotContainer.getInstance().getFlywheel();
+  private Dashboard m_dashboard = RobotContainer.getInstance().getDashboard();
+  private RangeFinder m_rangeFinder = RobotContainer.getInstance().getRangeFinder();
 
   private final double SPEED_IDLE = 0.0;
-  private final double SPEED_NORMAL = 0.25;
-  private final double SPEED_BOOSTED = 0.4;
+  private final double SPEED_NORMAL = 0.22;
+  private final double SPEED_BOOSTED = 0.35;
 
   public ControlFlywheel() {
     addRequirements(m_flywheel);
+    addRequirements(m_rangeFinder);
   }
 
   @Override
@@ -62,6 +68,8 @@ public class ControlFlywheel extends CommandBase {
       m_flywheel.setWheelSpeed(SPEED_IDLE);
       m_flywheel.reset();
     }
+    SmartDashboard.putBoolean("Flywheel Enabled: ", enabled);
+    SmartDashboard.putBoolean("Flywheel BOOSTED: ", boosted);
   }
 
   /**

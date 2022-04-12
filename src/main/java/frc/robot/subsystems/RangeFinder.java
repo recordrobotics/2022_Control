@@ -4,4 +4,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public abstract class RangeFinder extends SubsystemBase {
   public abstract double getDistance();
+  public abstract double getADistance();
+  public abstract double getBDistance();
 }

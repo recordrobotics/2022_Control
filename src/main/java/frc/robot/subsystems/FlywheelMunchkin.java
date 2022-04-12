@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
 import frc.robot.RobotMap;
 
@@ -27,6 +28,7 @@ public class FlywheelMunchkin extends Flywheel {
     private WPI_TalonFX flywheelMotor = new WPI_TalonFX(RobotMap.flywheelMunchkin);
     private Servo rightServo = new Servo(0);
     private Servo leftServo = new Servo(1);
+    private DigitalInput ballDetector = new DigitalInput(3);
 
     /**
      * Creates an Object for the flywheel class.
@@ -36,6 +38,7 @@ public class FlywheelMunchkin extends Flywheel {
         flywheelMotor.setVoltage(targetVoltage);
         setWheelSpeed(0);
         reset();
+        setWheelSpeed(0);
     }
 
     /**
@@ -70,5 +73,13 @@ public class FlywheelMunchkin extends Flywheel {
      */
     public double getVoltage() {
         return flywheelMotor.getMotorOutputVoltage();
+    }
+
+    /**
+     * Detect if a ball is present
+     * @return if a ball is present, true = present false = not present
+     */
+    public boolean getBallDetector() {
+        return ballDetector.get();
     }
 }

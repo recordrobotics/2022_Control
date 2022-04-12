@@ -20,12 +20,12 @@ public final class Constants {
 
     public static final double RESTING_VOLTAGE = 12.5d;
     public static final double SHOOTING_DISTANCE = 122d;
-    public static final double FLYWHEEL_SPEED = 0.85d;
+    public static final double FLYWHEEL_SPEED = 0.22d;
     //for AutoTurn.java
     public static final double PRECISION = 0.5d;
     //for BallUpOne.java
     public static final double MOVE_TIME = 0.1d;
-    //for BallLiftAutoRun.java
+    //for BallLiftAutoRun.java and FlywheelAutoRun.java
     public static final double BALL_TIMEOUT = 5.0d;
     //for CamControl.java
     public static final String SWITCH_BUTTON = "Y";
@@ -52,7 +52,7 @@ public final class Constants {
     //for MoveToAim.java, MoveToFire.java
     public static final double CAMERA_OFF_CENTER = 5.25d;
     //for MoveToRange.java, TurnToAngle.java, TurnToGoal.java
-    public static final double TOLERANCE = 3.0d;
+    public static final double TOLERANCE =7.0d;
     public static final double KI = 0.0d, KD = 0.0d;
     //for TiltAcquisition.java
     public static final double ACQ_MOVE_TIME = 2.5d;

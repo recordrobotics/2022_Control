@@ -137,5 +137,13 @@ public class RobotMap {
 	public static int extendSolenoidForwardPort;
 	public static int extendSolenoidBackwardPort;
 
+	/**
+	 * Range Finder Ports
+	 */
+	public final static int rangeFinderAEcho = 6;
+	public final static int rangeFinderAPing = 7;
+	public final static int rangeFinderBEcho = 8;
+	public final static int rangeFinderBPing = 9;
+
 }
 

@@ -32,7 +32,7 @@ public class RotateToPosition extends CommandBase {
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-    m_rotater.resetLeftRotateEncoder();
+    m_rotater.resetEncoders();
   }
 
   /** Called repeatedly when this Command is scheduled to run */

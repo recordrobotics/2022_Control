@@ -17,6 +17,7 @@ public class MoveCIB extends CommandBase {
     private RobotLift m_lift = RobotContainer.getInstance().getRobotLift();
     private double distance;
     private double speed;
+    private int direction;
     public MoveCIB(double d, double sp) {
         addRequirements(m_lift);
         speed = sp;
@@ -26,25 +27,31 @@ public class MoveCIB extends CommandBase {
   /** Called just before this Command runs the first time */
   @Override
   public void initialize() {
-      m_lift.resetEncoder();
+    direction = (distance < m_lift.getPosition()) ? 1 : -1;
+      // m_lift.resetEncoder();
   }
 
   /** Called repeatedly when this Command is scheduled to run */
   @Override
   public void execute() {
-      m_lift.moveLift(speed);
+      m_lift.moveLift(speed * direction);
   }
 
   /** Make this return true when this Command no longer needs to run execute() */
   @Override
   public boolean isFinished() {
     //return true when encoder value is equal to certain value;
-    return Math.abs(m_lift.getPosition()) >= Math.abs(distance);
+    if (direction == 1) {
+      return (m_lift.getPosition() <= distance);
+    } else {
+      return (m_lift.getPosition() >= distance);
+    }
   }
 
   /** Called once after isFinished returns true */
   @Override
   public void end(boolean interrupted) {
+    m_lift.moveLift(0);
   }
 
 }
